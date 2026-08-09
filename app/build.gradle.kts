@@ -48,14 +48,14 @@ android {
 
     signingConfigs {
         val storeFilePath = secret("KEYSTORE_FILE", "KEYSTORE_FILE")
-        val storePassword = secret("KEYSTORE_PASSWORD", "KEYSTORE_PASSWORD")
+        val storePasswordValue = secret("KEYSTORE_PASSWORD", "KEYSTORE_PASSWORD")
         val keyAliasValue = secret("KEY_ALIAS", "KEY_ALIAS")
         val keyPasswordValue = secret("KEY_PASSWORD", "KEY_PASSWORD")
 
         if (storeFilePath.isNotBlank() && file(storeFilePath).exists()) {
             create("release") {
                 storeFile = file(storeFilePath)
-                storePassword = storePassword
+                storePassword = storePasswordValue
                 keyAlias = keyAliasValue
                 keyPassword = keyPasswordValue
             }
