@@ -59,7 +59,7 @@ class CameraTestFragment : Fragment(R.layout.fragment_camera_test) {
             val finalSelector = if (usingFrontCamera) CameraSelector.DEFAULT_FRONT_CAMERA else CameraSelector.DEFAULT_BACK_CAMERA
 
             val preview = Preview.Builder().build().also {
-                it.surfaceProvider = binding.previewView.surfaceProvider
+                it.setSurfaceProvider(binding.previewView.surfaceProvider)
             }
 
             runCatching {
