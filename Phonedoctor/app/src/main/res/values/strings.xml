@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Phone Doctor</string>
+    <string name="app_tagline">Check. Diagnose. Protect.</string>
+
+    <!-- ============ Common ============ -->
+    <string name="common_next">Next</string>
+    <string name="common_back">Back</string>
+    <string name="common_skip">Skip</string>
+    <string name="common_get_started">Get Started</string>
+    <string name="common_done">Done</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_retry">Retry</string>
+    <string name="common_reset">Reset</string>
+    <string name="common_finish">Finish</string>
+    <string name="common_close">Close</string>
+    <string name="common_share">Share</string>
+    <string name="common_copy">Copy</string>
+    <string name="common_copied">Copied to clipboard</string>
+    <string name="common_not_available">Not available on this device</string>
+    <string name="common_not_supported">Not supported on this device</string>
+    <string name="common_permission_required">Permission required</string>
+    <string name="common_grant_permission">Grant Permission</string>
+    <string name="common_open_settings">Open Settings</string>
+    <string name="common_loading">Loading…</string>
+    <string name="common_view_details">View Details</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Delete</string>
+    <string name="common_yes">Yes</string>
+    <string name="common_no">No</string>
+
+    <!-- ============ Onboarding ============ -->
+    <string name="onboarding_page1_title">Check Your Phone</string>
+    <string name="onboarding_page1_desc">Run a complete health check of your device.</string>
+    <string name="onboarding_page2_title">Test Every Component</string>
+    <string name="onboarding_page2_desc">Battery, storage, display, sound, sensors and more.</string>
+    <string name="onboarding_page3_title">Your Data Stays Private</string>
+    <string name="onboarding_page3_desc">Diagnostics are performed locally whenever possible.</string>
+
+    <!-- ============ Home ============ -->
+    <string name="home_greeting">Your Phone Health</string>
+    <string name="home_health_score_label">PHONE HEALTH</string>
+    <string name="home_last_check">Last Check</string>
+    <string name="home_never_checked">Never checked yet</string>
+    <string name="home_run_full_check">RUN FULL CHECK</string>
+    <string name="home_quick_tests">Quick Tests</string>
+    <string name="home_status_excellent">Excellent</string>
+    <string name="home_status_good">Good</string>
+    <string name="home_status_fair">Fair</string>
+    <string name="home_status_poor">Poor</string>
+    <string name="home_status_unknown">Not tested</string>
+    <string name="home_empty_history_title">No test history yet</string>
+    <string name="home_empty_history_desc">Run your first complete health check.</string>
+
+    <!-- ============ Full Scan ============ -->
+    <string name="scan_title">Checking your device…</string>
+    <string name="scan_item_battery">Battery</string>
+    <string name="scan_item_storage">Storage</string>
+    <string name="scan_item_memory">Memory</string>
+    <string name="scan_item_cpu">CPU</string>
+    <string name="scan_item_display">Display</string>
+    <string name="scan_item_touch">Touch</string>
+    <string name="scan_item_audio">Audio</string>
+    <string name="scan_item_microphone">Microphone</string>
+    <string name="scan_item_sensors">Sensors</string>
+    <string name="scan_item_camera">Camera</string>
+    <string name="scan_item_connectivity">Connectivity</string>
+    <string name="scan_cancel">Cancel Scan</string>
+    <string name="scan_interactive_required">This check needs a quick look from you</string>
+    <string name="scan_interactive_display">Please glance at the display test to confirm the screen looks correct.</string>
+    <string name="scan_interactive_touch">Tap the screen a few times to confirm touch is responding.</string>
+    <string name="scan_interactive_audio">Play a short test tone to confirm the speaker works.</string>
+    <string name="scan_interactive_microphone">Say something out loud to confirm the microphone picks up sound.</string>
+    <string name="scan_interactive_continue">Continue</string>
+    <string name="scan_interactive_skip">Skip this test</string>
+
+    <!-- ============ Scan Results ============ -->
+    <string name="results_title">Scan Results</string>
+    <string name="results_health_score_fmt">%1$d / 100</string>
+    <string name="results_issues_found">Issues Found</string>
+    <string name="results_no_issues">No issues found. Your phone is in great shape.</string>
+    <string name="results_share_report">SHARE REPORT</string>
+    <string name="results_issue_storage_full">Storage is almost full.</string>
+    <string name="results_issue_battery_drain">Battery is discharging quickly.</string>
+    <string name="results_issue_memory_high">Memory usage is high.</string>
+    <string name="results_issue_no_connectivity">No network connectivity detected.</string>
+
+    <!-- ============ Categories (shared across Results / Report / History) ============ -->
+    <string name="category_battery">Battery</string>
+    <string name="category_storage">Storage</string>
+    <string name="category_memory">Memory</string>
+    <string name="category_cpu">CPU</string>
+    <string name="category_display">Display</string>
+    <string name="category_touch">Touch</string>
+    <string name="category_audio">Audio</string>
+    <string name="category_microphone">Microphone</string>
+    <string name="category_vibration">Vibration</string>
+    <string name="category_flashlight">Flashlight</string>
+    <string name="category_camera">Camera</string>
+    <string name="category_sensors">Sensors</string>
+    <string name="category_connectivity">Connectivity</string>
+
+    <!-- ============ Battery ============ -->
+    <string name="battery_title">Battery</string>
+    <string name="battery_level">Battery Level</string>
+    <string name="battery_charging_status">Charging Status</string>
+    <string name="battery_temperature">Battery Temperature</string>
+    <string name="battery_voltage">Voltage</string>
+    <string name="battery_current">Current</string>
+    <string name="battery_technology">Battery Technology</string>
+    <string name="battery_health">Battery Health</string>
+    <string name="battery_charging">Charging</string>
+    <string name="battery_discharging">Discharging</string>
+    <string name="battery_full">Full</string>
+    <string name="battery_not_charging">Not Charging</string>
+    <string name="battery_ac">AC Charger</string>
+    <string name="battery_usb">USB</string>
+    <string name="battery_wireless">Wireless</string>
+    <string name="battery_run_test">RUN BATTERY CHECK</string>
+
+    <!-- ============ Storage ============ -->
+    <string name="storage_title">Storage</string>
+    <string name="storage_total">Total Storage</string>
+    <string name="storage_used">Used</string>
+    <string name="storage_free">Free</string>
+    <string name="storage_breakdown">Storage Breakdown</string>
+    <string name="storage_category_apps">Apps</string>
+    <string name="storage_category_images">Images</string>
+    <string name="storage_category_videos">Videos</string>
+    <string name="storage_category_audio">Audio</string>
+    <string name="storage_category_documents">Documents</string>
+    <string name="storage_category_other">Other</string>
+    <string name="storage_view_breakdown">View Breakdown</string>
+    <string name="storage_permission_rationale">To show a breakdown by file type, Phone Doctor needs permission to read media on this device. This is optional and only used to compute sizes on your device.</string>
+
+    <!-- ============ Memory ============ -->
+    <string name="memory_title">RAM / Memory</string>
+    <string name="memory_total">Total RAM</string>
+    <string name="memory_available">Available RAM</string>
+    <string name="memory_used">Used RAM</string>
+    <string name="memory_status">Memory Status</string>
+    <string name="memory_low_memory_warning">Device is running low on memory.</string>
+
+    <!-- ============ CPU / Device Info quick screen ============ -->
+    <string name="cpu_title">CPU / Device Info</string>
+    <string name="cpu_manufacturer">Manufacturer</string>
+    <string name="cpu_model">Model</string>
+    <string name="cpu_android_version">Android Version</string>
+    <string name="cpu_sdk_version">SDK Version</string>
+    <string name="cpu_architecture">CPU Architecture</string>
+    <string name="cpu_cores">CPU Cores</string>
+    <string name="cpu_supported_abis">Supported ABIs</string>
+    <string name="cpu_screen_resolution">Screen Resolution</string>
+    <string name="cpu_refresh_rate">Refresh Rate</string>
+
+    <!-- ============ Display Test ============ -->
+    <string name="display_title">Display Test</string>
+    <string name="display_instructions">Look for dead pixels, unusual discoloration or screen artifacts.</string>
+    <string name="display_step_fmt">%1$d of %2$d</string>
+    <string name="display_black">Black Screen</string>
+    <string name="display_white">White Screen</string>
+    <string name="display_red">Red Screen</string>
+    <string name="display_green">Green Screen</string>
+    <string name="display_blue">Blue Screen</string>
+    <string name="display_gradient">Gradient</string>
+    <string name="display_tap_to_continue">Tap anywhere to continue</string>
+    <string name="display_result_question">Did the display look correct on every screen?</string>
+    <string name="display_result_yes">Yes, it looked fine</string>
+    <string name="display_result_no">No, I noticed a problem</string>
+
+    <!-- ============ Touch Test ============ -->
+    <string name="touch_title">Touch Test</string>
+    <string name="touch_instructions">Touch and drag across the whole screen to test every zone.</string>
+    <string name="touch_points">Touch Points</string>
+    <string name="touch_coverage">Coverage</string>
+    <string name="touch_coverage_fmt">%1$d%%</string>
+    <string name="touch_finish_test">FINISH TEST</string>
+
+    <!-- ============ Speaker Test ============ -->
+    <string name="speaker_title">Speaker Test</string>
+    <string name="speaker_instructions">Play a short, safe test tone through your speakers.</string>
+    <string name="speaker_play">PLAY TEST SOUND</string>
+    <string name="speaker_stop">STOP</string>
+    <string name="speaker_left">Left Channel</string>
+    <string name="speaker_right">Right Channel</string>
+    <string name="speaker_both">Both Channels</string>
+    <string name="speaker_result_question">Could you hear the test tone clearly?</string>
+
+    <!-- ============ Microphone Test ============ -->
+    <string name="mic_title">Microphone Test</string>
+    <string name="mic_instructions">Record a short sample to test your microphone. Nothing is uploaded anywhere.</string>
+    <string name="mic_start_recording">START RECORDING</string>
+    <string name="mic_stop_recording">STOP RECORDING</string>
+    <string name="mic_input_level">Input Level</string>
+    <string name="mic_play_recording">PLAY RECORDING</string>
+    <string name="mic_delete_recording">DELETE RECORDING</string>
+    <string name="mic_recording_deleted">Recording deleted</string>
+    <string name="mic_max_duration_notice">Recording stops automatically after 10 seconds.</string>
+
+    <!-- ============ Vibration Test ============ -->
+    <string name="vibration_title">Vibration Test</string>
+    <string name="vibration_instructions">Trigger short and long vibration patterns to check the motor.</string>
+    <string name="vibration_test_short">TEST SHORT VIBRATION</string>
+    <string name="vibration_test_long">TEST LONG VIBRATION</string>
+    <string name="vibration_test_pattern">TEST PATTERN</string>
+    <string name="vibration_has_amplitude_control">Amplitude Control</string>
+
+    <!-- ============ Flashlight Test ============ -->
+    <string name="flashlight_title">Flashlight Test</string>
+    <string name="flashlight_instructions">Turn the flashlight on and off to confirm it works.</string>
+    <string name="flashlight_turn_on">TURN ON FLASHLIGHT</string>
+    <string name="flashlight_turn_off">TURN OFF</string>
+
+    <!-- ============ Camera Test ============ -->
+    <string name="camera_title">Camera Test</string>
+    <string name="camera_rear">Rear Camera</string>
+    <string name="camera_front">Front Camera</string>
+    <string name="camera_switch">Switch Camera</string>
+    <string name="camera_permission_rationale">Phone Doctor needs camera access to show a live preview and confirm the camera works. Nothing is saved or uploaded.</string>
+    <string name="camera_not_available">No camera detected on this device.</string>
+
+    <!-- ============ Sensors Test ============ -->
+    <string name="sensors_title">Sensors Test</string>
+    <string name="sensor_accelerometer">Accelerometer</string>
+    <string name="sensor_gyroscope">Gyroscope</string>
+    <string name="sensor_magnetometer">Magnetometer</string>
+    <string name="sensor_proximity">Proximity</string>
+    <string name="sensor_light">Light</string>
+    <string name="sensor_pressure">Pressure</string>
+    <string name="sensor_rotation_vector">Rotation Vector</string>
+    <string name="sensor_step_counter">Step Sensor</string>
+    <string name="sensor_available">Available</string>
+    <string name="sensor_not_available">Not Available</string>
+    <string name="sensor_live_reading">Live reading</string>
+
+    <!-- ============ Connectivity ============ -->
+    <string name="connectivity_title">Connectivity</string>
+    <string name="connectivity_wifi">Wi-Fi</string>
+    <string name="connectivity_bluetooth">Bluetooth</string>
+    <string name="connectivity_mobile_network">Mobile Network</string>
+    <string name="connectivity_internet">Internet Access</string>
+    <string name="connectivity_available">Available</string>
+    <string name="connectivity_unavailable">Unavailable</string>
+    <string name="connectivity_connected">Connected</string>
+    <string name="connectivity_disconnected">Disconnected</string>
+    <string name="connectivity_internet_note">Internet test requires network access.</string>
+    <string name="connectivity_run_test">TEST INTERNET ACCESS</string>
+
+    <!-- ============ Device Information (full) ============ -->
+    <string name="device_info_title">Device Information</string>
+    <string name="device_info_copy">COPY DEVICE INFO</string>
+    <string name="device_info_copied">Device information copied to clipboard</string>
+    <string name="device_info_section_general">General</string>
+    <string name="device_info_section_hardware">Hardware</string>
+    <string name="device_info_section_display">Display</string>
+    <string name="device_info_section_software">Software</string>
+    <string name="device_info_brand">Brand</string>
+    <string name="device_info_board">Board</string>
+    <string name="device_info_hardware">Hardware</string>
+    <string name="device_info_density">Density</string>
+
+    <!-- ============ Test History ============ -->
+    <string name="history_title">Test History</string>
+    <string name="history_passed_fmt">%1$d Passed</string>
+    <string name="history_warnings_fmt">%1$d Warnings</string>
+    <string name="history_failed_fmt">%1$d Failed</string>
+    <string name="history_health_fmt">Health %1$d%%</string>
+    <string name="history_clear_all">Clear History</string>
+    <string name="history_clear_confirm_title">Clear all history?</string>
+    <string name="history_clear_confirm_message">This permanently deletes every saved scan result from this device. This cannot be undone.</string>
+
+    <!-- ============ Report ============ -->
+    <string name="report_title">Phone Health Report</string>
+    <string name="report_device">Device</string>
+    <string name="report_date">Date</string>
+    <string name="report_overall_health">Overall Health</string>
+    <string name="report_share">SHARE REPORT</string>
+    <string name="report_export_pdf">EXPORT AS PDF</string>
+    <string name="report_generating">Generating report…</string>
+
+    <!-- ============ Settings ============ -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_appearance_system">System</string>
+    <string name="settings_appearance_light">Light</string>
+    <string name="settings_appearance_dark">Dark</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_english">English</string>
+    <string name="settings_language_arabic">العربية</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_notifications_desc">Receive reminders and health check alerts</string>
+    <string name="settings_auto_check">Auto Health Check</string>
+    <string name="settings_auto_check_desc">Run a background health check weekly</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="settings_clear_history">Clear History</string>
+    <string name="settings_about">About</string>
+    <string name="settings_help">Help / FAQ</string>
+    <string name="settings_premium">Go Premium</string>
+    <string name="settings_section_general">General</string>
+    <string name="settings_section_data">Data</string>
+    <string name="settings_section_more">More</string>
+
+    <!-- ============ About ============ -->
+    <string name="about_title">About</string>
+    <string name="about_version_fmt">Version %1$s</string>
+    <string name="about_description">Phone Doctor performs a complete diagnostic check of your device\'s hardware and software components, entirely on your device.</string>
+    <string name="about_developer">Developed by the Phone Doctor team</string>
+
+    <!-- ============ Privacy ============ -->
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_intro">Phone Doctor is designed to perform device diagnostics locally whenever possible. Diagnostic results and personal files are not uploaded to a Phone Doctor server.</string>
+    <string name="privacy_data_body">Phone Doctor does not collect your IMEI, serial number, advertising ID, or MAC address. Test history, settings and any temporary recordings are stored only on your device and can be deleted at any time from Settings.</string>
+    <string name="privacy_ads_title">Advertising</string>
+    <string name="privacy_ads_body">The free version of Phone Doctor may show ads served by Google AdMob. Ads may use data according to Google\'s advertising and consent settings. You can remove ads with Phone Doctor Premium.</string>
+    <string name="privacy_permissions_title">Permissions</string>
+    <string name="privacy_permissions_body">Camera, microphone, storage and notification permissions are only requested when you open the matching test, and only used for that test.</string>
+
+    <!-- ============ Premium ============ -->
+    <string name="premium_title">Phone Doctor Premium</string>
+    <string name="premium_subtitle">Unlock the full diagnostic experience</string>
+    <string name="premium_benefit_remove_ads">Remove all ads</string>
+    <string name="premium_benefit_advanced_reports">Advanced, exportable reports</string>
+    <string name="premium_benefit_extra_diagnostics">Extra diagnostic tests</string>
+    <string name="premium_benefit_advanced_device_info">Advanced device information</string>
+    <string name="premium_benefit_custom_reports">Custom report branding</string>
+    <string name="premium_upgrade">UPGRADE TO PREMIUM</string>
+    <string name="premium_watch_ad">WATCH AD FOR ADVANCED REPORT</string>
+    <string name="premium_already_premium">You\'re a Premium member</string>
+    <string name="premium_billing_unavailable">Billing is not configured in this build. Connect Google Play Billing to enable purchases.</string>
+
+    <!-- ============ Help / FAQ ============ -->
+    <string name="help_title">Help / FAQ</string>
+    <string name="help_q1">Does Phone Doctor send my data anywhere?</string>
+    <string name="help_a1">No. All diagnostics run locally on your device. Nothing is uploaded to a Phone Doctor server.</string>
+    <string name="help_q2">Why is a permission being requested?</string>
+    <string name="help_a2">Each permission is requested only when you open the matching test (for example, Camera for the Camera Test) and is never requested up front.</string>
+    <string name="help_q3">Some information says "Not available on this device". Why?</string>
+    <string name="help_a3">Some manufacturers or Android versions do not expose certain hardware details through public APIs. Phone Doctor never guesses or fakes this data.</string>
+    <string name="help_q4">How is the Health Score calculated?</string>
+    <string name="help_a4">The score combines the results of every completed test category. Categories that could not run are excluded rather than counted as failures.</string>
+    <string name="help_q5">How do I remove ads?</string>
+    <string name="help_a5">Upgrade to Phone Doctor Premium from the Premium screen.</string>
+
+    <!-- ============ Notifications ============ -->
+    <string name="notification_channel_health_checks">Health Checks</string>
+    <string name="notification_channel_health_checks_desc">Weekly automatic health check reminders</string>
+    <string name="notification_auto_check_title">Your weekly health check is ready</string>
+    <string name="notification_auto_check_text">Tap to see how your phone is doing.</string>
+
+    <!-- ============ Content descriptions (accessibility) ============ -->
+    <string name="cd_settings">Settings</string>
+    <string name="cd_back">Navigate back</string>
+    <string name="cd_health_ring">Phone health score</string>
+    <string name="cd_status_icon">Status</string>
+    <string name="cd_logo">Phone Doctor logo</string>
+    <string name="cd_flashlight_beam">Flashlight beam preview</string>
+    <string name="cd_camera_preview">Camera preview</string>
+</resources>

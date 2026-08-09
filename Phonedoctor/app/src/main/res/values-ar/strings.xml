@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Phone Doctor</string>
+    <string name="app_tagline">افحص. شخّص. احمِ.</string>
+
+    <!-- ============ Common ============ -->
+    <string name="common_next">التالي</string>
+    <string name="common_back">رجوع</string>
+    <string name="common_skip">تخطي</string>
+    <string name="common_get_started">ابدأ الآن</string>
+    <string name="common_done">تم</string>
+    <string name="common_cancel">إلغاء</string>
+    <string name="common_retry">إعادة المحاولة</string>
+    <string name="common_reset">إعادة تعيين</string>
+    <string name="common_finish">إنهاء</string>
+    <string name="common_close">إغلاق</string>
+    <string name="common_share">مشاركة</string>
+    <string name="common_copy">نسخ</string>
+    <string name="common_copied">تم النسخ إلى الحافظة</string>
+    <string name="common_not_available">غير متاح على هذا الجهاز</string>
+    <string name="common_not_supported">غير مدعوم على هذا الجهاز</string>
+    <string name="common_permission_required">الإذن مطلوب</string>
+    <string name="common_grant_permission">منح الإذن</string>
+    <string name="common_open_settings">فتح الإعدادات</string>
+    <string name="common_loading">جارٍ التحميل…</string>
+    <string name="common_view_details">عرض التفاصيل</string>
+    <string name="common_ok">حسنًا</string>
+    <string name="common_delete">حذف</string>
+    <string name="common_yes">نعم</string>
+    <string name="common_no">لا</string>
+
+    <!-- ============ Onboarding ============ -->
+    <string name="onboarding_page1_title">افحص هاتفك</string>
+    <string name="onboarding_page1_desc">قم بفحص شامل لصحة جهازك.</string>
+    <string name="onboarding_page2_title">اختبر كل مكوّن</string>
+    <string name="onboarding_page2_desc">البطارية، التخزين، الشاشة، الصوت، الحساسات والمزيد.</string>
+    <string name="onboarding_page3_title">بياناتك تبقى خاصة</string>
+    <string name="onboarding_page3_desc">تُجرى الفحوصات محليًا على جهازك كلما أمكن ذلك.</string>
+
+    <!-- ============ Home ============ -->
+    <string name="home_greeting">صحة هاتفك</string>
+    <string name="home_health_score_label">صحة الهاتف</string>
+    <string name="home_last_check">آخر فحص</string>
+    <string name="home_never_checked">لم يتم الفحص بعد</string>
+    <string name="home_run_full_check">تشغيل الفحص الكامل</string>
+    <string name="home_quick_tests">اختبارات سريعة</string>
+    <string name="home_status_excellent">ممتاز</string>
+    <string name="home_status_good">جيد</string>
+    <string name="home_status_fair">مقبول</string>
+    <string name="home_status_poor">ضعيف</string>
+    <string name="home_status_unknown">لم يتم الاختبار</string>
+    <string name="home_empty_history_title">لا يوجد سجل فحوصات بعد</string>
+    <string name="home_empty_history_desc">قم بأول فحص شامل لصحة هاتفك.</string>
+
+    <!-- ============ Full Scan ============ -->
+    <string name="scan_title">جارٍ فحص جهازك…</string>
+    <string name="scan_item_battery">البطارية</string>
+    <string name="scan_item_storage">التخزين</string>
+    <string name="scan_item_memory">الذاكرة</string>
+    <string name="scan_item_cpu">المعالج</string>
+    <string name="scan_item_display">الشاشة</string>
+    <string name="scan_item_touch">اللمس</string>
+    <string name="scan_item_audio">الصوت</string>
+    <string name="scan_item_microphone">الميكروفون</string>
+    <string name="scan_item_sensors">الحساسات</string>
+    <string name="scan_item_camera">الكاميرا</string>
+    <string name="scan_item_connectivity">الاتصال</string>
+    <string name="scan_cancel">إلغاء الفحص</string>
+    <string name="scan_interactive_required">هذا الاختبار يحتاج نظرة سريعة منك</string>
+    <string name="scan_interactive_display">يرجى إلقاء نظرة على اختبار الشاشة للتأكد من أنها تبدو صحيحة.</string>
+    <string name="scan_interactive_touch">المس الشاشة عدة مرات للتأكد من استجابة اللمس.</string>
+    <string name="scan_interactive_audio">شغّل نغمة اختبار قصيرة للتأكد من عمل مكبر الصوت.</string>
+    <string name="scan_interactive_microphone">تحدث بصوت مسموع للتأكد من التقاط الميكروفون للصوت.</string>
+    <string name="scan_interactive_continue">متابعة</string>
+    <string name="scan_interactive_skip">تخطي هذا الاختبار</string>
+
+    <!-- ============ Scan Results ============ -->
+    <string name="results_title">نتائج الفحص</string>
+    <string name="results_health_score_fmt">%1$d / 100</string>
+    <string name="results_issues_found">المشاكل المكتشفة</string>
+    <string name="results_no_issues">لم يتم العثور على أي مشاكل. هاتفك بحالة ممتازة.</string>
+    <string name="results_share_report">مشاركة التقرير</string>
+    <string name="results_issue_storage_full">مساحة التخزين شبه ممتلئة.</string>
+    <string name="results_issue_battery_drain">البطارية تنفد بسرعة.</string>
+    <string name="results_issue_memory_high">استخدام الذاكرة مرتفع.</string>
+    <string name="results_issue_no_connectivity">لا يوجد اتصال بالشبكة.</string>
+
+    <!-- ============ Categories ============ -->
+    <string name="category_battery">البطارية</string>
+    <string name="category_storage">التخزين</string>
+    <string name="category_memory">الذاكرة</string>
+    <string name="category_cpu">المعالج</string>
+    <string name="category_display">الشاشة</string>
+    <string name="category_touch">اللمس</string>
+    <string name="category_audio">الصوت</string>
+    <string name="category_microphone">الميكروفون</string>
+    <string name="category_vibration">الاهتزاز</string>
+    <string name="category_flashlight">المصباح</string>
+    <string name="category_camera">الكاميرا</string>
+    <string name="category_sensors">الحساسات</string>
+    <string name="category_connectivity">الاتصال</string>
+
+    <!-- ============ Battery ============ -->
+    <string name="battery_title">البطارية</string>
+    <string name="battery_level">مستوى البطارية</string>
+    <string name="battery_charging_status">حالة الشحن</string>
+    <string name="battery_temperature">حرارة البطارية</string>
+    <string name="battery_voltage">الجهد الكهربائي</string>
+    <string name="battery_current">التيار</string>
+    <string name="battery_technology">تقنية البطارية</string>
+    <string name="battery_health">سلامة البطارية</string>
+    <string name="battery_charging">قيد الشحن</string>
+    <string name="battery_discharging">غير متصلة بالشاحن</string>
+    <string name="battery_full">ممتلئة</string>
+    <string name="battery_not_charging">غير قيد الشحن</string>
+    <string name="battery_ac">شاحن كهربائي</string>
+    <string name="battery_usb">USB</string>
+    <string name="battery_wireless">شحن لاسلكي</string>
+    <string name="battery_run_test">تشغيل فحص البطارية</string>
+
+    <!-- ============ Storage ============ -->
+    <string name="storage_title">التخزين</string>
+    <string name="storage_total">إجمالي التخزين</string>
+    <string name="storage_used">المستخدم</string>
+    <string name="storage_free">المتاح</string>
+    <string name="storage_breakdown">تفاصيل التخزين</string>
+    <string name="storage_category_apps">التطبيقات</string>
+    <string name="storage_category_images">الصور</string>
+    <string name="storage_category_videos">الفيديوهات</string>
+    <string name="storage_category_audio">الصوتيات</string>
+    <string name="storage_category_documents">المستندات</string>
+    <string name="storage_category_other">أخرى</string>
+    <string name="storage_view_breakdown">عرض التفاصيل</string>
+    <string name="storage_permission_rationale">لعرض تفاصيل التخزين حسب نوع الملف، يحتاج Phone Doctor إذن قراءة الوسائط على هذا الجهاز. هذا اختياري ويُستخدم فقط لحساب الأحجام على جهازك.</string>
+
+    <!-- ============ Memory ============ -->
+    <string name="memory_title">الذاكرة العشوائية</string>
+    <string name="memory_total">إجمالي الذاكرة</string>
+    <string name="memory_available">الذاكرة المتاحة</string>
+    <string name="memory_used">الذاكرة المستخدمة</string>
+    <string name="memory_status">حالة الذاكرة</string>
+    <string name="memory_low_memory_warning">الجهاز يعمل بذاكرة منخفضة.</string>
+
+    <!-- ============ CPU / Device Info ============ -->
+    <string name="cpu_title">المعالج ومعلومات الجهاز</string>
+    <string name="cpu_manufacturer">الشركة المصنعة</string>
+    <string name="cpu_model">الطراز</string>
+    <string name="cpu_android_version">إصدار أندرويد</string>
+    <string name="cpu_sdk_version">إصدار SDK</string>
+    <string name="cpu_architecture">معمارية المعالج</string>
+    <string name="cpu_cores">أنوية المعالج</string>
+    <string name="cpu_supported_abis">واجهات المعالج المدعومة</string>
+    <string name="cpu_screen_resolution">دقة الشاشة</string>
+    <string name="cpu_refresh_rate">معدل التحديث</string>
+
+    <!-- ============ Display Test ============ -->
+    <string name="display_title">اختبار الشاشة</string>
+    <string name="display_instructions">ابحث عن بكسلات ميتة أو تلوّن غير طبيعي أو تشوهات في الشاشة.</string>
+    <string name="display_step_fmt">%1$d من %2$d</string>
+    <string name="display_black">شاشة سوداء</string>
+    <string name="display_white">شاشة بيضاء</string>
+    <string name="display_red">شاشة حمراء</string>
+    <string name="display_green">شاشة خضراء</string>
+    <string name="display_blue">شاشة زرقاء</string>
+    <string name="display_gradient">تدرّج لوني</string>
+    <string name="display_tap_to_continue">اضغط في أي مكان للمتابعة</string>
+    <string name="display_result_question">هل بدت الشاشة صحيحة في كل الحالات؟</string>
+    <string name="display_result_yes">نعم، بدت طبيعية</string>
+    <string name="display_result_no">لا، لاحظت مشكلة</string>
+
+    <!-- ============ Touch Test ============ -->
+    <string name="touch_title">اختبار اللمس</string>
+    <string name="touch_instructions">المس واسحب عبر الشاشة كاملة لاختبار كل منطقة.</string>
+    <string name="touch_points">نقاط اللمس</string>
+    <string name="touch_coverage">نسبة التغطية</string>
+    <string name="touch_coverage_fmt">%1$d%%</string>
+    <string name="touch_finish_test">إنهاء الاختبار</string>
+
+    <!-- ============ Speaker Test ============ -->
+    <string name="speaker_title">اختبار مكبر الصوت</string>
+    <string name="speaker_instructions">شغّل نغمة اختبار قصيرة وآمنة عبر مكبرات الصوت.</string>
+    <string name="speaker_play">تشغيل صوت الاختبار</string>
+    <string name="speaker_stop">إيقاف</string>
+    <string name="speaker_left">القناة اليسرى</string>
+    <string name="speaker_right">القناة اليمنى</string>
+    <string name="speaker_both">كلتا القناتين</string>
+    <string name="speaker_result_question">هل سمعت نغمة الاختبار بوضوح؟</string>
+
+    <!-- ============ Microphone Test ============ -->
+    <string name="mic_title">اختبار الميكروفون</string>
+    <string name="mic_instructions">سجّل مقطعًا قصيرًا لاختبار الميكروفون. لا يتم رفع أي شيء إلى الإنترنت.</string>
+    <string name="mic_start_recording">بدء التسجيل</string>
+    <string name="mic_stop_recording">إيقاف التسجيل</string>
+    <string name="mic_input_level">مستوى الإدخال</string>
+    <string name="mic_play_recording">تشغيل التسجيل</string>
+    <string name="mic_delete_recording">حذف التسجيل</string>
+    <string name="mic_recording_deleted">تم حذف التسجيل</string>
+    <string name="mic_max_duration_notice">يتوقف التسجيل تلقائيًا بعد 10 ثوانٍ.</string>
+
+    <!-- ============ Vibration Test ============ -->
+    <string name="vibration_title">اختبار الاهتزاز</string>
+    <string name="vibration_instructions">شغّل أنماط اهتزاز قصيرة وطويلة للتحقق من المحرك.</string>
+    <string name="vibration_test_short">اختبار اهتزاز قصير</string>
+    <string name="vibration_test_long">اختبار اهتزاز طويل</string>
+    <string name="vibration_test_pattern">اختبار نمط الاهتزاز</string>
+    <string name="vibration_has_amplitude_control">التحكم بشدة الاهتزاز</string>
+
+    <!-- ============ Flashlight Test ============ -->
+    <string name="flashlight_title">اختبار المصباح</string>
+    <string name="flashlight_instructions">شغّل المصباح وأطفئه للتأكد من أنه يعمل.</string>
+    <string name="flashlight_turn_on">تشغيل المصباح</string>
+    <string name="flashlight_turn_off">إطفاء المصباح</string>
+
+    <!-- ============ Camera Test ============ -->
+    <string name="camera_title">اختبار الكاميرا</string>
+    <string name="camera_rear">الكاميرا الخلفية</string>
+    <string name="camera_front">الكاميرا الأمامية</string>
+    <string name="camera_switch">تبديل الكاميرا</string>
+    <string name="camera_permission_rationale">يحتاج Phone Doctor إذن الكاميرا لعرض معاينة مباشرة والتأكد من عملها. لا يتم حفظ أو رفع أي شيء.</string>
+    <string name="camera_not_available">لم يتم العثور على كاميرا في هذا الجهاز.</string>
+
+    <!-- ============ Sensors Test ============ -->
+    <string name="sensors_title">اختبار الحساسات</string>
+    <string name="sensor_accelerometer">مقياس التسارع</string>
+    <string name="sensor_gyroscope">الجيروسكوب</string>
+    <string name="sensor_magnetometer">مقياس المغناطيسية</string>
+    <string name="sensor_proximity">حساس القرب</string>
+    <string name="sensor_light">حساس الإضاءة</string>
+    <string name="sensor_pressure">حساس الضغط</string>
+    <string name="sensor_rotation_vector">متجه الدوران</string>
+    <string name="sensor_step_counter">عداد الخطوات</string>
+    <string name="sensor_available">متاح</string>
+    <string name="sensor_not_available">غير متاح</string>
+    <string name="sensor_live_reading">قراءة حيّة</string>
+
+    <!-- ============ Connectivity ============ -->
+    <string name="connectivity_title">الاتصال</string>
+    <string name="connectivity_wifi">واي فاي</string>
+    <string name="connectivity_bluetooth">البلوتوث</string>
+    <string name="connectivity_mobile_network">شبكة الجوال</string>
+    <string name="connectivity_internet">الوصول إلى الإنترنت</string>
+    <string name="connectivity_available">متاح</string>
+    <string name="connectivity_unavailable">غير متاح</string>
+    <string name="connectivity_connected">متصل</string>
+    <string name="connectivity_disconnected">غير متصل</string>
+    <string name="connectivity_internet_note">يتطلب اختبار الإنترنت الوصول إلى الشبكة.</string>
+    <string name="connectivity_run_test">اختبار الوصول إلى الإنترنت</string>
+
+    <!-- ============ Device Information ============ -->
+    <string name="device_info_title">معلومات الجهاز</string>
+    <string name="device_info_copy">نسخ معلومات الجهاز</string>
+    <string name="device_info_copied">تم نسخ معلومات الجهاز إلى الحافظة</string>
+    <string name="device_info_section_general">عام</string>
+    <string name="device_info_section_hardware">العتاد</string>
+    <string name="device_info_section_display">الشاشة</string>
+    <string name="device_info_section_software">البرمجيات</string>
+    <string name="device_info_brand">العلامة التجارية</string>
+    <string name="device_info_board">اللوحة</string>
+    <string name="device_info_hardware">العتاد</string>
+    <string name="device_info_density">الكثافة</string>
+
+    <!-- ============ Test History ============ -->
+    <string name="history_title">سجل الفحوصات</string>
+    <string name="history_passed_fmt">%1$d ناجح</string>
+    <string name="history_warnings_fmt">%1$d تحذير</string>
+    <string name="history_failed_fmt">%1$d فاشل</string>
+    <string name="history_health_fmt">الصحة %1$d%%</string>
+    <string name="history_clear_all">مسح السجل</string>
+    <string name="history_clear_confirm_title">مسح كل السجل؟</string>
+    <string name="history_clear_confirm_message">سيؤدي هذا إلى حذف كل نتائج الفحص المحفوظة على هذا الجهاز نهائيًا. لا يمكن التراجع عن هذا الإجراء.</string>
+
+    <!-- ============ Report ============ -->
+    <string name="report_title">تقرير صحة الهاتف</string>
+    <string name="report_device">الجهاز</string>
+    <string name="report_date">التاريخ</string>
+    <string name="report_overall_health">الصحة العامة</string>
+    <string name="report_share">مشاركة التقرير</string>
+    <string name="report_export_pdf">تصدير كملف PDF</string>
+    <string name="report_generating">جارٍ إنشاء التقرير…</string>
+
+    <!-- ============ Settings ============ -->
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_appearance">المظهر</string>
+    <string name="settings_appearance_system">حسب النظام</string>
+    <string name="settings_appearance_light">فاتح</string>
+    <string name="settings_appearance_dark">داكن</string>
+    <string name="settings_language">اللغة</string>
+    <string name="settings_language_english">English</string>
+    <string name="settings_language_arabic">العربية</string>
+    <string name="settings_notifications">الإشعارات</string>
+    <string name="settings_notifications_desc">استلام تذكيرات وتنبيهات فحص الصحة</string>
+    <string name="settings_auto_check">الفحص التلقائي</string>
+    <string name="settings_auto_check_desc">تشغيل فحص صحة أسبوعي في الخلفية</string>
+    <string name="settings_privacy">الخصوصية</string>
+    <string name="settings_clear_history">مسح السجل</string>
+    <string name="settings_about">حول التطبيق</string>
+    <string name="settings_help">المساعدة والأسئلة الشائعة</string>
+    <string name="settings_premium">الترقية إلى Premium</string>
+    <string name="settings_section_general">عام</string>
+    <string name="settings_section_data">البيانات</string>
+    <string name="settings_section_more">المزيد</string>
+
+    <!-- ============ About ============ -->
+    <string name="about_title">حول التطبيق</string>
+    <string name="about_version_fmt">الإصدار %1$s</string>
+    <string name="about_description">يقوم Phone Doctor بفحص شامل لمكونات جهازك العتادية والبرمجية، بالكامل على جهازك.</string>
+    <string name="about_developer">تم التطوير بواسطة فريق Phone Doctor</string>
+
+    <!-- ============ Privacy ============ -->
+    <string name="privacy_title">الخصوصية</string>
+    <string name="privacy_intro">صُمم Phone Doctor لإجراء فحوصات الجهاز محليًا كلما أمكن ذلك. لا يتم رفع نتائج الفحص أو الملفات الشخصية إلى خادم خاص بـ Phone Doctor.</string>
+    <string name="privacy_data_body">لا يجمع Phone Doctor رقم IMEI أو الرقم التسلسلي أو معرّف الإعلانات أو عنوان MAC. يتم تخزين سجل الاختبارات والإعدادات وأي تسجيلات مؤقتة على جهازك فقط، ويمكن حذفها في أي وقت من الإعدادات.</string>
+    <string name="privacy_ads_title">الإعلانات</string>
+    <string name="privacy_ads_body">قد تعرض النسخة المجانية من Phone Doctor إعلانات عبر Google AdMob. قد تستخدم الإعلانات بيانات وفق إعدادات الإعلانات والموافقة الخاصة بـ Google. يمكنك إزالة الإعلانات عبر Phone Doctor Premium.</string>
+    <string name="privacy_permissions_title">الأذونات</string>
+    <string name="privacy_permissions_body">يتم طلب أذونات الكاميرا والميكروفون والتخزين والإشعارات فقط عند فتح الاختبار المرتبط بها، وتُستخدم فقط لذلك الاختبار.</string>
+
+    <!-- ============ Premium ============ -->
+    <string name="premium_title">Phone Doctor Premium</string>
+    <string name="premium_subtitle">افتح تجربة التشخيص الكاملة</string>
+    <string name="premium_benefit_remove_ads">إزالة جميع الإعلانات</string>
+    <string name="premium_benefit_advanced_reports">تقارير متقدمة قابلة للتصدير</string>
+    <string name="premium_benefit_extra_diagnostics">اختبارات تشخيصية إضافية</string>
+    <string name="premium_benefit_advanced_device_info">معلومات جهاز متقدمة</string>
+    <string name="premium_benefit_custom_reports">تخصيص هوية التقرير</string>
+    <string name="premium_upgrade">الترقية إلى Premium</string>
+    <string name="premium_watch_ad">مشاهدة إعلان لتقرير متقدم</string>
+    <string name="premium_already_premium">أنت عضو Premium بالفعل</string>
+    <string name="premium_billing_unavailable">نظام الدفع غير مُفعّل في هذه النسخة. اربط Google Play Billing لتفعيل عمليات الشراء.</string>
+
+    <!-- ============ Help / FAQ ============ -->
+    <string name="help_title">المساعدة والأسئلة الشائعة</string>
+    <string name="help_q1">هل يرسل Phone Doctor بياناتي إلى أي مكان؟</string>
+    <string name="help_a1">لا. تعمل جميع الفحوصات محليًا على جهازك. لا يتم رفع أي شيء إلى خادم خاص بـ Phone Doctor.</string>
+    <string name="help_q2">لماذا يتم طلب إذن معيّن؟</string>
+    <string name="help_a2">يُطلب كل إذن فقط عند فتح الاختبار المرتبط به (مثل إذن الكاميرا عند فتح اختبار الكاميرا)، ولا يُطلب مسبقًا أبدًا.</string>
+    <string name="help_q3">تظهر بعض المعلومات "غير متاح على هذا الجهاز". لماذا؟</string>
+    <string name="help_a3">لا تتيح بعض الشركات المصنعة أو إصدارات أندرويد تفاصيل عتادية معينة عبر واجهات برمجية عامة. لا يقوم Phone Doctor أبدًا بتخمين هذه البيانات أو تزييفها.</string>
+    <string name="help_q4">كيف يتم حساب درجة الصحة؟</string>
+    <string name="help_a4">تجمع الدرجة نتائج كل فئة اختبار مكتملة. تُستبعد الفئات التي تعذر تشغيلها بدلًا من احتسابها كفشل.</string>
+    <string name="help_q5">كيف أزيل الإعلانات؟</string>
+    <string name="help_a5">قم بالترقية إلى Phone Doctor Premium من شاشة Premium.</string>
+
+    <!-- ============ Notifications ============ -->
+    <string name="notification_channel_health_checks">فحوصات الصحة</string>
+    <string name="notification_channel_health_checks_desc">تذكيرات أسبوعية تلقائية لفحص الصحة</string>
+    <string name="notification_auto_check_title">فحص الصحة الأسبوعي جاهز</string>
+    <string name="notification_auto_check_text">اضغط لمعرفة حالة هاتفك.</string>
+
+    <!-- ============ Content descriptions ============ -->
+    <string name="cd_settings">الإعدادات</string>
+    <string name="cd_back">الرجوع</string>
+    <string name="cd_health_ring">درجة صحة الهاتف</string>
+    <string name="cd_status_icon">الحالة</string>
+    <string name="cd_logo">شعار Phone Doctor</string>
+    <string name="cd_flashlight_beam">معاينة ضوء المصباح</string>
+    <string name="cd_camera_preview">معاينة الكاميرا</string>
+</resources>

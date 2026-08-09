@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/cd_camera_preview" />
+
+    <LinearLayout
+        android:id="@+id/containerUnavailable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_xl"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/icon_xl"
+            android:layout_height="@dimen/icon_xl"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_camera"
+            android:tint="@color/palette_gray_400" />
+
+        <TextView
+            android:id="@+id/textUnavailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:gravity="center"
+            android:text="@string/camera_not_available"
+            android:textColor="@color/palette_gray_200" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonGrantPermission"
+            style="@style/Widget.PhoneDoctor.Button.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="@string/common_grant_permission"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="#66000000"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_sm">
+
+        <ImageButton
+            android:id="@+id/buttonClose"
+            android:layout_width="@dimen/min_touch_target"
+            android:layout_height="@dimen/min_touch_target"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/common_close"
+            android:src="@drawable/ic_close"
+            android:tint="@color/palette_white" />
+
+        <TextView
+            android:id="@+id/textActiveCamera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/palette_white"
+            android:textStyle="bold"
+            tools:text="@string/camera_rear" />
+
+        <View
+            android:layout_width="@dimen/min_touch_target"
+            android:layout_height="@dimen/min_touch_target" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#66000000"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_lg">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSwitchCamera"
+            style="@style/Widget.PhoneDoctor.Button.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/camera_switch" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ============ Text appearances ============ -->
+    <style name="TextAppearance.PhoneDoctor.Display" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:textSize">@dimen/text_display</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+    </style>
+
+    <style name="TextAppearance.PhoneDoctor.Headline" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textSize">@dimen/text_headline</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+    </style>
+
+    <style name="TextAppearance.PhoneDoctor.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+    </style>
+
+    <style name="TextAppearance.PhoneDoctor.Subtitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textSize">@dimen/text_subtitle</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+    </style>
+
+    <style name="TextAppearance.PhoneDoctor.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:textColor">@color/color_text_secondary</item>
+    </style>
+
+    <style name="TextAppearance.PhoneDoctor.Caption" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">@dimen/text_caption</item>
+        <item name="android:textColor">@color/color_text_secondary</item>
+    </style>
+
+    <style name="TextAppearance.PhoneDoctor.ButtonLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <!-- ============ Buttons ============ -->
+    <style name="Widget.PhoneDoctor.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/primary_button_height</item>
+        <item name="android:textAppearance">@style/TextAppearance.PhoneDoctor.ButtonLarge</item>
+        <item name="backgroundTint">@color/color_primary</item>
+        <item name="android:textColor">@color/color_on_primary</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.PhoneDoctor.Medium</item>
+        <item name="rippleColor">@color/color_ripple</item>
+    </style>
+
+    <style name="Widget.PhoneDoctor.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/primary_button_height</item>
+        <item name="android:textAppearance">@style/TextAppearance.PhoneDoctor.ButtonLarge</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="strokeColor">@color/color_outline</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.PhoneDoctor.Medium</item>
+        <item name="rippleColor">@color/color_ripple</item>
+    </style>
+
+    <style name="Widget.PhoneDoctor.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAppearance">@style/TextAppearance.PhoneDoctor.ButtonLarge</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="rippleColor">@color/color_ripple</item>
+    </style>
+
+    <!-- ============ Cards ============ -->
+    <style name="Widget.PhoneDoctor.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/color_card</item>
+        <item name="cardCornerRadius">@dimen/radius_md</item>
+        <item name="cardElevation">@dimen/elevation_card</item>
+        <item name="contentPadding">@dimen/spacing_md</item>
+        <item name="rippleColor">@color/color_ripple</item>
+    </style>
+
+    <!-- ============ Divider ============ -->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/color_divider</item>
+    </style>
+
+    <!-- ============ Toolbar ============ -->
+    <style name="Widget.PhoneDoctor.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="titleTextColor">@color/color_text_primary</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+</resources>

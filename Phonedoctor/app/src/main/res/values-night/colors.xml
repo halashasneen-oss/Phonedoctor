@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dark Navy / near-black premium theme -->
+    <color name="color_primary">@color/palette_cyan_400</color>
+    <color name="color_on_primary">@color/palette_navy_950</color>
+    <color name="color_primary_container">@color/palette_navy_700</color>
+    <color name="color_on_primary_container">@color/palette_cyan_300</color>
+
+    <color name="color_secondary">@color/palette_blue_400</color>
+    <color name="color_on_secondary">@color/palette_navy_950</color>
+
+    <color name="color_background">@color/palette_navy_950</color>
+    <color name="color_on_background">@color/palette_gray_100</color>
+
+    <color name="color_surface">@color/palette_navy_850</color>
+    <color name="color_on_surface">@color/palette_gray_100</color>
+    <color name="color_surface_variant">@color/palette_navy_700</color>
+    <color name="color_on_surface_variant">@color/palette_gray_400</color>
+
+    <color name="color_outline">@color/palette_navy_600</color>
+
+    <color name="color_error">@color/palette_red_400</color>
+    <color name="color_on_error">@color/palette_navy_950</color>
+
+    <color name="color_success">@color/palette_green_400</color>
+    <color name="color_on_success">@color/palette_navy_950</color>
+    <color name="color_warning">@color/palette_amber_400</color>
+    <color name="color_on_warning">@color/palette_navy_950</color>
+    <color name="color_danger">@color/palette_red_400</color>
+    <color name="color_on_danger">@color/palette_navy_950</color>
+
+    <color name="color_text_primary">@color/palette_gray_100</color>
+    <color name="color_text_secondary">@color/palette_gray_400</color>
+    <color name="color_text_disabled">@color/palette_navy_600</color>
+
+    <color name="color_card">@color/palette_navy_850</color>
+    <color name="color_card_elevated">@color/palette_navy_700</color>
+    <color name="color_divider">@color/palette_navy_700</color>
+    <color name="color_scrim">#99000000</color>
+
+    <color name="color_ripple">#3322D3EE</color>
+
+    <color name="color_success_bg">#264ADE80</color>
+    <color name="color_warning_bg">#26FBBF24</color>
+    <color name="color_danger_bg">#26F87171</color>
+    <color name="color_neutral_bg">#2694A3B8</color>
+    <color name="color_primary_bg">#2622D3EE</color>
+
+</resources>
