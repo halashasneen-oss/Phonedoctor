@@ -1,5 +1,7 @@
 package com.phonedoctor.app.ui.settings
 
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.phonedoctor.app.ServiceLocator
@@ -18,10 +20,17 @@ class SettingsViewModel(private val serviceLocator: ServiceLocator) : ViewModel(
 
     fun setThemeMode(mode: AppThemeMode) {
         viewModelScope.launch { serviceLocator.settingsRepository.setThemeMode(mode) }
+        val nightMode = when (mode) {
+            AppThemeMode.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
+            AppThemeMode.DARK -> AppCompatDelegate.MODE_NIGHT_YES
+            AppThemeMode.SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+        }
+        AppCompatDelegate.setDefaultNightMode(nightMode)
     }
 
     fun setLanguage(language: AppLanguage) {
         viewModelScope.launch { serviceLocator.settingsRepository.setLanguage(language) }
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(language.tag))
     }
 
     fun setNotificationsEnabled(enabled: Boolean) {

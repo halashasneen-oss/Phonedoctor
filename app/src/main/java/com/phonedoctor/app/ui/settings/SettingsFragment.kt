@@ -51,7 +51,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         binding.rowLanguage.setOnClickListener { showLanguageDialog() }
         binding.rowDeviceInfo.setOnClickListener { findNavController().navigate(R.id.action_settings_to_device_info) }
         binding.rowClearHistory.setOnClickListener { confirmClearHistory() }
-        binding.rowPremium.setOnClickListener { findNavController().navigate(R.id.action_settings_to_premium) }
         binding.rowPrivacy.setOnClickListener { findNavController().navigate(R.id.action_settings_to_privacy) }
         binding.rowHelp.setOnClickListener { findNavController().navigate(R.id.action_settings_to_help) }
         binding.rowAbout.setOnClickListener { findNavController().navigate(R.id.action_settings_to_about) }

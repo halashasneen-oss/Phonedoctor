@@ -7,10 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.phonedoctor.app.ServiceLocator
 import com.phonedoctor.app.data.repository.ScanProgressEvent
 import com.phonedoctor.app.domain.model.DiagnosticCategory
-import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 data class ScanListItem(
@@ -46,7 +46,9 @@ class ScanViewModel(
     )
     val uiState: StateFlow<ScanUiState> = _uiState.asStateFlow()
 
-    private var interactionResponse: CompletableDeferred<Boolean>? = null
+    // A StateFlow (rather than a per-category CompletableDeferred) always holds the
+    // latest response, so a tap can never silently no-op against a stale/null reference.
+    private val interactionResponse = MutableStateFlow<Boolean?>(null)
     private var started = false
 
     fun start() {
@@ -69,17 +71,16 @@ class ScanViewModel(
 
     private suspend fun awaitUserConfirmation(category: DiagnosticCategory): Boolean {
         markRunning(category)
-        val deferred = CompletableDeferred<Boolean>()
-        interactionResponse = deferred
+        interactionResponse.value = null
         _uiState.value = _uiState.value.copy(pendingInteraction = category)
-        val result = deferred.await()
+        val result = interactionResponse.first { it != null }!!
+        interactionResponse.value = null
         _uiState.value = _uiState.value.copy(pendingInteraction = null)
         return result
     }
 
     fun respondToInteraction(confirmed: Boolean) {
-        interactionResponse?.complete(confirmed)
-        interactionResponse = null
+        interactionResponse.value = confirmed
     }
 
     fun cancel() {

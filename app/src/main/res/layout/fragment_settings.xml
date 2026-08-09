@@ -267,33 +267,6 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/rowPremium"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:minHeight="@dimen/min_touch_target"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/spacing_md">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/settings_premium"
-                        android:textAppearance="@style/TextAppearance.PhoneDoctor.Subtitle"
-                        android:textColor="@color/color_primary" />
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:importantForAccessibility="no"
-                        android:src="@drawable/ic_chevron_right"
-                        app:tint="@color/color_primary" />
-                </LinearLayout>
-
-                <View style="@style/Divider" />
-
-                <LinearLayout
                     android:id="@+id/rowPrivacy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
