@@ -79,7 +79,7 @@
                 android:layout_height="@dimen/icon_xl"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_display"
-                android:tint="@color/color_primary" />
+                app:tint="@color/color_primary" />
 
             <TextView
                 android:id="@+id/textInteractiveTitle"

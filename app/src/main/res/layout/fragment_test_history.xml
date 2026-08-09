@@ -22,7 +22,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/cd_back"
             android:src="@drawable/ic_arrow_back"
-            android:tint="@color/color_text_primary" />
+            app:tint="@color/color_text_primary" />
 
         <TextView
             android:layout_width="0dp"
@@ -39,7 +39,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/history_clear_all"
             android:src="@drawable/ic_delete"
-            android:tint="@color/color_text_primary" />
+            app:tint="@color/color_text_primary" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -71,7 +71,7 @@
             android:layout_height="@dimen/icon_xl"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_history"
-            android:tint="@color/color_text_secondary" />
+            app:tint="@color/color_text_secondary" />
 
         <TextView
             android:layout_width="wrap_content"

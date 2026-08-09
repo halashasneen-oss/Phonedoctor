@@ -18,7 +18,7 @@
             android:layout_height="64dp"
             android:layout_gravity="center"
             android:importantForAccessibility="no"
-            android:tint="@color/color_primary"
+            app:tint="@color/color_primary"
             tools:src="@drawable/ic_scan" />
     </FrameLayout>
 

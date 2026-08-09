@@ -32,7 +32,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:importantForAccessibility="no"
-                android:tint="@color/color_primary"
+                app:tint="@color/color_primary"
                 tools:src="@drawable/ic_vibration" />
         </FrameLayout>
 
@@ -50,7 +50,7 @@
             android:layout_height="20dp"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_chevron_right"
-            android:tint="@color/color_text_secondary" />
+            app:tint="@color/color_text_secondary" />
 
     </LinearLayout>
 

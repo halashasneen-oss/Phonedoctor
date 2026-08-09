@@ -31,7 +31,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/common_close"
                 android:src="@drawable/ic_close"
-                android:tint="@color/palette_gray_200" />
+                app:tint="@color/palette_gray_200" />
 
             <TextView
                 android:layout_width="0dp"

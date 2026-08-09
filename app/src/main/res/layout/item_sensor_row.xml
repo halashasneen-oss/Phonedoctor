@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_sensors"
-            android:tint="@color/color_primary" />
+            app:tint="@color/color_primary" />
     </FrameLayout>
 
     <LinearLayout

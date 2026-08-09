@@ -14,7 +14,7 @@
         android:layout_height="18dp"
         android:importantForAccessibility="no"
         android:src="@drawable/ic_warning"
-        android:tint="@color/color_warning" />
+        app:tint="@color/color_warning" />
 
     <TextView
         android:id="@+id/textIssue"

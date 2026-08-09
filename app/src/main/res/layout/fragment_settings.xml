@@ -26,7 +26,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/cd_back"
                 android:src="@drawable/ic_arrow_back"
-                android:tint="@color/color_text_primary" />
+                app:tint="@color/color_text_primary" />
 
             <TextView
                 android:layout_width="0dp"
@@ -85,7 +85,7 @@
                         android:layout_height="18dp"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="@color/color_text_secondary" />
+                        app:tint="@color/color_text_secondary" />
                 </LinearLayout>
 
                 <View style="@style/Divider" />
@@ -119,7 +119,7 @@
                         android:layout_height="18dp"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="@color/color_text_secondary" />
+                        app:tint="@color/color_text_secondary" />
                 </LinearLayout>
 
                 <View style="@style/Divider" />
@@ -212,7 +212,7 @@
                         android:layout_height="18dp"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="@color/color_text_secondary" />
+                        app:tint="@color/color_text_secondary" />
                 </LinearLayout>
 
                 <View style="@style/Divider" />
@@ -239,7 +239,7 @@
                         android:layout_height="18dp"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="@color/color_text_secondary" />
+                        app:tint="@color/color_text_secondary" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -288,7 +288,7 @@
                         android:layout_height="18dp"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="@color/color_primary" />
+                        app:tint="@color/color_primary" />
                 </LinearLayout>
 
                 <View style="@style/Divider" />
@@ -314,7 +314,7 @@
                         android:layout_height="18dp"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="@color/color_text_secondary" />
+                        app:tint="@color/color_text_secondary" />
                 </LinearLayout>
 
                 <View style="@style/Divider" />
@@ -340,7 +340,7 @@
                         android:layout_height="18dp"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="@color/color_text_secondary" />
+                        app:tint="@color/color_text_secondary" />
                 </LinearLayout>
 
                 <View style="@style/Divider" />
@@ -366,7 +366,7 @@
                         android:layout_height="18dp"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="@color/color_text_secondary" />
+                        app:tint="@color/color_text_secondary" />
                 </LinearLayout>
 
             </LinearLayout>

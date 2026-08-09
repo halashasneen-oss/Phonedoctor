@@ -15,7 +15,7 @@
         android:layout_height="@dimen/icon_sm"
         android:importantForAccessibility="no"
         tools:src="@drawable/ic_check_circle"
-        android:tint="@color/color_text_secondary" />
+        app:tint="@color/color_text_secondary" />
 
     <ProgressBar
         android:id="@+id/progressRunning"

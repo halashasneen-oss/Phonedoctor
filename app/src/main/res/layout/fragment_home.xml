@@ -45,7 +45,7 @@
                 android:contentDescription="@string/cd_settings"
                 android:padding="@dimen/spacing_sm"
                 android:src="@drawable/ic_settings"
-                android:tint="@color/color_text_primary" />
+                app:tint="@color/color_text_primary" />
         </LinearLayout>
 
         <TextView
@@ -159,7 +159,7 @@
                         android:contentDescription="@string/history_title"
                         android:padding="@dimen/spacing_sm"
                         android:src="@drawable/ic_history"
-                        android:tint="@color/palette_cyan_400" />
+                        app:tint="@color/palette_cyan_400" />
                 </LinearLayout>
             </LinearLayout>
         </FrameLayout>

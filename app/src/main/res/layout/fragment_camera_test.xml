@@ -25,7 +25,7 @@
             android:layout_height="@dimen/icon_xl"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_camera"
-            android:tint="@color/palette_gray_400" />
+            app:tint="@color/palette_gray_400" />
 
         <TextView
             android:id="@+id/textUnavailable"
@@ -62,7 +62,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/common_close"
             android:src="@drawable/ic_close"
-            android:tint="@color/palette_white" />
+            app:tint="@color/palette_white" />
 
         <TextView
             android:id="@+id/textActiveCamera"

@@ -23,7 +23,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/common_close"
             android:src="@drawable/ic_close"
-            android:tint="@color/palette_gray_400" />
+            app:tint="@color/palette_gray_400" />
 
         <TextView
             android:id="@+id/textStep"
