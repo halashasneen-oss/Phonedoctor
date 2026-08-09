@@ -15,7 +15,7 @@ object WorkScheduler {
             .setConstraints(
                 Constraints.Builder()
                     .setRequiresBatteryNotLow(true)
-                    .setNetworkType(NetworkType.NOT_REQUIRED)
+                    .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
                     .build()
             )
             .build()
