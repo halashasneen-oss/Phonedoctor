@@ -60,8 +60,15 @@ jobs:
       - name: Run unit tests
         run: ./gradlew test --stacktrace
 
-      - name: Run lint
+      - - name: Run lint
+        id: lint
+        continue-on-error: true
         run: ./gradlew lint --stacktrace
+
+      - name: Print full lint text report if lint failed
+        if: steps.lint.outcome == 'failure'
+        run: |
+          find app/build -iname 'lint-results*.txt' -exec echo "--- {} ---" \; -exec cat {} \;
 
       - name: Upload lint report
         if: always()
@@ -70,6 +77,10 @@ jobs:
           name: lint-report
           path: app/build/reports/lint-results-*.html
           if-no-files-found: ignore
+
+      - name: Fail if lint failed
+        if: steps.lint.outcome == 'failure'
+        run: exit 1
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
