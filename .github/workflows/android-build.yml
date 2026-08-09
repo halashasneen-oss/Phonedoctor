@@ -29,6 +29,15 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Ensure required SDK components are installed
+        run: |
+          yes | sdkmanager --licenses > /dev/null || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools"
+          echo "--- installed platforms ---"
+          ls -la "$ANDROID_HOME/platforms" || true
+          echo "--- installed build-tools ---"
+          ls -la "$ANDROID_HOME/build-tools" || true
+
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
