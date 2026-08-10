@@ -8,14 +8,27 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import java.io.File
 
+/**
+ * JUnit doesn't guarantee method execution order, and DataStore's backing file
+ * persists across @Test methods in this Robolectric setup, so each test must
+ * start from a clean file rather than relying on being run first.
+ */
 @RunWith(RobolectricTestRunner::class)
 class SettingsDataStoreTest {
 
     private val settingsDataStore = SettingsDataStore(ApplicationProvider.getApplicationContext())
+
+    @Before
+    fun clearPersistedSettings() {
+        val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        File(context.filesDir, "datastore/screenlens_settings.preferences_pb").delete()
+    }
 
     @Test
     fun `defaults are sensible before anything is written`() = runTest {
