@@ -182,6 +182,7 @@
     <string name="tool_language_manager_desc">Manage offline translation languages.</string>
 
     <!-- ===== Settings ===== -->
+    <string name="settings_title">Settings</string>
     <string name="settings_appearance">Appearance</string>
     <string name="appearance_system">System</string>
     <string name="appearance_light">Light</string>

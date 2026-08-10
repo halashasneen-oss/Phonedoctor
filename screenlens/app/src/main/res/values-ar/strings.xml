@@ -181,6 +181,7 @@
     <string name="tool_language_manager_desc">إدارة لغات الترجمة دون اتصال.</string>
 
     <!-- ===== Settings ===== -->
+    <string name="settings_title">الإعدادات</string>
     <string name="settings_appearance">المظهر</string>
     <string name="appearance_system">النظام</string>
     <string name="appearance_light">فاتح</string>
