@@ -87,7 +87,7 @@ class BillingRepository(context: Context) : PurchasesUpdatedListener {
 
         scope.launch {
             val result = billingClient.queryProductDetails(params)
-            val details = result.productDetailsList
+            val details = result.productDetailsList.orEmpty()
             if (result.billingResult.responseCode == BillingClient.BillingResponseCode.OK && details.isNotEmpty()) {
                 _state.value = PremiumState.Available(details.first())
             } else {
