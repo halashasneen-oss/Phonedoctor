@@ -89,6 +89,20 @@ jobs:
         run: |
           echo "$KEYSTORE_BASE64" | base64 -d > "${{ runner.temp }}/release.keystore"
 
+      - name: Diagnose release keystore
+        if: steps.signing_check.outputs.has_signing == 'true'
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          echo "--- keystore file size ---"
+          ls -la "${{ runner.temp }}/release.keystore"
+          echo "--- keytool -list using KEYSTORE_PASSWORD ---"
+          keytool -list -v -keystore "${{ runner.temp }}/release.keystore" -storepass "$KEYSTORE_PASSWORD" || echo "KEYTOOL_LIST_FAILED"
+          echo "--- keytool -list -alias KEY_ALIAS with KEY_PASSWORD ---"
+          keytool -list -v -keystore "${{ runner.temp }}/release.keystore" -storepass "$KEYSTORE_PASSWORD" -alias "$KEY_ALIAS" -keypass "$KEY_PASSWORD" || echo "KEYTOOL_ALIAS_FAILED"
+
       - name: Build release APK
         if: steps.signing_check.outputs.has_signing == 'true'
         env:
