@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Brand ===== -->
+    <color name="brand_primary">#0091EA</color>
+    <color name="brand_primary_variant">#006FB3</color>
+    <color name="brand_on_primary">#FFFFFF</color>
+    <color name="brand_primary_container">#D2ECFF</color>
+    <color name="brand_on_primary_container">#00344F</color>
+
+    <!-- ===== Semantic ===== -->
+    <color name="color_success">#1E9E52</color>
+    <color name="color_success_container">#DCF5E4</color>
+    <color name="color_warning">#B4740E</color>
+    <color name="color_warning_container">#FCEBCF</color>
+    <color name="color_error">#D93025</color>
+    <color name="color_error_container">#FBDFDC</color>
+
+    <!-- ===== Surfaces (Light) ===== -->
+    <color name="color_background">#F6F8FB</color>
+    <color name="color_surface">#FFFFFF</color>
+    <color name="color_surface_variant">#EBEFF5</color>
+    <color name="color_surface_container">#FFFFFF</color>
+    <color name="color_outline">#D3D9E2</color>
+
+    <!-- ===== Text (Light) ===== -->
+    <color name="color_text_primary">#10151F</color>
+    <color name="color_text_secondary">#5B6472</color>
+    <color name="color_text_on_primary">#FFFFFF</color>
+    <color name="color_text_disabled">#A2AAB6</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="scrim">#99000000</color>
+</resources>

@@ -21,3 +21,10 @@ google-services.json
 /app/build/
 /*/build/
 .kotlin/
+
+# ScreenLens sub-project (separate Gradle project under /screenlens)
+screenlens/local.properties
+screenlens/.idea/
+screenlens/app/build/
+screenlens/app/release/
+screenlens/**/build/

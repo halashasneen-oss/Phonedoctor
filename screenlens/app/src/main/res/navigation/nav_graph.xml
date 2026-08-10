@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/app"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.screenlens.app.ui.home.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_home_to_scan" app:destination="@id/scanFragment" />
+        <action android:id="@+id/action_home_to_imageOcr" app:destination="@id/imageOcrFragment" />
+        <action android:id="@+id/action_home_to_translator" app:destination="@id/translatorFragment" />
+        <action android:id="@+id/action_home_to_clipboard" app:destination="@id/clipboardFragment" />
+        <action android:id="@+id/action_home_to_qrScanner" app:destination="@id/qrScannerFragment" />
+        <action android:id="@+id/action_home_to_historyDetail" app:destination="@id/historyDetailFragment" />
+        <action android:id="@+id/action_home_to_settings" app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="com.screenlens.app.ui.scan.ScanFragment"
+        android:label="@string/nav_scan">
+        <action android:id="@+id/action_scan_to_ocrResult" app:destination="@id/ocrResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.screenlens.app.ui.history.HistoryFragment"
+        android:label="@string/nav_history">
+        <action android:id="@+id/action_history_to_detail" app:destination="@id/historyDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/toolsFragment"
+        android:name="com.screenlens.app.ui.tools.ToolsFragment"
+        android:label="@string/nav_tools">
+        <action android:id="@+id/action_tools_to_scan" app:destination="@id/scanFragment" />
+        <action android:id="@+id/action_tools_to_imageOcr" app:destination="@id/imageOcrFragment" />
+        <action android:id="@+id/action_tools_to_liveOcr" app:destination="@id/liveOcrFragment" />
+        <action android:id="@+id/action_tools_to_translator" app:destination="@id/translatorFragment" />
+        <action android:id="@+id/action_tools_to_clipboard" app:destination="@id/clipboardFragment" />
+        <action android:id="@+id/action_tools_to_qrScanner" app:destination="@id/qrScannerFragment" />
+        <action android:id="@+id/action_tools_to_languageManager" app:destination="@id/languageManagerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.screenlens.app.ui.settings.SettingsFragment"
+        android:label="@string/nav_settings">
+        <action android:id="@+id/action_settings_to_languageManager" app:destination="@id/languageManagerFragment" />
+        <action android:id="@+id/action_settings_to_privacy" app:destination="@id/privacyFragment" />
+        <action android:id="@+id/action_settings_to_premium" app:destination="@id/premiumFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/imageOcrFragment"
+        android:name="com.screenlens.app.ui.imageocr.ImageOcrFragment"
+        android:label="@string/image_ocr_title">
+        <action android:id="@+id/action_imageOcr_to_ocrResult" app:destination="@id/ocrResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/liveOcrFragment"
+        android:name="com.screenlens.app.ui.liveocr.LiveOcrFragment"
+        android:label="@string/live_scanner_title">
+        <action android:id="@+id/action_liveOcr_to_ocrResult" app:destination="@id/ocrResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ocrResultFragment"
+        android:name="com.screenlens.app.ui.ocrresult.OcrResultFragment"
+        android:label="@string/ocr_result_title">
+        <argument android:name="originalText" app:argType="string" />
+        <argument android:name="detectedLanguage" app:argType="string" app:nullable="true" android:defaultValue="@null" />
+        <argument android:name="sourceType" app:argType="string" />
+        <action android:id="@+id/action_ocrResult_to_translator" app:destination="@id/translatorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/translatorFragment"
+        android:name="com.screenlens.app.ui.translator.TranslatorFragment"
+        android:label="@string/translation_title">
+        <argument android:name="initialText" app:argType="string" app:nullable="true" android:defaultValue="@null" />
+        <argument android:name="initialSourceLanguage" app:argType="string" app:nullable="true" android:defaultValue="@null" />
+        <action android:id="@+id/action_translator_to_languageManager" app:destination="@id/languageManagerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/languageManagerFragment"
+        android:name="com.screenlens.app.ui.languagemanager.LanguageManagerFragment"
+        android:label="@string/language_manager_title" />
+
+    <fragment
+        android:id="@+id/clipboardFragment"
+        android:name="com.screenlens.app.ui.clipboard.ClipboardFragment"
+        android:label="@string/clipboard_title">
+        <action android:id="@+id/action_clipboard_to_translator" app:destination="@id/translatorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/qrScannerFragment"
+        android:name="com.screenlens.app.ui.qrscanner.QrScannerFragment"
+        android:label="@string/qr_scanner_title">
+        <action android:id="@+id/action_qrScanner_to_qrResult" app:destination="@id/qrResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/qrResultFragment"
+        android:name="com.screenlens.app.ui.qrscanner.QrResultFragment"
+        android:label="@string/qr_result_title">
+        <argument android:name="rawValue" app:argType="string" />
+        <argument android:name="valueType" app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyDetailFragment"
+        android:name="com.screenlens.app.ui.history.HistoryDetailFragment"
+        android:label="@string/history_detail_title">
+        <argument android:name="historyId" app:argType="long" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/privacyFragment"
+        android:name="com.screenlens.app.ui.privacy.PrivacyFragment"
+        android:label="@string/privacy_title" />
+
+    <fragment
+        android:id="@+id/premiumFragment"
+        android:name="com.screenlens.app.ui.premium.PremiumFragment"
+        android:label="@string/premium_title" />
+
+</navigation>

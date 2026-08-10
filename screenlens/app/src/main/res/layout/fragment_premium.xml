@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/space_lg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/premium_title"
+            android:textAppearance="@style/TextAppearance.ScreenLens.Headline" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.ScreenLens.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/premium_free_title"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Title" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_sm"
+                    android:text="@string/premium_feature_basic_ocr" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/premium_feature_basic_translation" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/premium_feature_history" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.ScreenLens.Card.Hero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/premium_premium_title"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Title" android:textColor="@color/brand_on_primary_container" android:textStyle="bold" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_sm"
+                    android:text="@string/premium_feature_unlimited_scans" android:textColor="@color/brand_on_primary_container" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/premium_feature_floating_lens" android:textColor="@color/brand_on_primary_container" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/premium_feature_advanced_tools" android:textColor="@color/brand_on_primary_container" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/premium_feature_no_ads" android:textColor="@color/brand_on_primary_container" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/premium_feature_more_models" android:textColor="@color/brand_on_primary_container" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/premium_feature_advanced_history" android:textColor="@color/brand_on_primary_container" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/premium_feature_batch" android:textColor="@color/brand_on_primary_container" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+
+                <Button
+                    android:id="@+id/upgradeButton"
+                    style="@style/Widget.ScreenLens.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_lg"
+                    android:text="@string/action_upgrade" />
+
+                <TextView
+                    android:id="@+id/statusMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.BodySecondary"
+                    android:textColor="@color/brand_on_primary_container"
+                    tools:text="@string/premium_not_configured" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

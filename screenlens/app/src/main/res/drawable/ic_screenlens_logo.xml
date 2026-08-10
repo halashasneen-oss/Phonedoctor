@@ -1,0 +1,50 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+    <!-- Viewfinder / scan-frame corners -->
+    <path
+        android:strokeColor="#22D3EE"
+        android:strokeWidth="10"
+        android:strokeLineCap="round"
+        android:pathData="M40,72 L40,44 A4,4 0 0 1 44,40 L72,40" />
+    <path
+        android:strokeColor="#22D3EE"
+        android:strokeWidth="10"
+        android:strokeLineCap="round"
+        android:pathData="M168,40 L196,40 A4,4 0 0 1 200,44 L200,72" />
+    <path
+        android:strokeColor="#22D3EE"
+        android:strokeWidth="10"
+        android:strokeLineCap="round"
+        android:pathData="M200,168 L200,196 A4,4 0 0 1 196,200 L168,200" />
+    <path
+        android:strokeColor="#22D3EE"
+        android:strokeWidth="10"
+        android:strokeLineCap="round"
+        android:pathData="M72,200 L44,200 A4,4 0 0 1 40,196 L40,168" />
+
+    <!-- Lens ring -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="9"
+        android:pathData="M120,164 A44,44 0 1 1 120.01,164 Z" />
+
+    <!-- Text lines inside the lens -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:pathData="M100,110 L142,110" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:pathData="M100,128 L134,128" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:pathData="M100,146 L124,146" />
+</vector>

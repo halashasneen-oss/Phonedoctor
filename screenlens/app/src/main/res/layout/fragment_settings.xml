@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/app"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/space_2xl">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_lg"
+            android:text="@string/settings_title"
+            android:textAppearance="@style/TextAppearance.ScreenLens.Headline" />
+
+        <!-- Appearance -->
+        <TextView style="@style/TextAppearance.ScreenLens.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_lg" android:text="@string/section_general" />
+
+        <RadioGroup
+            android:id="@+id/themeRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_lg"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/settings_appearance"
+                android:textAppearance="@style/TextAppearance.ScreenLens.Body" android:textStyle="bold" />
+
+            <RadioButton android:id="@+id/themeSystem" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="@dimen/touch_target_min" android:text="@string/appearance_system" />
+            <RadioButton android:id="@+id/themeLight" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="@dimen/touch_target_min" android:text="@string/appearance_light" />
+            <RadioButton android:id="@+id/themeDark" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="@dimen/touch_target_min" android:text="@string/appearance_dark" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/languageRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_lg"
+            android:orientation="vertical">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/settings_language"
+                android:textAppearance="@style/TextAppearance.ScreenLens.Body" android:textStyle="bold" />
+
+            <RadioButton android:id="@+id/languageEnglish" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="@dimen/touch_target_min" android:text="@string/language_english" />
+            <RadioButton android:id="@+id/languageArabic" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="@dimen/touch_target_min" android:text="@string/language_arabic" />
+        </RadioGroup>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_margin="@dimen/space_lg" android:background="@color/color_outline" />
+
+        <!-- Scanning & Translation -->
+        <TextView style="@style/TextAppearance.ScreenLens.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_lg" android:text="@string/section_scanning" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+            android:gravity="center_vertical" android:minHeight="@dimen/touch_target_min" android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_floating_lens" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+            <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/floatingLensSwitch"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/languageManagerRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+            android:background="?attr/selectableItemBackground" android:minHeight="@dimen/touch_target_min"
+            android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_installed_languages" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_margin="@dimen/space_lg" android:background="@color/color_outline" />
+
+        <!-- Data -->
+        <TextView style="@style/TextAppearance.ScreenLens.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_lg" android:text="@string/section_data" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+            android:gravity="center_vertical" android:minHeight="@dimen/touch_target_min" android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_auto_save_history" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+            <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/autoSaveSwitch"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+            android:gravity="center_vertical" android:minHeight="@dimen/touch_target_min" android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_history_limit" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+            <TextView android:id="@+id/historyLimitValue" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.ScreenLens.BodySecondary" android:text="200" />
+        </LinearLayout>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/historyLimitSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_lg"
+            android:stepSize="50"
+            android:valueFrom="0"
+            android:valueTo="500" />
+
+        <LinearLayout android:id="@+id/clearHistoryRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+            android:background="?attr/selectableItemBackground" android:minHeight="@dimen/touch_target_min"
+            android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_clear_history" android:textColor="@color/color_error" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_margin="@dimen/space_lg" android:background="@color/color_outline" />
+
+        <!-- Support -->
+        <TextView style="@style/TextAppearance.ScreenLens.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_lg" android:text="@string/section_support" />
+
+        <LinearLayout android:id="@+id/notificationsRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+            android:background="?attr/selectableItemBackground" android:minHeight="@dimen/touch_target_min"
+            android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_notifications" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/privacyRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+            android:background="?attr/selectableItemBackground" android:minHeight="@dimen/touch_target_min"
+            android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_privacy" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/premiumRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+            android:background="?attr/selectableItemBackground" android:minHeight="@dimen/touch_target_min"
+            android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_premium" android:textAppearance="@style/TextAppearance.ScreenLens.Body" android:textColor="@color/brand_primary" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/onboardingRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+            android:background="?attr/selectableItemBackground" android:minHeight="@dimen/touch_target_min"
+            android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_show_onboarding" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/rateRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+            android:background="?attr/selectableItemBackground" android:minHeight="@dimen/touch_target_min"
+            android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_rate_app" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/shareRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+            android:background="?attr/selectableItemBackground" android:minHeight="@dimen/touch_target_min"
+            android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_share_app" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/aboutRow" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical" android:clickable="true" android:focusable="true"
+            android:background="?attr/selectableItemBackground" android:minHeight="@dimen/touch_target_min"
+            android:paddingHorizontal="@dimen/space_lg" android:paddingVertical="@dimen/space_sm">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="@string/settings_about" android:textAppearance="@style/TextAppearance.ScreenLens.Body" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

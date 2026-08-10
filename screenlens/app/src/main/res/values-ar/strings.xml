@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_tagline">شاهدها. افهمها.</string>
+
+    <!-- ===== Onboarding ===== -->
+    <string name="onboarding_title_1">اقرأ أي شاشة</string>
+    <string name="onboarding_desc_1">استخرج النص من الصور ومن التقاطات الشاشة المدعومة.</string>
+    <string name="onboarding_title_2">ترجمة فورية</string>
+    <string name="onboarding_desc_2">ترجم النص باستخدام نماذج تعمل على الجهاز عند توفرها.</string>
+    <string name="onboarding_title_3">خصوصية بالتصميم</string>
+    <string name="onboarding_desc_3">عمليات المسح والسجل تبقى على جهازك فقط.</string>
+    <string name="onboarding_title_4">العدسة العائمة</string>
+    <string name="onboarding_desc_4">افتح ScreenLens بسرعة عند الحاجة.</string>
+    <string name="action_skip">تخطي</string>
+    <string name="action_next">التالي</string>
+    <string name="action_get_started">ابدأ الآن</string>
+
+    <!-- ===== Bottom navigation ===== -->
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_scan">مسح</string>
+    <string name="nav_history">السجل</string>
+    <string name="nav_tools">الأدوات</string>
+    <string name="nav_settings">الإعدادات</string>
+
+    <!-- ===== Home ===== -->
+    <string name="home_greeting">ماذا تريد أن تفهم؟</string>
+    <string name="home_scan_card_title">امسح شاشتك</string>
+    <string name="home_scan_card_desc">استخرج وافهم النص الموجود على شاشتك الحالية.</string>
+    <string name="action_scan_screen">مسح الشاشة</string>
+    <string name="home_quick_actions">إجراءات سريعة</string>
+    <string name="quick_action_image_ocr">قراءة نص من صورة</string>
+    <string name="quick_action_translate">ترجمة</string>
+    <string name="quick_action_clipboard">الحافظة</string>
+    <string name="quick_action_qr">ماسح QR</string>
+    <string name="home_recent_scans">عمليات المسح الأخيرة</string>
+    <string name="home_no_scans">لا توجد عمليات مسح بعد.</string>
+    <string name="action_start_first_scan">ابدأ أول عملية مسح</string>
+    <string name="cd_settings_icon">الإعدادات</string>
+    <string name="cd_screenlens_logo">شعار ScreenLens</string>
+
+    <!-- ===== Scan / screen capture ===== -->
+    <string name="scan_permission_title">يحتاج ScreenLens إلى إذن لالتقاط شاشتك حتى يتمكن من تحليل المحتوى الظاهر.</string>
+    <string name="scan_permission_body">سيعرض النظام مربع حوار لتأكيد التقاط الشاشة. يلتقط ScreenLens إطارًا واحدًا فقط لقراءة النص الظاهر ثم يتوقف فورًا — لا يتم تسجيل أو رفع أي شيء.</string>
+    <string name="action_allow_screen_capture">السماح بالتقاط الشاشة</string>
+    <string name="scan_status_capturing">جارٍ الالتقاط…</string>
+    <string name="scan_status_analyzing">جارٍ التحليل…</string>
+    <string name="scan_status_reading">جارٍ قراءة النص…</string>
+    <string name="scan_status_translating">جارٍ الترجمة…</string>
+    <string name="scan_status_ready">جاهز</string>
+    <string name="scan_select_area">تحديد منطقة</string>
+    <string name="scan_crop_title">حدد المنطقة المراد تحليلها</string>
+    <string name="action_cancel">إلغاء</string>
+    <string name="action_reset">إعادة تعيين</string>
+    <string name="action_analyze">تحليل</string>
+    <string name="notif_capture_channel_name">التقاط الشاشة</string>
+    <string name="notif_capture_title">ScreenLens يلتقط شاشتك</string>
+    <string name="notif_capture_text">اضغط للعودة إلى ScreenLens.</string>
+
+    <!-- ===== OCR result ===== -->
+    <string name="ocr_result_title">تم العثور على نص</string>
+    <string name="ocr_original_text_label">النص الأصلي</string>
+    <string name="ocr_detected_language_label">اللغة المكتشفة</string>
+    <string name="ocr_language_unknown">غير معروفة</string>
+    <string name="action_copy">نسخ</string>
+    <string name="action_translate">ترجمة</string>
+    <string name="action_share">مشاركة</string>
+    <string name="action_save">حفظ</string>
+    <string name="action_edit">تعديل</string>
+    <string name="action_done_editing">تم</string>
+    <string name="toast_copied">تم النسخ إلى الحافظة</string>
+    <string name="toast_saved_to_history">تم الحفظ في السجل</string>
+
+    <!-- ===== Image OCR ===== -->
+    <string name="image_ocr_title">قراءة نص من صورة</string>
+    <string name="action_choose_image">اختيار صورة</string>
+    <string name="action_take_photo">التقاط صورة</string>
+    <string name="action_detect_text">استخراج النص</string>
+    <string name="image_ocr_empty">اختر صورة أو التقط صورة لاستخراج النص منها.</string>
+
+    <!-- ===== Live scanner (Camera OCR) ===== -->
+    <string name="live_scanner_title">الماسح المباشر</string>
+    <string name="live_scanner_hint">وجّه الكاميرا نحو مستند أو لافتة أو قائمة طعام أو شاشة أو كتاب أو ملصق.</string>
+    <string name="action_capture">التقاط</string>
+    <string name="cd_camera_preview">معاينة الكاميرا</string>
+    <string name="cd_flashlight_toggle">تبديل الفلاش</string>
+
+    <!-- ===== Translation ===== -->
+    <string name="translation_title">ترجمة</string>
+    <string name="label_source_language">لغة المصدر</string>
+    <string name="label_target_language">لغة الهدف</string>
+    <string name="label_original_text">النص الأصلي</string>
+    <string name="label_translated_text">النص المترجم</string>
+    <string name="hint_enter_text">أدخل نصًا للترجمة</string>
+    <string name="cd_swap_languages">تبديل اللغتين</string>
+    <string name="action_detect_language">اكتشاف اللغة</string>
+
+    <!-- ===== Offline translation / language manager ===== -->
+    <string name="download_language_model">تنزيل نموذج اللغة</string>
+    <string name="action_download">تنزيل</string>
+    <string name="status_installed">مثبّت</string>
+    <string name="status_downloading">جارٍ التنزيل…</string>
+    <string name="status_not_installed">غير مثبّت</string>
+    <string name="error_model_missing">قم بتنزيل نموذج اللغة للترجمة دون اتصال بالإنترنت.</string>
+    <string name="error_no_internet_download">يلزم اتصال بالإنترنت لتنزيل نموذج هذه اللغة.</string>
+    <string name="language_manager_title">إدارة اللغات</string>
+    <string name="installed_languages">اللغات المثبّتة</string>
+    <string name="available_languages">اللغات المتاحة</string>
+    <string name="action_remove">إزالة</string>
+    <string name="model_size_hint">يتم تنزيل النماذج التي تعمل على الجهاز من خدمة ترجمة جوجل عبر Wi-Fi أو بيانات الجوال، وتُخزَّن على هذا الجهاز فقط.</string>
+
+    <!-- ===== Floating Lens ===== -->
+    <string name="floating_lens_title">العدسة العائمة</string>
+    <string name="floating_lens_explainer">يمكن لـ ScreenLens إظهار زر عائم صغير فوق التطبيقات الأخرى.</string>
+    <string name="floating_lens_off_on">العدسة العائمة</string>
+    <string name="action_enable">تفعيل</string>
+    <string name="overlay_permission_reason">العرض فوق التطبيقات الأخرى</string>
+    <string name="overlay_permission_body">يحتاج ScreenLens إلى إذن \"العرض فوق التطبيقات الأخرى\" لإظهار الفقاعة العائمة. يمكنك منحه في الشاشة التالية وإلغاؤه في أي وقت من إعدادات أندرويد.</string>
+    <string name="action_open_screenlens">فتح ScreenLens</string>
+    <string name="action_start_screen_capture">بدء التقاط الشاشة</string>
+    <string name="cd_floating_lens_bubble">عدسة ScreenLens العائمة</string>
+    <string name="notif_lens_channel_name">العدسة العائمة</string>
+    <string name="notif_lens_title">العدسة العائمة نشطة</string>
+    <string name="notif_lens_text">اضغط لفتح ScreenLens، أو أوقفها من الإعدادات.</string>
+
+    <!-- ===== Clipboard ===== -->
+    <string name="clipboard_title">الحافظة</string>
+    <string name="clipboard_text_label">نص الحافظة</string>
+    <string name="clipboard_empty">لا يوجد نص في الحافظة.</string>
+    <string name="action_check_clipboard">فحص الحافظة</string>
+
+    <!-- ===== QR / Barcode ===== -->
+    <string name="qr_scanner_title">QR والباركود</string>
+    <string name="qr_result_title">نتيجة المسح</string>
+    <string name="qr_result_url_type">تم اكتشاف رابط</string>
+    <string name="qr_result_text_type">تم اكتشاف نص</string>
+    <string name="action_open_link">فتح الرابط</string>
+    <string name="qr_scan_hint">وجّه الكاميرا نحو رمز QR أو باركود.</string>
+
+    <!-- ===== History ===== -->
+    <string name="history_title">السجل</string>
+    <string name="history_search_hint">البحث في السجل</string>
+    <string name="filter_all">الكل</string>
+    <string name="filter_screen">الشاشة</string>
+    <string name="filter_image">صورة</string>
+    <string name="filter_camera">كاميرا</string>
+    <string name="filter_clipboard">الحافظة</string>
+    <string name="filter_translation">ترجمة</string>
+    <string name="filter_qr">QR</string>
+    <string name="history_empty">لا توجد عمليات مسح بعد.</string>
+    <string name="history_empty_search">لا توجد نتائج لـ \"%1$s\".</string>
+    <string name="history_detail_title">التفاصيل</string>
+    <string name="history_field_date">التاريخ</string>
+    <string name="history_field_type">النوع</string>
+    <string name="history_field_original">الأصلي</string>
+    <string name="history_field_translation">الترجمة</string>
+    <string name="history_field_languages">اللغات</string>
+    <string name="dialog_delete_title">هل تريد حذف هذا العنصر؟</string>
+    <string name="dialog_clear_history_title">مسح السجل بالكامل؟</string>
+    <string name="dialog_clear_history_body">سيؤدي هذا إلى حذف جميع عمليات المسح والترجمة المحفوظة من هذا الجهاز بشكل نهائي. لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="action_delete">حذف</string>
+
+    <!-- ===== Tools ===== -->
+    <string name="tools_title">الأدوات</string>
+    <string name="tool_screen_scanner">ماسح الشاشة</string>
+    <string name="tool_screen_scanner_desc">التقط واقرأ النص من شاشتك الحالية.</string>
+    <string name="tool_image_ocr">قراءة نص من صورة</string>
+    <string name="tool_image_ocr_desc">استخرج النص من صورة أو من معرض الصور.</string>
+    <string name="tool_live_ocr">القراءة المباشرة</string>
+    <string name="tool_live_ocr_desc">اقرأ النص مباشرة عبر الكاميرا.</string>
+    <string name="tool_translator">المترجم</string>
+    <string name="tool_translator_desc">ترجم النص بين اللغات، دون إنترنت عند توفر ذلك.</string>
+    <string name="tool_clipboard">الحافظة</string>
+    <string name="tool_clipboard_desc">ترجم النص الذي نسخته للتو.</string>
+    <string name="tool_qr_scanner">ماسح QR</string>
+    <string name="tool_qr_scanner_desc">امسح رموز QR.</string>
+    <string name="tool_barcode_scanner">ماسح الباركود</string>
+    <string name="tool_barcode_scanner_desc">امسح باركودات المنتجات والشحن.</string>
+    <string name="tool_floating_lens">العدسة العائمة</string>
+    <string name="tool_floating_lens_desc">فقاعة وصول سريع فوق التطبيقات الأخرى.</string>
+    <string name="tool_language_manager">إدارة اللغات</string>
+    <string name="tool_language_manager_desc">إدارة لغات الترجمة دون اتصال.</string>
+
+    <!-- ===== Settings ===== -->
+    <string name="settings_appearance">المظهر</string>
+    <string name="appearance_system">النظام</string>
+    <string name="appearance_light">فاتح</string>
+    <string name="appearance_dark">داكن</string>
+    <string name="settings_language">لغة التطبيق</string>
+    <string name="language_english">English</string>
+    <string name="language_arabic">العربية</string>
+    <string name="settings_floating_lens">العدسة العائمة</string>
+    <string name="settings_auto_save_history">الحفظ التلقائي للسجل</string>
+    <string name="settings_history_limit">حد السجل</string>
+    <string name="settings_clear_history">مسح السجل</string>
+    <string name="settings_installed_languages">اللغات المثبّتة</string>
+    <string name="settings_download_models">تنزيل النماذج</string>
+    <string name="settings_notifications">الإشعارات</string>
+    <string name="settings_privacy">الخصوصية</string>
+    <string name="settings_about">حول التطبيق</string>
+    <string name="settings_rate_app">تقييم التطبيق</string>
+    <string name="settings_share_app">مشاركة التطبيق</string>
+    <string name="settings_premium">الترقية إلى بريميوم</string>
+    <string name="settings_show_onboarding">عرض التعريف مرة أخرى</string>
+    <string name="section_general">عام</string>
+    <string name="section_scanning">المسح والترجمة</string>
+    <string name="section_data">البيانات</string>
+    <string name="section_support">الدعم</string>
+    <string name="history_limit_unlimited">غير محدود</string>
+    <string name="history_limit_items">%1$d عنصر</string>
+
+    <!-- ===== Privacy ===== -->
+    <string name="privacy_title">الخصوصية</string>
+    <string name="privacy_body_1">يقوم ScreenLens بمعالجة التعرف على النصوص المدعومة على الجهاز نفسه كلما أمكن ذلك.</string>
+    <string name="privacy_body_2">لا يتم رفع التقاطات الشاشة إلى أي خادم تابع لـ ScreenLens.</string>
+    <string name="privacy_body_3">يُخزَّن السجل المحفوظ محليًا على جهازك في قاعدة بيانات على الجهاز، ويمكن مسحه في أي وقت من الإعدادات.</string>
+    <string name="privacy_body_4">عند تنزيل نموذج ترجمة يعمل دون اتصال، يتصل التطبيق بخدمة ترجمة ML Kit من جوجل لجلب ملف ذلك النموذج فقط. لا يتم إرسال أي التقاطات شاشة أو صور أو نص حافظة أو سجل ضمن ذلك الطلب.</string>
+    <string name="privacy_body_5">تعمل ميزات التعرف على النصوص (OCR) واكتشاف اللغة والترجمة ومسح الباركود باستخدام نماذج ML Kit من جوجل التي تعمل على الجهاز. بعد تنزيل نموذج ترجمة، تعمل الترجمة لتلك اللغة بشكل كامل دون اتصال بالإنترنت.</string>
+    <string name="privacy_body_6">تعمل ميزتا العدسة العائمة والتقاط الشاشة فقط عند تفعيلهما صراحة من قبلك، ويتوقف التقاط الشاشة فور انتهاء التحليل.</string>
+    <string name="privacy_body_7">تعرض النسخة المجانية إعلانات من Google AdMob، والتي قد تستخدم معرّف إعلانات وفق إعدادات جهازك وموافقتك. تزيل نسخة بريميوم الإعلانات.</string>
+
+    <!-- ===== Permission rationale ===== -->
+    <string name="permission_camera_rationale">يلزم إذن الكاميرا لمسح المستندات واللافتات ورموز QR.</string>
+    <string name="permission_camera_denied">تم رفض إذن الكاميرا. فعّله من إعدادات أندرويد لاستخدام هذه الأداة.</string>
+    <string name="action_open_app_settings">فتح إعدادات التطبيق</string>
+
+    <!-- ===== Errors ===== -->
+    <string name="error_no_capture_permission">إذن التقاط الشاشة مطلوب.</string>
+    <string name="error_ocr_failed">تعذّر العثور على نص قابل للقراءة.</string>
+    <string name="error_no_text_found">لم يتم العثور على نص قابل للقراءة.</string>
+    <string name="error_camera_unavailable">الكاميرا غير متاحة.</string>
+    <string name="error_language_not_supported">التعرف على النص لهذه اللغة غير متاح.</string>
+    <string name="error_overlay_permission_required">إذن \"العرض فوق التطبيقات الأخرى\" مطلوب لتفعيل العدسة العائمة.</string>
+    <string name="error_generic">حدث خطأ ما. حاول مرة أخرى.</string>
+    <string name="error_no_internet">يلزم اتصال بالإنترنت لتنزيل نموذج هذه اللغة.</string>
+    <string name="error_translation_failed">فشلت الترجمة. حاول مرة أخرى.</string>
+
+    <!-- ===== Empty states ===== -->
+    <string name="empty_no_scans">لا توجد عمليات مسح بعد.</string>
+    <string name="empty_no_models">لا توجد نماذج لغة تم تنزيلها.</string>
+
+    <!-- ===== Premium ===== -->
+    <string name="premium_title">ScreenLens بريميوم</string>
+    <string name="premium_free_title">مجاني</string>
+    <string name="premium_premium_title">بريميوم</string>
+    <string name="premium_feature_basic_ocr">تعرف أساسي على النصوص</string>
+    <string name="premium_feature_basic_translation">ترجمة أساسية</string>
+    <string name="premium_feature_history">السجل</string>
+    <string name="premium_feature_unlimited_scans">عمليات مسح غير محدودة</string>
+    <string name="premium_feature_floating_lens">العدسة العائمة</string>
+    <string name="premium_feature_advanced_tools">أدوات متقدمة</string>
+    <string name="premium_feature_no_ads">بدون إعلانات</string>
+    <string name="premium_feature_more_models">مزيد من نماذج اللغات</string>
+    <string name="premium_feature_advanced_history">سجل متقدم</string>
+    <string name="premium_feature_batch">معالجة دفعية</string>
+    <string name="premium_not_configured">لم يتم إعداد عمليات الشراء داخل التطبيق لهذه النسخة بعد، لذا لا يمكن شراء بريميوم الآن. بنية الفوترة جاهزة للربط بمنتج Google Play Billing بعد إعداده.</string>
+    <string name="action_upgrade">الترقية</string>
+
+    <!-- ===== About ===== -->
+    <string name="about_title">حول ScreenLens</string>
+    <string name="about_version">الإصدار %1$s</string>
+
+    <!-- ===== Common ===== -->
+    <string name="action_ok">حسنًا</string>
+    <string name="action_retry">إعادة المحاولة</string>
+    <string name="action_close">إغلاق</string>
+    <string name="action_settings">الإعدادات</string>
+</resources>

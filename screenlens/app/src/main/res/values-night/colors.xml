@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== Brand (electric cyan reads better on near-black) ===== -->
+    <color name="brand_primary">#22D3EE</color>
+    <color name="brand_primary_variant">#0BA5C9</color>
+    <color name="brand_on_primary">#00232B</color>
+    <color name="brand_primary_container">#003C48</color>
+    <color name="brand_on_primary_container">#B6F0FF</color>
+
+    <!-- ===== Semantic ===== -->
+    <color name="color_success">#34D399</color>
+    <color name="color_success_container">#0C3B2C</color>
+    <color name="color_warning">#F5A623</color>
+    <color name="color_warning_container">#3F2C0B</color>
+    <color name="color_error">#FF6B6B</color>
+    <color name="color_error_container">#3B1414</color>
+
+    <!-- ===== Surfaces (Dark: near-black / dark navy) ===== -->
+    <color name="color_background">#0A0E17</color>
+    <color name="color_surface">#121826</color>
+    <color name="color_surface_variant">#1B2333</color>
+    <color name="color_surface_container">#161D2C</color>
+    <color name="color_outline">#2C3648</color>
+
+    <!-- ===== Text (Dark) ===== -->
+    <color name="color_text_primary">#FFFFFF</color>
+    <color name="color_text_secondary">#9AA5B1</color>
+    <color name="color_text_on_primary">#00232B</color>
+    <color name="color_text_disabled">#5B6472</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="scrim">#B3000000</color>
+</resources>

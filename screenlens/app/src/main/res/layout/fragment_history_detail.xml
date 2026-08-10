@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/space_lg">
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.ScreenLens.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history_field_date"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Label" />
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_md"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Body"
+                    tools:text="Aug 10, 2026, 9:41 AM" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history_field_type"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Label" />
+                <TextView
+                    android:id="@+id/typeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_md"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Body"
+                    tools:text="Screen" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history_field_original"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Label" />
+                <TextView
+                    android:id="@+id/originalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_md"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Body"
+                    android:textIsSelectable="true"
+                    tools:text="How long does shipping take?" />
+
+                <TextView
+                    android:id="@+id/translationLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history_field_translation"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Label" />
+                <TextView
+                    android:id="@+id/translationText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_md"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Body"
+                    android:textIsSelectable="true"
+                    tools:text="كم يستغرق الشحن؟" />
+
+                <TextView
+                    android:id="@+id/languagesLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history_field_languages"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Label" />
+                <TextView
+                    android:id="@+id/languagesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Body"
+                    tools:text="English → Arabic" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/copyButton"
+                style="@style/Widget.ScreenLens.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_xs"
+                android:layout_weight="1"
+                android:text="@string/action_copy" />
+
+            <Button
+                android:id="@+id/shareButton"
+                style="@style/Widget.ScreenLens.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/space_xs"
+                android:layout_weight="1"
+                android:text="@string/action_share" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                style="@style/Widget.ScreenLens.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_xs"
+                android:layout_weight="1"
+                android:text="@string/action_delete"
+                android:textColor="@color/color_error" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

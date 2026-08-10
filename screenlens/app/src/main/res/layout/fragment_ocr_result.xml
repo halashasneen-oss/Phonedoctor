@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/app"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/space_lg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ocr_result_title"
+            android:textAppearance="@style/TextAppearance.ScreenLens.Headline" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.ScreenLens.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ocr_original_text_label"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Label" />
+
+                <TextView
+                    android:id="@+id/originalTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Body"
+                    android:textIsSelectable="true"
+                    tools:text="How long does shipping take?" />
+
+                <EditText
+                    android:id="@+id/originalTextEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:background="@android:color/transparent"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:minLines="2"
+                    android:textAppearance="@style/TextAppearance.ScreenLens.Body"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ocr_detected_language_label"
+                android:textAppearance="@style/TextAppearance.ScreenLens.Label" />
+
+            <TextView
+                android:id="@+id/detectedLanguageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_sm"
+                android:textAppearance="@style/TextAppearance.ScreenLens.Body"
+                tools:text="English" />
+
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xl"
+            android:columnCount="3"
+            android:useDefaultMargins="false">
+
+            <Button
+                android:id="@+id/copyButton"
+                style="@style/Widget.ScreenLens.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="@dimen/space_2xs"
+                android:text="@string/action_copy" />
+
+            <Button
+                android:id="@+id/translateButton"
+                style="@style/Widget.ScreenLens.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="@dimen/space_2xs"
+                android:text="@string/action_translate" />
+
+            <Button
+                android:id="@+id/shareButton"
+                style="@style/Widget.ScreenLens.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="@dimen/space_2xs"
+                android:text="@string/action_share" />
+
+            <Button
+                android:id="@+id/saveButton"
+                style="@style/Widget.ScreenLens.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="@dimen/space_2xs"
+                android:text="@string/action_save" />
+
+            <Button
+                android:id="@+id/editButton"
+                style="@style/Widget.ScreenLens.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="@dimen/space_2xs"
+                android:text="@string/action_edit" />
+
+        </GridLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

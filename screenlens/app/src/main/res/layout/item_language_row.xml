@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/touch_target_min"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/space_sm">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/languageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.ScreenLens.Body"
+            tools:text="Spanish" />
+
+        <TextView
+            android:id="@+id/languageStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.ScreenLens.Caption"
+            tools:text="Installed" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/actionButton"
+        style="@style/Widget.ScreenLens.Button.Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Download" />
+
+    <ProgressBar
+        android:id="@+id/rowProgress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:indeterminateTint="@color/brand_primary"
+        android:visibility="gone" />
+
+</LinearLayout>
