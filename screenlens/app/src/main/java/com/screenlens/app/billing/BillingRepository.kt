@@ -12,9 +12,13 @@ import com.android.billingclient.api.Purchase
 import com.android.billingclient.api.PurchasesUpdatedListener
 import com.android.billingclient.api.QueryProductDetailsParams
 import com.android.billingclient.api.queryProductDetails
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 /** The Play Console product ID ScreenLens Premium would be configured under, if billing is set up. */
 const val PREMIUM_PRODUCT_ID = "screenlens_premium_lifetime"
@@ -36,6 +40,7 @@ sealed class PremiumState {
 class BillingRepository(context: Context) : PurchasesUpdatedListener {
 
     private val appContext = context.applicationContext
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     private val _state = MutableStateFlow<PremiumState>(PremiumState.Connecting)
     val state: StateFlow<PremiumState> = _state.asStateFlow()
@@ -80,9 +85,10 @@ class BillingRepository(context: Context) : PurchasesUpdatedListener {
             )
             .build()
 
-        billingClient.queryProductDetails(params) { result, productDetailsResult ->
-            val details = productDetailsResult.productDetailsList
-            if (result.responseCode == BillingClient.BillingResponseCode.OK && details.isNotEmpty()) {
+        scope.launch {
+            val result = billingClient.queryProductDetails(params)
+            val details = result.productDetailsList
+            if (result.billingResult.responseCode == BillingClient.BillingResponseCode.OK && details.isNotEmpty()) {
                 _state.value = PremiumState.Available(details.first())
             } else {
                 // Connected to Play Billing successfully, but the product ID above has

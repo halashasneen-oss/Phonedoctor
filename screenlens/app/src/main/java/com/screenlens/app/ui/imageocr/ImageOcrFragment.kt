@@ -92,7 +92,9 @@ class ImageOcrFragment : Fragment(R.layout.fragment_image_ocr) {
                     val language = ServiceLocator.languageDetectionEngine.detect(outcome.text)
                     findNavController().navigate(
                         ImageOcrFragmentDirections.actionImageOcrToOcrResult(
-                            outcome.text, language, HistoryType.IMAGE.name
+                            originalText = outcome.text,
+                            detectedLanguage = language,
+                            sourceType = HistoryType.IMAGE.name
                         )
                     )
                 }

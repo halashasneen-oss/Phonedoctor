@@ -6,6 +6,7 @@ import android.util.Log
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -44,7 +45,7 @@ class AdManager(private val context: Context) {
                     interstitialAd = ad
                 }
 
-                override fun onAdFailedToLoad(error: AdError) {
+                override fun onAdFailedToLoad(error: LoadAdError) {
                     Log.w(TAG, "Interstitial failed to load: ${error.message}")
                     interstitialAd = null
                 }

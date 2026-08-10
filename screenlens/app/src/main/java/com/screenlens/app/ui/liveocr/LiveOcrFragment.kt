@@ -78,7 +78,7 @@ class LiveOcrFragment : Fragment(R.layout.fragment_live_ocr) {
         providerFuture.addListener({
             val provider = providerFuture.get()
             val preview = Preview.Builder().build().also {
-                it.surfaceProvider = binding.previewView.surfaceProvider
+                it.setSurfaceProvider(binding.previewView.surfaceProvider)
             }
             val capture = ImageCapture.Builder()
                 .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
@@ -152,7 +152,9 @@ class LiveOcrFragment : Fragment(R.layout.fragment_live_ocr) {
                     val language = ServiceLocator.languageDetectionEngine.detect(outcome.text)
                     findNavController().navigate(
                         LiveOcrFragmentDirections.actionLiveOcrToOcrResult(
-                            outcome.text, language, HistoryType.CAMERA.name
+                            originalText = outcome.text,
+                            detectedLanguage = language,
+                            sourceType = HistoryType.CAMERA.name
                         )
                     )
                 }

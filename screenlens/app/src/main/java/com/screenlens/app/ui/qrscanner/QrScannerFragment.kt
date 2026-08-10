@@ -63,7 +63,7 @@ class QrScannerFragment : Fragment(R.layout.fragment_qr_scanner) {
         providerFuture.addListener({
             val provider = providerFuture.get()
             val preview = Preview.Builder().build().also {
-                it.surfaceProvider = binding.previewView.surfaceProvider
+                it.setSurfaceProvider(binding.previewView.surfaceProvider)
             }
             val analysis = ImageAnalysis.Builder()
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)

@@ -75,6 +75,7 @@ class ScreenCaptureService : Service() {
         try {
             val projectionManager = getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
             val projection = projectionManager.getMediaProjection(resultCode, data)
+                ?: throw IllegalStateException("MediaProjection unavailable")
             mediaProjection = projection
 
             val thread = HandlerThread("ScreenLens-Capture").apply { start() }

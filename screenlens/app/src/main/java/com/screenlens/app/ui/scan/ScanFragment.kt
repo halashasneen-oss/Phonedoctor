@@ -31,7 +31,11 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
             val language = result.data!!.getStringExtra(CropActivity.EXTRA_RESULT_LANGUAGE)
             if (!text.isNullOrBlank()) {
                 findNavController().navigate(
-                    ScanFragmentDirections.actionScanToOcrResult(text, language, HistoryType.SCREEN.name)
+                    ScanFragmentDirections.actionScanToOcrResult(
+                        originalText = text,
+                        detectedLanguage = language,
+                        sourceType = HistoryType.SCREEN.name
+                    )
                 )
             }
             showExplainer()
