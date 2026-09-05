@@ -32,14 +32,13 @@ android {
         applicationId = "com.phonedoctor.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
 
-        // AdMob placeholder / test IDs. Real production IDs are supplied only via
-        // secrets.properties (local, git-ignored) or CI secrets — never committed.
+        // Default AdMob placeholder used for non-release builds.
         manifestPlaceholders["admobAppId"] = secret(
             "ADMOB_APP_ID",
             "ADMOB_APP_ID"
@@ -91,16 +90,17 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            manifestPlaceholders["admobAppId"] = "ca-app-pub-5961173995415325~9886076332"
             buildConfigField("boolean", "SHOW_ADS", "true")
             buildConfigField(
                 "String",
                 "BANNER_AD_UNIT_ID",
-                "\"${secret("BANNER_AD_UNIT_ID").ifBlank { "ca-app-pub-3940256099942544/9214589741" }}\""
+                "\"ca-app-pub-5961173995415325/4633749652\""
             )
             buildConfigField(
                 "String",
                 "INTERSTITIAL_AD_UNIT_ID",
-                "\"${secret("INTERSTITIAL_AD_UNIT_ID").ifBlank { "ca-app-pub-3940256099942544/1033173712" }}\""
+                "\"ca-app-pub-5961173995415325/4176630251\""
             )
             buildConfigField(
                 "String",
