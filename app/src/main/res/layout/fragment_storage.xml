@@ -102,41 +102,14 @@
             style="@style/Widget.PhoneDoctor.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xs"
-            app:contentPadding="0dp">
+            android:layout_marginTop="@dimen/spacing_xs">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerBreakdown"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonViewBreakdown"
+                style="@style/Widget.PhoneDoctor.Button.Outlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:paddingVertical="@dimen/spacing_xs"
-                android:visibility="gone"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="6"
-                tools:listitem="@layout/item_info_row" />
-
-            <LinearLayout
-                android:id="@+id/containerRequestBreakdown"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/spacing_md">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/storage_permission_rationale"
-                    android:textAppearance="@style/TextAppearance.PhoneDoctor.Body" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/buttonViewBreakdown"
-                    style="@style/Widget.PhoneDoctor.Button.Outlined"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_sm"
-                    android:text="@string/storage_view_breakdown" />
-            </LinearLayout>
+                android:text="@string/common_open_settings" />
 
         </com.google.android.material.card.MaterialCardView>
 
