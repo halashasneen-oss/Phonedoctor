@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_xs"
-            android:text="@string/privacy_permissions_body"
+            android:text="@string/help_a2"
             android:textAppearance="@style/TextAppearance.PhoneDoctor.Body" />
 
         <TextView
