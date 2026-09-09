@@ -27,20 +27,9 @@
         android:usesPermissionFlags="neverForLocation"
         tools:targetApi="31" />
 
-    <!-- Storage screen category breakdown (Images/Video/Audio), requested at
-         runtime only if the user opens the breakdown. Never requested at launch. -->
-    <uses-permission
-        android:name="android.permission.READ_MEDIA_IMAGES"
-        tools:targetApi="33" />
-    <uses-permission
-        android:name="android.permission.READ_MEDIA_VIDEO"
-        tools:targetApi="33" />
-    <uses-permission
-        android:name="android.permission.READ_MEDIA_AUDIO"
-        tools:targetApi="33" />
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+    <!-- Phone Doctor no longer requests broad photo/video/audio or legacy
+         external-storage read permissions. Storage details use Android's
+         system storage settings instead of scanning the user's media. -->
 
     <!-- Local health-check reminder notification, only if the user enables it
          in Settings. Requested at runtime, not at launch. -->
