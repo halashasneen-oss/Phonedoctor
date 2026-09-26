@@ -116,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_md"
-            android:background="@drawable/bg_alert_info"
+            android:background="@color/color_surface_variant"
             android:padding="@dimen/spacing_sm"
             android:textAppearance="@style/TextAppearance.PhoneDoctor.Body"
             android:visibility="gone"
