@@ -459,6 +459,7 @@
     <string name="settings_auto_check">الفحص التلقائي</string>
     <string name="settings_auto_check_desc">تشغيل فحص صحة أسبوعي في الخلفية</string>
     <string name="settings_privacy">الخصوصية</string>
+    <string name="settings_ad_privacy">خيارات خصوصية الإعلانات</string>
     <string name="settings_clear_history">مسح السجل</string>
     <string name="settings_about">حول التطبيق</string>
     <string name="settings_help">المساعدة والأسئلة الشائعة</string>
