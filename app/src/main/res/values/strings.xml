@@ -64,6 +64,17 @@
 
     <!-- ============ Full Scan ============ -->
     <string name="scan_title">Checking your device…</string>
+    <string name="scan_choose_mode_title">Choose a Scan</string>
+    <string name="scan_choose_mode_body">Choose how deep Phone Doctor should inspect your device. Heavy benchmarks run only when you choose Performance Scan.</string>
+    <string name="scan_mode_quick">QUICK SCAN</string>
+    <string name="scan_mode_quick_desc">Fast automatic checks only: battery, thermal state, storage/RAM state, sensors, camera capability and connectivity.</string>
+    <string name="scan_mode_deep">DEEP SCAN</string>
+    <string name="scan_mode_deep_desc">Full automatic checks plus optional user-verified display, touch, speaker and microphone checks.</string>
+    <string name="scan_mode_performance">PERFORMANCE SCAN</string>
+    <string name="scan_mode_performance_desc">Runs bounded CPU, RAM and app-private storage benchmarks, then captures thermal state. Results are informational and do not change Health Score.</string>
+    <string name="scan_quick_title">Quick Scan</string>
+    <string name="scan_deep_title">Deep Scan</string>
+    <string name="scan_performance_title">Performance Scan</string>
     <string name="scan_item_battery">Battery</string>
     <string name="scan_item_storage">Storage</string>
     <string name="scan_item_memory">Memory</string>
@@ -87,6 +98,12 @@
 
     <!-- ============ Scan Results ============ -->
     <string name="results_title">Scan Results</string>
+    <string name="results_performance_title">Performance Results</string>
+    <string name="results_performance_subtitle">Informational benchmark results — not a hardware health score.</string>
+    <string name="results_mode_quick">Quick Scan</string>
+    <string name="results_mode_deep">Deep Scan</string>
+    <string name="results_mode_performance">Performance Scan</string>
+    <string name="results_mode_background">Background Check</string>
     <string name="results_health_score_fmt">%1$d / 100</string>
     <string name="results_issues_found">Issues Found</string>
     <string name="results_no_issues">No issues found. Your phone is in great shape.</string>
@@ -407,6 +424,7 @@
     <string name="history_warnings_fmt">%1$d Warnings</string>
     <string name="history_failed_fmt">%1$d Failed</string>
     <string name="history_health_fmt">Health %1$d%%</string>
+    <string name="history_performance">Performance</string>
     <string name="history_clear_all">Clear History</string>
     <string name="history_clear_confirm_title">Clear all history?</string>
     <string name="history_clear_confirm_message">This permanently deletes every saved scan result from this device. This cannot be undone.</string>
@@ -416,6 +434,8 @@
     <string name="report_device">Device</string>
     <string name="report_date">Date</string>
     <string name="report_overall_health">Overall Health</string>
+    <string name="report_scan_type">Scan Type</string>
+    <string name="report_performance_summary">Performance report — benchmark values are informational and are not a hardware health score.</string>
     <string name="report_share">SHARE REPORT</string>
     <string name="report_export_pdf">EXPORT AS PDF</string>
     <string name="report_generating">Generating report…</string>
