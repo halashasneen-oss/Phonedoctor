@@ -10,6 +10,7 @@ import com.phonedoctor.app.domain.model.BatteryInfo
 import com.phonedoctor.app.domain.model.DiagnosticCategory
 import com.phonedoctor.app.domain.model.ScanReport
 import com.phonedoctor.app.domain.model.TestStatus
+import com.phonedoctor.app.domain.model.ThermalState
 import com.phonedoctor.app.domain.util.FormatUtils
 import com.phonedoctor.app.domain.util.HealthScoreCalculator
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -56,6 +57,7 @@ class HomeViewModel(
         val memory = serviceLocator.memoryRepository.getMemoryInfo()
         val sensors = serviceLocator.sensorsRepository.getAllSensors()
         val connectivity = serviceLocator.connectivityRepository.getConnectivityInfo()
+        val thermal = serviceLocator.thermalRepository.getThermalInfo()
         val cameraAvailable = appContext.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
 
         val resultsByCategory = latest?.results?.associateBy { it.category } ?: emptyMap()
@@ -77,6 +79,16 @@ class HomeViewModel(
             else -> TestStatus.UNAVAILABLE
         }
         val cameraStatus = if (cameraAvailable) TestStatus.GOOD else TestStatus.UNAVAILABLE
+        val thermalStatus = when (thermal.state) {
+            ThermalState.NONE -> TestStatus.EXCELLENT
+            ThermalState.LIGHT -> TestStatus.GOOD
+            ThermalState.MODERATE -> TestStatus.FAIR
+            ThermalState.SEVERE,
+            ThermalState.CRITICAL,
+            ThermalState.EMERGENCY,
+            ThermalState.SHUTDOWN -> TestStatus.POOR
+            ThermalState.UNAVAILABLE -> TestStatus.UNAVAILABLE
+        }
 
         val quickTests = listOf(
             QuickTestItem(
@@ -90,6 +102,12 @@ class HomeViewModel(
             QuickTestItem(
                 R.drawable.ic_memory, R.string.category_memory, R.id.action_home_to_memory,
                 memoryStatus, "$memoryPercent% used"
+            ),
+            QuickTestItem(
+                R.drawable.ic_cpu, R.string.category_thermal, R.id.action_home_to_thermal,
+                thermalStatus,
+                thermal.currentHeadroom?.let { "Headroom %.2f".format(it) }
+                    ?: appContext.getString(R.string.common_not_available)
             ),
             fromHistoryOrDefault(
                 R.drawable.ic_display, R.string.category_display, R.id.action_home_to_display,
@@ -181,6 +199,7 @@ class HomeViewModel(
 
     private fun buildMoreTools(): List<MoreToolItem> = listOf(
         MoreToolItem(R.drawable.ic_cpu, R.string.cpu_title, R.id.action_home_to_cpu),
+        MoreToolItem(R.drawable.ic_cpu, R.string.thermal_title, R.id.action_home_to_thermal),
         MoreToolItem(R.drawable.ic_vibration, R.string.vibration_title, R.id.action_home_to_vibration),
         MoreToolItem(R.drawable.ic_flashlight, R.string.flashlight_title, R.id.action_home_to_flashlight)
     )
