@@ -25,7 +25,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@color/color_background</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="26">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
 
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.PhoneDoctor.Dialog</item>
         <item name="android:fontFamily">sans-serif</item>
