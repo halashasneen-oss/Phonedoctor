@@ -50,6 +50,7 @@ class CpuFragment : Fragment(R.layout.fragment_cpu) {
         binding.buttonRefresh.setOnClickListener { viewModel.refreshInfo() }
         binding.buttonRunBenchmark.setOnClickListener { viewModel.runBenchmark() }
         binding.buttonRunStress.setOnClickListener { viewModel.runStressTest() }
+        binding.buttonCancelStress.setOnClickListener { viewModel.cancelStressTest() }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -80,6 +81,7 @@ class CpuFragment : Fragment(R.layout.fragment_cpu) {
 
         binding.progressStress.isVisible = state.stressRunning
         binding.textStressProgress.isVisible = state.stressRunning
+        binding.buttonCancelStress.isVisible = state.stressRunning
         binding.progressStress.progress = state.stressProgress
         binding.textStressProgress.text = getString(
             R.string.cpu_stress_progress_fmt,
