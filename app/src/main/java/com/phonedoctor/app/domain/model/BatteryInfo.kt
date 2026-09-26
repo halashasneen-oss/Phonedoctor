@@ -10,6 +10,12 @@ data class BatteryInfo(
     val temperatureCelsius: Float?,
     val voltageMillivolts: Int?,
     val currentMicroAmps: Long?,
+    val currentAverageMicroAmps: Long?,
+    val chargeCounterMicroAh: Long?,
+    val energyCounterNanoWh: Long?,
+    val cycleCount: Int?,
+    val chargeTimeRemainingMillis: Long?,
+    val batteryLow: Boolean?,
     val technology: String?,
     val healthDescription: String?
 )
