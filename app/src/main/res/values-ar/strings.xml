@@ -367,6 +367,26 @@
     <string name="connectivity_disconnected">غير متصل</string>
     <string name="connectivity_internet_note">يتطلب اختبار الإنترنت الوصول إلى الشبكة.</string>
     <string name="connectivity_run_test">اختبار الوصول إلى الإنترنت</string>
+    <string name="connectivity_refresh">تحديث معلومات الاتصال</string>
+    <string name="connectivity_permission_required">تحتاج صلاحية</string>
+    <string name="connectivity_grant_bluetooth">منح صلاحية البلوتوث</string>
+    <string name="connectivity_ethernet">إيثرنت</string>
+    <string name="connectivity_vpn">VPN</string>
+    <string name="connectivity_nfc">NFC</string>
+    <string name="connectivity_gnss">GNSS / GPS</string>
+    <string name="connectivity_usb">أجهزة USB</string>
+    <string name="connectivity_active">نشط</string>
+    <string name="connectivity_inactive">غير نشط</string>
+    <string name="connectivity_usb_devices_fmt">%1$d متصل</string>
+    <string name="connectivity_advanced_title">تفاصيل الشبكة المتقدمة</string>
+    <string name="connectivity_wifi_details_fmt">التردد: %1$s MHz · الارتباط: %2$s Mbps · الاستقبال: %3$s Mbps · الإرسال: %4$s Mbps</string>
+    <string name="connectivity_usb_device_fmt">المصنّع %1$d · المنتج %2$d · الفئة %3$d</string>
+    <string name="connectivity_advanced_details_fmt">الواي فاي: %1$s\nتقدير التنزيل: %2$s Kbps\nتقدير الرفع: %3$s Kbps\nشبكة محسوبة البيانات: %4$s\nبوابة تسجيل دخول: %5$s\nخوادم DNS: %6$s\nأجهزة USB:\n%7$s</string>
+    <string name="connectivity_probe_title">اختبار DNS وزمن اتصال TCP</string>
+    <string name="connectivity_probe_note">لا يعمل الاختبار إلا عند الضغط على الزر. يقوم Phone Doctor بحل example.com وفتح اتصال TCP قصير على المنفذ 443، ولا يجري اختبار سرعة ولا يرفع بيانات شخصية.</string>
+    <string name="connectivity_run_probe">تشغيل اختبار DNS / TCP</string>
+    <string name="connectivity_probe_result_fmt">%1$s\nالعناوين التي تم حلها: %2$d\nDNS: %3$d مللي ثانية\nاتصال TCP: %4$d مللي ثانية</string>
+    <string name="connectivity_probe_failed_fmt">%1$s\nفشل الاختبار: %2$s</string>
 
     <!-- ============ Device Information ============ -->
     <string name="device_info_title">معلومات الجهاز</string>
