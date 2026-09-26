@@ -52,6 +52,40 @@ class ScanEngine(
 
     val totalSteps = automaticOrder.size + interactiveOrder.size + tailAutomaticOrder.size
 
+    /**
+     * Runs only measurements that are meaningful without a person present.
+     * Interactive display/touch/audio/microphone checks are excluded entirely
+     * rather than silently marked as successful.
+     */
+    suspend fun runAutomatic(
+        cameraAvailable: Boolean,
+        onProgress: suspend (ScanProgressEvent) -> Unit = {}
+    ): ScanReport {
+        val results = mutableListOf<CategoryResult>()
+        val order = automaticOrder + tailAutomaticOrder
+        var completed = 0
+
+        suspend fun emit(result: CategoryResult) {
+            results += result
+            completed++
+            onProgress(ScanProgressEvent(result.category, result, completed, order.size))
+        }
+
+        emit(measureBattery())
+        emit(measureStorage())
+        emit(measureMemory())
+        emit(measureCpu())
+        emit(measureSensors())
+        emit(measureCamera(cameraAvailable))
+        emit(measureConnectivity())
+
+        return ScanReport(
+            timestampMillis = System.currentTimeMillis(),
+            healthScore = HealthScoreCalculator.calculate(results),
+            results = results
+        )
+    }
+
     suspend fun run(
         cameraAvailable: Boolean,
         requestUserConfirmation: suspend (DiagnosticCategory) -> Boolean,
