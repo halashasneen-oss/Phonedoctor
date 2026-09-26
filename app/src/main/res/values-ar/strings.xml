@@ -548,4 +548,15 @@
     <string name="media_codec_summary_fmt">فك الترميز: %1$d · الترميز: %2$d\n%3$s</string>
     <string name="gpu_media_note">هذه قدرات يبلغ عنها EGL وميزات النظام وMediaCodec، وليست Benchmark للـGPU ولا درجة صحة للعتاد.</string>
     <string name="gpu_media_refresh">تحديث معلومات GPU والوسائط</string>
+    <string name="result_evidence_fmt">%1$s · %2$s · %3$s</string>
+    <string name="result_evidence_measured">قياس مباشر</string>
+    <string name="result_evidence_capability">قدرة الجهاز</string>
+    <string name="result_evidence_current_state">الحالة الحالية</string>
+    <string name="result_evidence_user_verified">تحقق من المستخدم</string>
+    <string name="result_evidence_estimated">تقديري</string>
+    <string name="result_impact_health">دليل صحة</string>
+    <string name="result_impact_informational">معلومة فقط</string>
+    <string name="result_confidence_high">ثقة عالية</string>
+    <string name="result_confidence_medium">ثقة متوسطة</string>
+    <string name="result_confidence_low">ثقة منخفضة</string>
 </resources>
