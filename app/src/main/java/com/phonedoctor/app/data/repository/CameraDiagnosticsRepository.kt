@@ -32,7 +32,7 @@ class CameraDiagnosticsRepository(private val context: Context) {
                 val characteristics = cameraManager.getCameraCharacteristics(cameraId)
                 val capabilities = characteristics[
                     CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES
-                ].orEmpty()
+                ] ?: intArrayOf()
 
                 val streamMap = characteristics[
                     CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP
@@ -43,11 +43,11 @@ class CameraDiagnosticsRepository(private val context: Context) {
 
                 val oisModes = characteristics[
                     CameraCharacteristics.LENS_INFO_AVAILABLE_OPTICAL_STABILIZATION
-                ].orEmpty()
+                ] ?: intArrayOf()
 
                 val afModes = characteristics[
                     CameraCharacteristics.CONTROL_AF_AVAILABLE_MODES
-                ].orEmpty()
+                ] ?: intArrayOf()
 
                 CameraCapabilityInfo(
                     cameraId = cameraId,
@@ -64,20 +64,20 @@ class CameraDiagnosticsRepository(private val context: Context) {
                     ] == true,
                     focalLengthsMm = characteristics[
                         CameraCharacteristics.LENS_INFO_AVAILABLE_FOCAL_LENGTHS
-                    ]?.toList().orEmpty(),
-                    opticalStabilization = oisModes.contains(
-                        CameraMetadata.LENS_OPTICAL_STABILIZATION_MODE_ON
-                    ),
+                    ]?.toList() ?: emptyList(),
+                    opticalStabilization = oisModes.any {
+                        it == CameraMetadata.LENS_OPTICAL_STABILIZATION_MODE_ON
+                    },
                     autofocusModes = afModes.map(::afModeLabel).distinct(),
-                    rawCapture = capabilities.contains(
-                        CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES_RAW
-                    ),
+                    rawCapture = capabilities.any {
+                        it == CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES_RAW
+                    },
                     logicalMultiCamera = if (
                         Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
                     ) {
-                        capabilities.contains(
-                            CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES_LOGICAL_MULTI_CAMERA
-                        )
+                        capabilities.any {
+                            it == CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES_LOGICAL_MULTI_CAMERA
+                        }
                     } else {
                         false
                     },
