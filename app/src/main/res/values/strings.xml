@@ -548,4 +548,15 @@
     <string name="media_codec_summary_fmt">Decoders: %1$d · Encoders: %2$d\n%3$s</string>
     <string name="gpu_media_note">These are device capabilities reported by EGL, Android system features and MediaCodec. They are not a GPU benchmark or a hardware health score.</string>
     <string name="gpu_media_refresh">REFRESH GPU / MEDIA INFO</string>
+    <string name="result_evidence_fmt">%1$s · %2$s · %3$s</string>
+    <string name="result_evidence_measured">Measured</string>
+    <string name="result_evidence_capability">Capability</string>
+    <string name="result_evidence_current_state">Current state</string>
+    <string name="result_evidence_user_verified">User verified</string>
+    <string name="result_evidence_estimated">Estimated</string>
+    <string name="result_impact_health">Health evidence</string>
+    <string name="result_impact_informational">Informational</string>
+    <string name="result_confidence_high">High confidence</string>
+    <string name="result_confidence_medium">Medium confidence</string>
+    <string name="result_confidence_low">Low confidence</string>
 </resources>
