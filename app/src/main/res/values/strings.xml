@@ -367,6 +367,26 @@
     <string name="connectivity_disconnected">Disconnected</string>
     <string name="connectivity_internet_note">Internet test requires network access.</string>
     <string name="connectivity_run_test">TEST INTERNET ACCESS</string>
+    <string name="connectivity_refresh">REFRESH CONNECTIVITY</string>
+    <string name="connectivity_permission_required">Permission required</string>
+    <string name="connectivity_grant_bluetooth">GRANT BLUETOOTH ACCESS</string>
+    <string name="connectivity_ethernet">Ethernet</string>
+    <string name="connectivity_vpn">VPN</string>
+    <string name="connectivity_nfc">NFC</string>
+    <string name="connectivity_gnss">GNSS / GPS</string>
+    <string name="connectivity_usb">USB Devices</string>
+    <string name="connectivity_active">Active</string>
+    <string name="connectivity_inactive">Inactive</string>
+    <string name="connectivity_usb_devices_fmt">%1$d connected</string>
+    <string name="connectivity_advanced_title">Advanced Network Details</string>
+    <string name="connectivity_wifi_details_fmt">Frequency: %1$s MHz · Link: %2$s Mbps · RX: %3$s Mbps · TX: %4$s Mbps</string>
+    <string name="connectivity_usb_device_fmt">Vendor %1$d · Product %2$d · Class %3$d</string>
+    <string name="connectivity_advanced_details_fmt">Wi-Fi: %1$s\nDownstream estimate: %2$s Kbps\nUpstream estimate: %3$s Kbps\nMetered: %4$s\nCaptive portal: %5$s\nDNS servers: %6$s\nUSB devices:\n%7$s</string>
+    <string name="connectivity_probe_title">DNS &amp; TCP Latency Test</string>
+    <string name="connectivity_probe_note">Runs only when you tap the button. Phone Doctor resolves example.com and opens a short TCP connection to port 443; it does not run a speed test or upload personal data.</string>
+    <string name="connectivity_run_probe">RUN DNS / TCP TEST</string>
+    <string name="connectivity_probe_result_fmt">%1$s\nResolved addresses: %2$d\nDNS: %3$d ms\nTCP connect: %4$d ms</string>
+    <string name="connectivity_probe_failed_fmt">%1$s\nTest failed: %2$s</string>
 
     <!-- ============ Device Information (full) ============ -->
     <string name="device_info_title">Device Information</string>
