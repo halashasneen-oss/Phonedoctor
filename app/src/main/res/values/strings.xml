@@ -308,6 +308,7 @@
     <string name="camera_switch">Switch Camera</string>
     <string name="camera_permission_rationale">Phone Doctor needs camera access to show a live preview and confirm the camera works. Nothing is saved or uploaded.</string>
     <string name="camera_not_available">No camera detected on this device.</string>
+    <string name="camera_capabilities_fmt">Detected cameras: %1$d\nCamera ID: %2$s\nHardware level: %3$s\nFocal lengths: %4$s\nMax JPEG: %5$s\nFlash: %6$s\nOIS: %7$s\nRAW: %8$s\nLogical multi-camera: %9$s\nAutofocus: %10$s\nSensor orientation: %11$s°</string>
 
     <!-- ============ Sensors Test ============ -->
     <string name="sensors_title">Sensors Test</string>
