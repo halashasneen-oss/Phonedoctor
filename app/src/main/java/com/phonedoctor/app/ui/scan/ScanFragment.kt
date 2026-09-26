@@ -17,6 +17,7 @@ import com.phonedoctor.app.ads.AdFreePolicy
 import com.phonedoctor.app.ads.AdManager
 import com.phonedoctor.app.databinding.FragmentScanBinding
 import com.phonedoctor.app.domain.model.DiagnosticCategory
+import com.phonedoctor.app.domain.model.ScanMode
 import com.phonedoctor.app.ui.common.serviceLocator
 import com.phonedoctor.app.ui.common.viewBinding
 import kotlinx.coroutines.flow.first
@@ -42,9 +43,25 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.recyclerScanItems.adapter = adapter
-        binding.buttonCancel.setOnClickListener { findNavController().navigateUp() }
-        binding.buttonInteractiveContinue.setOnClickListener { viewModel.respondToInteraction(true) }
-        binding.buttonInteractiveSkip.setOnClickListener { viewModel.respondToInteraction(false) }
+        binding.buttonQuickScan.setOnClickListener {
+            viewModel.start(ScanMode.QUICK)
+        }
+        binding.buttonDeepScan.setOnClickListener {
+            viewModel.start(ScanMode.DEEP)
+        }
+        binding.buttonPerformanceScan.setOnClickListener {
+            viewModel.start(ScanMode.PERFORMANCE)
+        }
+        binding.buttonCancel.setOnClickListener {
+            viewModel.cancel()
+            findNavController().navigateUp()
+        }
+        binding.buttonInteractiveContinue.setOnClickListener {
+            viewModel.respondToInteraction(true)
+        }
+        binding.buttonInteractiveSkip.setOnClickListener {
+            viewModel.respondToInteraction(false)
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -63,12 +80,46 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
             }
         }
 
-        viewModel.start()
     }
 
     private fun render(state: ScanUiState) {
         adapter.submitList(state.items)
-        binding.progressIndicator.setProgressCompat(state.progressPercent, true)
+
+        binding.cardModeSelector.visibility = if (state.started) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
+        binding.progressIndicator.visibility = if (state.started) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+        binding.recyclerScanItems.visibility = if (state.started) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+        binding.buttonCancel.visibility = if (state.started) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+
+        binding.textTitle.setText(
+            when (state.selectedMode) {
+                ScanMode.QUICK -> R.string.scan_quick_title
+                ScanMode.DEEP -> R.string.scan_deep_title
+                ScanMode.PERFORMANCE -> R.string.scan_performance_title
+                ScanMode.BACKGROUND -> R.string.scan_title
+                null -> R.string.scan_choose_mode_title
+            }
+        )
+
+        binding.progressIndicator.setProgressCompat(
+            state.progressPercent,
+            true
+        )
 
         val interactive = state.pendingInteraction
         if (interactive != null) {
