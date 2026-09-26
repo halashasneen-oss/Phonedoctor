@@ -8,6 +8,7 @@ import com.phonedoctor.app.domain.model.DiagnosticEvidenceType
 import com.phonedoctor.app.domain.model.ScanReport
 import com.phonedoctor.app.domain.model.ScoreImpact
 import com.phonedoctor.app.domain.model.TestStatus
+import com.phonedoctor.app.domain.model.ThermalState
 import com.phonedoctor.app.domain.util.HealthScoreCalculator
 
 /** One step completing during a full scan; the UI renders these as they arrive. */
@@ -27,6 +28,7 @@ class ScanEngine(
     private val batteryRepository: BatteryRepository,
     private val storageRepository: StorageRepository,
     private val memoryRepository: MemoryRepository,
+    private val thermalRepository: ThermalRepository,
     private val sensorsRepository: SensorsRepository,
     private val connectivityRepository: ConnectivityRepository
 ) {
@@ -35,7 +37,8 @@ class ScanEngine(
         DiagnosticCategory.BATTERY,
         DiagnosticCategory.STORAGE,
         DiagnosticCategory.MEMORY,
-        DiagnosticCategory.CPU
+        DiagnosticCategory.CPU,
+        DiagnosticCategory.THERMAL
     )
     private val interactiveOrder = listOf(
         DiagnosticCategory.DISPLAY,
@@ -69,6 +72,7 @@ class ScanEngine(
         emit(measureStorage())
         emit(measureMemory())
         emit(measureCpu())
+        emit(measureThermal())
         emit(measureSensors())
         emit(measureCamera(cameraAvailable))
         emit(measureConnectivity())
@@ -98,6 +102,7 @@ class ScanEngine(
         emit(measureStorage())
         emit(measureMemory())
         emit(measureCpu())
+        emit(measureThermal())
 
         for (category in interactiveOrder) {
             emit(interactiveResult(category, requestUserConfirmation(category)))
@@ -214,6 +219,40 @@ class ScanEngine(
             detail = "Processor availability only; benchmark health is not measured yet",
             evidenceType = DiagnosticEvidenceType.CAPABILITY,
             scoreImpact = ScoreImpact.INFORMATIONAL,
+            confidence = DiagnosticConfidence.HIGH
+        )
+    }
+
+    private suspend fun measureThermal(): CategoryResult {
+        val info = thermalRepository.getThermalInfo()
+        val status = when (info.state) {
+            ThermalState.NONE -> TestStatus.EXCELLENT
+            ThermalState.LIGHT -> TestStatus.GOOD
+            ThermalState.MODERATE -> TestStatus.FAIR
+            ThermalState.SEVERE,
+            ThermalState.CRITICAL,
+            ThermalState.EMERGENCY,
+            ThermalState.SHUTDOWN -> TestStatus.POOR
+            ThermalState.UNAVAILABLE -> TestStatus.UNAVAILABLE
+        }
+
+        val summary = buildString {
+            append(info.state.name.lowercase().replaceFirstChar { it.uppercase() })
+            info.currentHeadroom?.let {
+                append(" · headroom ")
+                append("%.2f".format(it))
+            }
+        }
+
+        return CategoryResult(
+            category = DiagnosticCategory.THERMAL,
+            status = status,
+            summary = summary,
+            detail = info.forecastHeadroom10s?.let {
+                "10s forecast headroom: %.2f".format(it)
+            },
+            evidenceType = DiagnosticEvidenceType.MEASURED,
+            scoreImpact = ScoreImpact.HEALTH,
             confidence = DiagnosticConfidence.HIGH
         )
     }
