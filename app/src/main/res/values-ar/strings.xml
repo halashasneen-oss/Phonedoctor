@@ -425,12 +425,14 @@
     <string name="history_failed_fmt">%1$d فاشل</string>
     <string name="history_health_fmt">الصحة %1$d%%</string>
     <string name="history_performance">أداء</string>
+    <string name="history_results_fmt">%1$d نتائج</string>
     <string name="history_clear_all">مسح السجل</string>
     <string name="history_clear_confirm_title">مسح كل السجل؟</string>
     <string name="history_clear_confirm_message">سيؤدي هذا إلى حذف كل نتائج الفحص المحفوظة على هذا الجهاز نهائيًا. لا يمكن التراجع عن هذا الإجراء.</string>
 
     <!-- ============ Report ============ -->
     <string name="report_title">تقرير صحة الهاتف</string>
+    <string name="report_performance_title">تقرير أداء الهاتف</string>
     <string name="report_device">الجهاز</string>
     <string name="report_date">التاريخ</string>
     <string name="report_overall_health">الصحة العامة</string>
