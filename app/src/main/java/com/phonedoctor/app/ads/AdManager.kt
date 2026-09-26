@@ -62,7 +62,13 @@ object AdManager {
     }
 
     fun loadInterstitialAd(context: Context) {
-        if (!BuildConfig.SHOW_ADS || !AdConsentManager.canRequestAds.value) return
+        if (
+            !BuildConfig.SHOW_ADS ||
+            !AdConsentManager.canRequestAds.value ||
+            BuildConfig.INTERSTITIAL_AD_UNIT_ID.isBlank()
+        ) {
+            return
+        }
         if (interstitialAd != null || interstitialLoading) return
 
         interstitialLoading = true
@@ -85,6 +91,12 @@ object AdManager {
     }
 
     fun showInterstitialAd(activity: Activity, onDismissed: () -> Unit) {
+        if (!BuildConfig.SHOW_ADS || !AdConsentManager.canRequestAds.value) {
+            interstitialAd = null
+            onDismissed()
+            return
+        }
+
         val ad = interstitialAd
         if (ad == null) {
             onDismissed()
@@ -106,7 +118,11 @@ object AdManager {
     }
 
     fun loadRewardedAd(context: Context, onLoaded: (Boolean) -> Unit) {
-        if (!BuildConfig.SHOW_ADS || !AdConsentManager.canRequestAds.value) {
+        if (
+            !BuildConfig.SHOW_ADS ||
+            !AdConsentManager.canRequestAds.value ||
+            BuildConfig.REWARDED_AD_UNIT_ID.isBlank()
+        ) {
             onLoaded(false)
             return
         }
@@ -140,11 +156,25 @@ object AdManager {
         )
     }
 
+    @Synchronized
+    fun clearCachedAds() {
+        interstitialAd = null
+        rewardedAd = null
+        interstitialLoading = false
+        rewardedLoading = false
+    }
+
     fun showRewardedAd(
         activity: Activity,
         onRewardEarned: () -> Unit,
         onDismissed: () -> Unit
     ) {
+        if (!BuildConfig.SHOW_ADS || !AdConsentManager.canRequestAds.value) {
+            rewardedAd = null
+            onDismissed()
+            return
+        }
+
         val ad = rewardedAd
         if (ad == null) {
             onDismissed()
