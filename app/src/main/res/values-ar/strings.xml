@@ -163,7 +163,7 @@
     <string name="memory_low_memory_warning">الجهاز يعمل بذاكرة منخفضة.</string>
 
     <!-- ============ CPU / Device Info ============ -->
-    <string name="cpu_title">المعالج ومعلومات الجهاز</string>
+    <string name="cpu_title">مختبر المعالج</string>
     <string name="cpu_manufacturer">الشركة المصنعة</string>
     <string name="cpu_model">الطراز</string>
     <string name="cpu_android_version">إصدار أندرويد</string>
