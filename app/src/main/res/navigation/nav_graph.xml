@@ -38,6 +38,7 @@
         <action android:id="@+id/action_home_to_buttons" app:destination="@id/hardwareButtonsFragment" />
         <action android:id="@+id/action_home_to_cpu" app:destination="@id/cpuFragment" />
         <action android:id="@+id/action_home_to_thermal" app:destination="@id/thermalFragment" />
+        <action android:id="@+id/action_home_to_gpu_media" app:destination="@id/gpuMediaFragment" />
     </fragment>
 
     <fragment
@@ -82,6 +83,11 @@
         android:id="@+id/thermalFragment"
         android:name="com.phonedoctor.app.ui.thermal.ThermalFragment"
         tools:layout="@layout/fragment_thermal" />
+
+    <fragment
+        android:id="@+id/gpuMediaFragment"
+        android:name="com.phonedoctor.app.ui.gpumedia.GpuMediaFragment"
+        tools:layout="@layout/fragment_gpu_media" />
 
     <fragment
         android:id="@+id/displayTestFragment"
