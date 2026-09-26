@@ -67,6 +67,7 @@ android {
             versionNameSuffix = "-debug"
             isDebuggable = true
             buildConfigField("boolean", "SHOW_ADS", "true")
+            buildConfigField("boolean", "REWARDED_ADS_ENABLED", "true")
             buildConfigField(
                 "String",
                 "BANNER_AD_UNIT_ID",
@@ -92,6 +93,12 @@ android {
             )
             manifestPlaceholders["admobAppId"] = "ca-app-pub-5961173995415325~9886076332"
             buildConfigField("boolean", "SHOW_ADS", "true")
+            val rewardedAdUnitId = secret("REWARDED_AD_UNIT_ID")
+            buildConfigField(
+                "boolean",
+                "REWARDED_ADS_ENABLED",
+                rewardedAdUnitId.isNotBlank().toString()
+            )
             buildConfigField(
                 "String",
                 "BANNER_AD_UNIT_ID",
@@ -105,7 +112,7 @@ android {
             buildConfigField(
                 "String",
                 "REWARDED_AD_UNIT_ID",
-                "\"${secret("REWARDED_AD_UNIT_ID")}\""
+                "\"$rewardedAdUnitId\""
             )
 
             signingConfigs.findByName("release")?.let { signingConfig = it }
