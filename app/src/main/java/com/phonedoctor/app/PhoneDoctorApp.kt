@@ -6,7 +6,6 @@ import android.app.NotificationManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
-import com.phonedoctor.app.ads.AdManager
 import com.phonedoctor.app.data.datastore.AppLanguage
 import com.phonedoctor.app.data.datastore.AppThemeMode
 import kotlinx.coroutines.flow.first
@@ -20,7 +19,6 @@ class PhoneDoctorApp : Application() {
         super.onCreate()
         applySavedThemeAndLanguage()
         createNotificationChannel()
-        AdManager.initialize(this)
     }
 
     private fun applySavedThemeAndLanguage() {
