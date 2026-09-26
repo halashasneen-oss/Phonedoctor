@@ -12,11 +12,14 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.navigation.fragment.findNavController
 import com.phonedoctor.app.R
+import com.phonedoctor.app.ads.AdConsentManager
+import com.phonedoctor.app.ads.AdFreePolicy
 import com.phonedoctor.app.ads.AdManager
 import com.phonedoctor.app.databinding.FragmentScanBinding
 import com.phonedoctor.app.domain.model.DiagnosticCategory
 import com.phonedoctor.app.ui.common.serviceLocator
 import com.phonedoctor.app.ui.common.viewBinding
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class ScanFragment : Fragment(R.layout.fragment_scan) {
@@ -43,11 +46,20 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
         binding.buttonInteractiveContinue.setOnClickListener { viewModel.respondToInteraction(true) }
         binding.buttonInteractiveSkip.setOnClickListener { viewModel.respondToInteraction(false) }
 
-        AdManager.loadInterstitialAd(requireContext())
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { state -> render(state) }
+                launch {
+                    viewModel.uiState.collect { state -> render(state) }
+                }
+                launch {
+                    AdConsentManager.canRequestAds.collect { canRequestAds ->
+                        if (!canRequestAds) return@collect
+                        val settings = serviceLocator().settingsRepository.settings.first()
+                        if (!AdFreePolicy.isAdFree(settings.isPremium, settings.adFreeUntilMillis)) {
+                            AdManager.loadInterstitialAd(requireContext())
+                        }
+                    }
+                }
             }
         }
 
@@ -70,9 +82,19 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
         if (reportId != null && !navigatedToResults) {
             navigatedToResults = true
             val action = ScanFragmentDirections.actionScanToResults(reportId)
-            AdManager.showInterstitialAd(requireActivity()) {
-                if (isAdded) {
-                    findNavController().navigate(action)
+            viewLifecycleOwner.lifecycleScope.launch {
+                val settings = serviceLocator().settingsRepository.settings.first()
+                val skipAds = AdFreePolicy.isAdFree(
+                    settings.isPremium,
+                    settings.adFreeUntilMillis
+                ) || !AdConsentManager.canRequestAds.value
+
+                if (skipAds) {
+                    if (isAdded) findNavController().navigate(action)
+                } else {
+                    AdManager.showInterstitialAd(requireActivity()) {
+                        if (isAdded) findNavController().navigate(action)
+                    }
                 }
             }
         }
