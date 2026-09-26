@@ -232,6 +232,11 @@
     <string name="display_red">شاشة حمراء</string>
     <string name="display_green">شاشة خضراء</string>
     <string name="display_blue">شاشة زرقاء</string>
+    <string name="display_dark_gray">رمادي داكن</string>
+    <string name="display_light_gray">رمادي فاتح</string>
+    <string name="display_grayscale">تدرّج رمادي</string>
+    <string name="display_hdr_none">لا يوجد حسب النظام</string>
+    <string name="display_capabilities_fmt">الدقة: %1$d × %2$d\nمعدل التحديث الحالي: %3$.0f هرتز\nالمعدلات المدعومة: %4$s\nHDR: %5$s\nالنطاق اللوني الواسع: %6$s</string>
     <string name="display_gradient">تدرّج لوني</string>
     <string name="display_tap_to_continue">اضغط في أي مكان للمتابعة</string>
     <string name="display_result_question">هل بدت الشاشة صحيحة في كل الحالات؟</string>
@@ -245,6 +250,11 @@
     <string name="touch_coverage">نسبة التغطية</string>
     <string name="touch_coverage_fmt">%1$d%%</string>
     <string name="touch_finish_test">إنهاء الاختبار</string>
+    <string name="touch_current_fingers_fmt">الأصابع الحالية: %1$d</string>
+    <string name="touch_max_fingers_fmt">أقصى لمس متزامن: %1$d</string>
+    <string name="touch_coverage_value_fmt">التغطية: %1$d%%</string>
+    <string name="touch_edge_coverage_fmt">تغطية الحواف: %1$d%%</string>
+    <string name="touch_missed_cells_fmt">الخلايا غير المختبرة: %1$d</string>
 
     <!-- ============ Speaker Test ============ -->
     <string name="speaker_title">اختبار مكبر الصوت</string>
