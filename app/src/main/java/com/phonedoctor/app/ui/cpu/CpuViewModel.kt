@@ -7,6 +7,8 @@ import com.phonedoctor.app.domain.model.CpuBenchmarkResult
 import com.phonedoctor.app.domain.model.CpuInfo
 import com.phonedoctor.app.domain.model.CpuStressResult
 import com.phonedoctor.app.domain.util.CpuBenchmarkMath
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,6 +30,8 @@ class CpuViewModel(private val serviceLocator: ServiceLocator) : ViewModel() {
     private val _uiState = MutableStateFlow(CpuLabUiState())
     val uiState: StateFlow<CpuLabUiState> = _uiState.asStateFlow()
 
+    private var stressJob: Job? = null
+
     init {
         refreshInfo()
     }
@@ -38,6 +42,7 @@ class CpuViewModel(private val serviceLocator: ServiceLocator) : ViewModel() {
                 val info = serviceLocator.cpuRepository.getCpuInfo()
                 _uiState.update { it.copy(info = info, error = null) }
             } catch (t: Throwable) {
+                if (t is CancellationException) throw t
                 _uiState.update { it.copy(error = t.message ?: "CPU information unavailable") }
             }
         }
@@ -64,6 +69,7 @@ class CpuViewModel(private val serviceLocator: ServiceLocator) : ViewModel() {
                     )
                 }
             } catch (t: Throwable) {
+                if (t is CancellationException) throw t
                 _uiState.update {
                     it.copy(
                         benchmarkRunning = false,
@@ -78,7 +84,7 @@ class CpuViewModel(private val serviceLocator: ServiceLocator) : ViewModel() {
         val info = _uiState.value.info ?: return
         if (_uiState.value.benchmarkRunning || _uiState.value.stressRunning) return
 
-        viewModelScope.launch {
+        stressJob = viewModelScope.launch {
             _uiState.update {
                 it.copy(
                     stressRunning = true,
@@ -132,13 +138,35 @@ class CpuViewModel(private val serviceLocator: ServiceLocator) : ViewModel() {
                     )
                 }
             } catch (t: Throwable) {
+                if (t is CancellationException) {
+                    _uiState.update {
+                        it.copy(
+                            stressRunning = false,
+                            stressProgress = 0
+                        )
+                    }
+                    throw t
+                }
                 _uiState.update {
                     it.copy(
                         stressRunning = false,
                         error = t.message ?: "CPU stress test failed"
                     )
                 }
+            } finally {
+                stressJob = null
             }
+        }
+    }
+
+    fun cancelStressTest() {
+        stressJob?.cancel()
+        stressJob = null
+        _uiState.update {
+            it.copy(
+                stressRunning = false,
+                stressProgress = 0
+            )
         }
     }
 }
