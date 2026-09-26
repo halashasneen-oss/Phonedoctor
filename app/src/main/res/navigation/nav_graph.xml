@@ -36,6 +36,7 @@
         <action android:id="@+id/action_home_to_vibration" app:destination="@id/vibrationTestFragment" />
         <action android:id="@+id/action_home_to_flashlight" app:destination="@id/flashlightTestFragment" />
         <action android:id="@+id/action_home_to_cpu" app:destination="@id/cpuFragment" />
+        <action android:id="@+id/action_home_to_thermal" app:destination="@id/thermalFragment" />
     </fragment>
 
     <fragment
@@ -75,6 +76,11 @@
         android:id="@+id/cpuFragment"
         android:name="com.phonedoctor.app.ui.cpu.CpuFragment"
         tools:layout="@layout/fragment_cpu" />
+
+    <fragment
+        android:id="@+id/thermalFragment"
+        android:name="com.phonedoctor.app.ui.thermal.ThermalFragment"
+        tools:layout="@layout/fragment_thermal" />
 
     <fragment
         android:id="@+id/displayTestFragment"
