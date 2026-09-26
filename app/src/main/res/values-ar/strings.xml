@@ -477,11 +477,11 @@
     <!-- ============ Privacy ============ -->
     <string name="privacy_title">الخصوصية</string>
     <string name="privacy_intro">صُمم Phone Doctor لإجراء فحوصات الجهاز محليًا كلما أمكن ذلك. لا يتم رفع نتائج الفحص أو الملفات الشخصية إلى خادم خاص بـ Phone Doctor.</string>
-    <string name="privacy_data_body">لا يجمع Phone Doctor رقم IMEI أو الرقم التسلسلي أو معرّف الإعلانات أو عنوان MAC. يتم تخزين سجل الاختبارات والإعدادات وأي تسجيلات مؤقتة على جهازك فقط، ويمكن حذفها في أي وقت من الإعدادات.</string>
+    <string name="privacy_data_body">لا يجمع Phone Doctor رقم IMEI أو الرقم التسلسلي أو عنوان MAC أو بيانات الحساب أو ملفاتك الشخصية. يبقى سجل الفحوصات والإعدادات وتسجيلات الميكروفون المؤقتة داخل مساحة التطبيق الخاصة على جهازك. اختبار DNS/TCP الاختياري يتصل بـ example.com فقط عند تشغيله يدويًا ولا يرفع بيانات شخصية.</string>
     <string name="privacy_ads_title">الإعلانات</string>
-    <string name="privacy_ads_body">قد تعرض النسخة المجانية من Phone Doctor إعلانات عبر Google AdMob. قد تستخدم الإعلانات بيانات وفق إعدادات الإعلانات والموافقة الخاصة بـ Google. يمكنك إزالة الإعلانات عبر Phone Doctor Premium.</string>
+    <string name="privacy_ads_body">قد يعرض Phone Doctor إعلانات عبر Google AdMob. عند الحاجة يتم عرض موافقة Google UMP قبل طلب الإعلانات، ويمكن للمستخدم المؤهل إعادة فتح خيارات خصوصية الإعلانات من الإعدادات. ويمكن لميزة الإعلان بمكافأة إيقاف إعلانات Phone Doctor لمدة ساعة بعد استحقاق المكافأة.</string>
     <string name="privacy_permissions_title">الأذونات</string>
-    <string name="privacy_permissions_body">يتم طلب أذونات الكاميرا والميكروفون والتخزين والإشعارات فقط عند فتح الاختبار المرتبط بها، وتُستخدم فقط لذلك الاختبار.</string>
+    <string name="privacy_permissions_body">يتم طلب الكاميرا والميكروفون فقط عند استخدام الاختبار المرتبط بهما. ويُطلب Bluetooth Connect عند الحاجة لقراءة حالة البلوتوث على إصدارات Android الحديثة. ولا يُطلب إذن الإشعارات إلا إذا فعّلت التذكيرات. لا يطلب Phone Doctor صلاحية واسعة للصور أو الفيديو أو مكتبة الصوت أو التخزين الخارجي أو الموقع لإجراء التشخيصات.</string>
 
     <!-- ============ Premium ============ -->
     <string name="premium_title">Phone Doctor Premium</string>
