@@ -7,6 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.phonedoctor.app.ServiceLocator
 import com.phonedoctor.app.data.repository.ScanProgressEvent
 import com.phonedoctor.app.domain.model.DiagnosticCategory
+import com.phonedoctor.app.domain.model.ScanMode
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,7 +25,9 @@ data class ScanListItem(
 enum class ScanItemState { PENDING, RUNNING, DONE }
 
 data class ScanUiState(
-    val items: List<ScanListItem>,
+    val items: List<ScanListItem> = emptyList(),
+    val selectedMode: ScanMode? = null,
+    val started: Boolean = false,
     val progressPercent: Int = 0,
     val pendingInteraction: DiagnosticCategory? = null,
     val finishedReportId: Long? = null,
@@ -34,48 +39,76 @@ class ScanViewModel(
     private val appContext: Context
 ) : ViewModel() {
 
-    private val categoryOrder = listOf(
-        DiagnosticCategory.BATTERY, DiagnosticCategory.STORAGE, DiagnosticCategory.MEMORY,
-        DiagnosticCategory.CPU, DiagnosticCategory.THERMAL, DiagnosticCategory.DISPLAY, DiagnosticCategory.TOUCH,
-        DiagnosticCategory.AUDIO, DiagnosticCategory.MICROPHONE, DiagnosticCategory.SENSORS,
-        DiagnosticCategory.CAMERA, DiagnosticCategory.CONNECTIVITY
-    )
-
-    private val _uiState = MutableStateFlow(
-        ScanUiState(items = categoryOrder.map { ScanListItem(it, labelResFor(it), ScanItemState.PENDING) })
-    )
+    private val _uiState = MutableStateFlow(ScanUiState())
     val uiState: StateFlow<ScanUiState> = _uiState.asStateFlow()
 
-    // A StateFlow (rather than a per-category CompletableDeferred) always holds the
-    // latest response, so a tap can never silently no-op against a stale/null reference.
     private val interactionResponse = MutableStateFlow<Boolean?>(null)
-    private var started = false
+    private var scanJob: Job? = null
+    private var activeOrder: List<DiagnosticCategory> = emptyList()
 
-    fun start() {
-        if (started) return
-        started = true
-        viewModelScope.launch {
-            val cameraAvailable = appContext.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
-            markRunning(categoryOrder.first())
+    fun start(mode: ScanMode) {
+        if (_uiState.value.started) return
 
-            val report = serviceLocator.scanEngine.run(
-                cameraAvailable = cameraAvailable,
-                requestUserConfirmation = { category -> awaitUserConfirmation(category) },
-                onProgress = { event: ScanProgressEvent -> onProgress(event) }
-            )
+        activeOrder = serviceLocator.scanEngine.categoriesFor(mode)
+        _uiState.value = ScanUiState(
+            items = activeOrder.map {
+                ScanListItem(
+                    category = it,
+                    labelRes = labelResFor(it),
+                    state = ScanItemState.PENDING
+                )
+            },
+            selectedMode = mode,
+            started = true
+        )
 
-            val id = serviceLocator.historyRepository.save(report)
-            _uiState.value = _uiState.value.copy(finishedReportId = id)
+        scanJob = viewModelScope.launch {
+            try {
+                val cameraAvailable = appContext.packageManager.hasSystemFeature(
+                    PackageManager.FEATURE_CAMERA_ANY
+                )
+                activeOrder.firstOrNull()?.let(::markRunning)
+
+                val report = serviceLocator.scanEngine.runMode(
+                    mode = mode,
+                    cameraAvailable = cameraAvailable,
+                    requestUserConfirmation = { category ->
+                        awaitUserConfirmation(category)
+                    },
+                    onProgress = { event ->
+                        onProgress(event)
+                    }
+                )
+
+                val id = serviceLocator.historyRepository.save(report)
+                _uiState.value = _uiState.value.copy(
+                    finishedReportId = id
+                )
+            } catch (cancelled: CancellationException) {
+                _uiState.value = _uiState.value.copy(
+                    cancelled = true,
+                    pendingInteraction = null
+                )
+                throw cancelled
+            } finally {
+                scanJob = null
+            }
         }
     }
 
-    private suspend fun awaitUserConfirmation(category: DiagnosticCategory): Boolean {
+    private suspend fun awaitUserConfirmation(
+        category: DiagnosticCategory
+    ): Boolean {
         markRunning(category)
         interactionResponse.value = null
-        _uiState.value = _uiState.value.copy(pendingInteraction = category)
+        _uiState.value = _uiState.value.copy(
+            pendingInteraction = category
+        )
         val result = interactionResponse.first { it != null }!!
         interactionResponse.value = null
-        _uiState.value = _uiState.value.copy(pendingInteraction = null)
+        _uiState.value = _uiState.value.copy(
+            pendingInteraction = null
+        )
         return result
     }
 
@@ -84,34 +117,56 @@ class ScanViewModel(
     }
 
     fun cancel() {
-        _uiState.value = _uiState.value.copy(cancelled = true)
+        scanJob?.cancel()
+        scanJob = null
+        _uiState.value = _uiState.value.copy(
+            cancelled = true,
+            pendingInteraction = null
+        )
     }
 
     private fun markRunning(category: DiagnosticCategory) {
         _uiState.value = _uiState.value.copy(
             items = _uiState.value.items.map {
-                if (it.category == category && it.state == ScanItemState.PENDING) it.copy(state = ScanItemState.RUNNING) else it
+                if (
+                    it.category == category &&
+                    it.state == ScanItemState.PENDING
+                ) {
+                    it.copy(state = ScanItemState.RUNNING)
+                } else {
+                    it
+                }
             }
         )
     }
 
     private fun onProgress(event: ScanProgressEvent) {
-        val nextIndex = categoryOrder.indexOf(event.category) + 1
-        val nextCategory = categoryOrder.getOrNull(nextIndex)
+        val nextIndex = activeOrder.indexOf(event.category) + 1
+        val nextCategory = activeOrder.getOrNull(nextIndex)
+
         _uiState.value = _uiState.value.copy(
             items = _uiState.value.items.map { item ->
                 when {
-                    item.category == event.category -> item.copy(state = ScanItemState.DONE)
-                    nextCategory != null && item.category == nextCategory && item.state == ScanItemState.PENDING ->
+                    item.category == event.category ->
+                        item.copy(state = ScanItemState.DONE)
+                    nextCategory != null &&
+                        item.category == nextCategory &&
+                        item.state == ScanItemState.PENDING ->
                         item.copy(state = ScanItemState.RUNNING)
                     else -> item
                 }
             },
-            progressPercent = (event.completedCount * 100 / event.totalCount)
+            progressPercent = if (event.totalCount > 0) {
+                event.completedCount * 100 / event.totalCount
+            } else {
+                0
+            }
         )
     }
 
-    private fun labelResFor(category: DiagnosticCategory): Int = when (category) {
+    private fun labelResFor(
+        category: DiagnosticCategory
+    ): Int = when (category) {
         DiagnosticCategory.BATTERY -> com.phonedoctor.app.R.string.scan_item_battery
         DiagnosticCategory.STORAGE -> com.phonedoctor.app.R.string.scan_item_storage
         DiagnosticCategory.MEMORY -> com.phonedoctor.app.R.string.scan_item_memory
