@@ -190,6 +190,16 @@ Workers: 8"
                     tools:text="Stress test 60%"
                     tools:visibility="visible" />
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonCancelStress"
+                    style="@style/Widget.PhoneDoctor.Button.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:text="@string/cpu_cancel_stress"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
                 <TextView
                     android:id="@+id/textStressResult"
                     android:layout_width="match_parent"
