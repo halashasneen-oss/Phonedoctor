@@ -68,10 +68,51 @@ class BatteryFragment : Fragment(R.layout.fragment_battery) {
             InfoRow(getString(R.string.battery_temperature), info.temperatureCelsius?.let { "%.1f°C".format(it) } ?: na),
             InfoRow(getString(R.string.battery_voltage), info.voltageMillivolts?.let { "$it mV" } ?: na),
             InfoRow(getString(R.string.battery_current), info.currentMicroAmps?.let { "${it / 1000} mA" } ?: na),
+            InfoRow(
+                getString(R.string.battery_current_average),
+                info.currentAverageMicroAmps?.let { "${it / 1000} mA" } ?: na
+            ),
+            InfoRow(
+                getString(R.string.battery_charge_counter),
+                info.chargeCounterMicroAh?.let { "%.0f mAh".format(it / 1000.0) } ?: na
+            ),
+            InfoRow(
+                getString(R.string.battery_energy_remaining),
+                info.energyCounterNanoWh?.let { "%.2f Wh".format(it / 1_000_000_000.0) } ?: na
+            ),
+            InfoRow(
+                getString(R.string.battery_cycle_count),
+                info.cycleCount?.toString() ?: na
+            ),
+            InfoRow(
+                getString(R.string.battery_charge_time_remaining),
+                info.chargeTimeRemainingMillis?.let { formatDuration(it) } ?: na
+            ),
+            InfoRow(
+                getString(R.string.battery_estimated_power),
+                estimatedPowerWatts(info)?.let { "%.2f W".format(it) } ?: na
+            ),
             InfoRow(getString(R.string.battery_technology), info.technology ?: na),
             InfoRow(getString(R.string.battery_health), info.healthDescription ?: na)
         )
         adapter.submitList(rows)
+    }
+
+    private fun estimatedPowerWatts(info: BatteryInfo): Double? {
+        val currentMicroAmps = info.currentMicroAmps ?: return null
+        val voltageMillivolts = info.voltageMillivolts ?: return null
+        return currentMicroAmps.toDouble() * voltageMillivolts.toDouble() / 1_000_000_000.0
+    }
+
+    private fun formatDuration(millis: Long): String {
+        val totalMinutes = millis / 60_000L
+        val hours = totalMinutes / 60L
+        val minutes = totalMinutes % 60L
+        return if (hours > 0L) {
+            getString(R.string.battery_time_hours_minutes, hours, minutes)
+        } else {
+            getString(R.string.battery_time_minutes, minutes)
+        }
     }
 
     private fun chargingStateLabel(state: ChargingState): Int = when (state) {
