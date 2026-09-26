@@ -152,6 +152,11 @@
     <string name="storage_category_documents">المستندات</string>
     <string name="storage_category_other">أخرى</string>
     <string name="storage_view_breakdown">عرض التفاصيل</string>
+    <string name="storage_benchmark_title">اختبار أداء التخزين</string>
+    <string name="storage_benchmark_desc">يكتب ويقرأ ملفًا مؤقتًا داخل ذاكرة التخزين المؤقت الخاصة بـ Phone Doctor ثم يحذفه. لا يتم فحص أو تعديل ملفاتك الشخصية.</string>
+    <string name="storage_run_benchmark">تشغيل اختبار أداء التخزين</string>
+    <string name="storage_benchmark_result_fmt">حجم الاختبار: %1$s\nالكتابة: %2$.1f MiB/ث (%3$d مللي ثانية)\nالقراءة: %4$.1f MiB/ث (%5$d مللي ثانية)</string>
+    <string name="storage_benchmark_note">تعكس النتيجة اختبارًا تسلسليًا محليًا داخل مساحة التطبيق وقد تتأثر بالكاش والحرارة والعمليات الخلفية. وهي ليست قيمة صحة خام لوحدة UFS/NAND.</string>
     <string name="storage_permission_rationale">لعرض تفاصيل التخزين حسب نوع الملف، يحتاج Phone Doctor إذن قراءة الوسائط على هذا الجهاز. هذا اختياري ويُستخدم فقط لحساب الأحجام على جهازك.</string>
 
     <!-- ============ Memory ============ -->
@@ -161,6 +166,14 @@
     <string name="memory_used">الذاكرة المستخدمة</string>
     <string name="memory_status">حالة الذاكرة</string>
     <string name="memory_low_memory_warning">الجهاز يعمل بذاكرة منخفضة.</string>
+    <string name="memory_low_threshold">حد الذاكرة المنخفضة</string>
+    <string name="memory_benchmark_title">اختبار أداء الذاكرة RAM</string>
+    <string name="memory_benchmark_desc">يقيس سرعة نسخ البيانات داخل الذاكرة ويجري اختبار تخصيص صغيرًا ومحدودًا لتجنب الضغط الزائد على الجهاز.</string>
+    <string name="memory_run_benchmark">تشغيل اختبار أداء الذاكرة</string>
+    <string name="memory_benchmark_result_fmt">سرعة نسخ الذاكرة: %1$.1f MiB/ث\nحجم منطقة النسخ: %2$s\nاختبار التخصيص: %3$s — %4$s</string>
+    <string name="memory_allocation_passed">ناجح</string>
+    <string name="memory_allocation_failed">تعذر التخصيص بأمان</string>
+    <string name="memory_benchmark_note">هذا قياس محلي من Phone Doctor. نسبة استخدام RAM وحدها لا تُعتبر دليلًا على صحة العتاد.</string>
 
     <!-- ============ CPU / Device Info ============ -->
     <string name="cpu_title">مختبر المعالج</string>
