@@ -2,6 +2,7 @@ package com.phonedoctor.app.ui.scan
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -53,9 +54,17 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
             viewModel.start(ScanMode.PERFORMANCE)
         }
         binding.buttonCancel.setOnClickListener {
-            viewModel.cancel()
-            findNavController().navigateUp()
+            cancelAndNavigateUp()
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    cancelAndNavigateUp()
+                }
+            }
+        )
         binding.buttonInteractiveContinue.setOnClickListener {
             viewModel.respondToInteraction(true)
         }
@@ -149,6 +158,11 @@ class ScanFragment : Fragment(R.layout.fragment_scan) {
                 }
             }
         }
+    }
+
+    private fun cancelAndNavigateUp() {
+        viewModel.cancel()
+        findNavController().navigateUp()
     }
 
     private fun interactiveBodyRes(category: DiagnosticCategory): Int = when (category) {
