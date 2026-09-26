@@ -425,12 +425,14 @@
     <string name="history_failed_fmt">%1$d Failed</string>
     <string name="history_health_fmt">Health %1$d%%</string>
     <string name="history_performance">Performance</string>
+    <string name="history_results_fmt">%1$d results</string>
     <string name="history_clear_all">Clear History</string>
     <string name="history_clear_confirm_title">Clear all history?</string>
     <string name="history_clear_confirm_message">This permanently deletes every saved scan result from this device. This cannot be undone.</string>
 
     <!-- ============ Report ============ -->
     <string name="report_title">Phone Health Report</string>
+    <string name="report_performance_title">Phone Performance Report</string>
     <string name="report_device">Device</string>
     <string name="report_date">Date</string>
     <string name="report_overall_health">Overall Health</string>
