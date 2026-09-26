@@ -507,4 +507,23 @@
     <string name="buttons_detected">Detected</string>
     <string name="buttons_waiting">Waiting for button press</string>
     <string name="buttons_power_note">Android does not deliver the Power button to ordinary apps, so Phone Doctor does not claim to test it.</string>
+    <string name="gpu_media_title">GPU &amp; Media Lab</string>
+    <string name="gpu_section_title">Graphics Capabilities</string>
+    <string name="gpu_vendor">GPU Vendor</string>
+    <string name="gpu_renderer">GPU Renderer</string>
+    <string name="gpu_opengl_version">OpenGL ES Version</string>
+    <string name="gpu_glsl_version">GLSL Version</string>
+    <string name="gpu_vulkan_hardware_level">Vulkan Hardware Level</string>
+    <string name="gpu_vulkan_version">Vulkan Hardware Version</string>
+    <string name="media_section_title">Media Codec Capabilities</string>
+    <string name="media_total_codecs">Total codecs</string>
+    <string name="media_decoders_encoders">Decoders / Encoders</string>
+    <string name="media_decoders_encoders_fmt">%1$d / %2$d</string>
+    <string name="media_hardware_codecs">Hardware-accelerated codecs</string>
+    <string name="media_software_codecs">Software-only codecs</string>
+    <string name="media_vendor_codecs">Vendor codecs</string>
+    <string name="media_codec_hardware_fmt">HW decoders: %1$d · HW encoders: %2$d</string>
+    <string name="media_codec_summary_fmt">Decoders: %1$d · Encoders: %2$d\n%3$s</string>
+    <string name="gpu_media_note">These are device capabilities reported by EGL, Android system features and MediaCodec. They are not a GPU benchmark or a hardware health score.</string>
+    <string name="gpu_media_refresh">REFRESH GPU / MEDIA INFO</string>
 </resources>
