@@ -6,6 +6,8 @@ import com.phonedoctor.app.data.datastore.SettingsRepository
 import com.phonedoctor.app.data.local.AppDatabase
 import com.phonedoctor.app.data.repository.BatteryRepository
 import com.phonedoctor.app.data.repository.ConnectivityRepository
+import com.phonedoctor.app.data.repository.CpuBenchmarkEngine
+import com.phonedoctor.app.data.repository.CpuRepository
 import com.phonedoctor.app.data.repository.DeviceInfoRepository
 import com.phonedoctor.app.data.repository.HistoryRepository
 import com.phonedoctor.app.data.repository.MemoryRepository
@@ -34,6 +36,8 @@ class ServiceLocator(context: Context) {
     val deviceInfoRepository: DeviceInfoRepository by lazy { DeviceInfoRepository(appContext) }
     val sensorsRepository: SensorsRepository by lazy { SensorsRepository(appContext) }
     val connectivityRepository: ConnectivityRepository by lazy { ConnectivityRepository(appContext) }
+    val cpuRepository: CpuRepository by lazy { CpuRepository() }
+    val cpuBenchmarkEngine: CpuBenchmarkEngine by lazy { CpuBenchmarkEngine() }
     val thermalRepository: ThermalRepository by lazy { ThermalRepository(appContext) }
     val historyRepository: HistoryRepository by lazy { HistoryRepository(database.scanHistoryDao()) }
 
