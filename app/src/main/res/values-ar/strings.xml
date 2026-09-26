@@ -59,8 +59,8 @@
     <string name="home_adfree_reward_loading">جارٍ تحميل إعلان المكافأة…</string>
     <string name="home_adfree_reward_unavailable">إعلان المكافأة غير متوفر حاليًا. حاول مرة أخرى لاحقًا.</string>
     <string name="home_adfree_reward_granted">تمت إزالة إعلانات البانر والإعلانات البينية لمدة ساعة.</string>
-    <string name="home_share_text">افحص هاتفك باستخدام Phone Doctor — البطارية والشاشة واللمس والصوت والحساسات والمزيد.</string>
-    <string name="home_share_chooser">مشاركة Phone Doctor</string>
+    <string name="home_share_text">بدك تعرف شو وضع هاتفك فعليًا؟ Phone Doctor يفحص البطارية والشاشة واللمس والصوت والحساسات والكاميرا والأداء وأكثر — كله بمكان واحد. جرّبه الآن:</string>
+    <string name="home_share_chooser">شارك Phone Doctor مع أصدقائك</string>
 
     <!-- ============ Full Scan ============ -->
     <string name="scan_title">جارٍ فحص جهازك…</string>
