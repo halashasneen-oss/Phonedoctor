@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -18,6 +19,7 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.phonedoctor.app.R
+import com.phonedoctor.app.ads.AdConsentManager
 import com.phonedoctor.app.data.datastore.AppLanguage
 import com.phonedoctor.app.data.datastore.AppSettings
 import com.phonedoctor.app.data.datastore.AppThemeMode
@@ -41,7 +43,14 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     }
 
     private val notificationPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* no-op either way */ }
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { granted ->
+            viewModel.setNotificationsEnabled(granted)
+            if (!granted && view != null) {
+                binding.switchNotifications.isChecked = false
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,14 +60,26 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         binding.rowLanguage.setOnClickListener { showLanguageDialog() }
         binding.rowDeviceInfo.setOnClickListener { findNavController().navigate(R.id.action_settings_to_device_info) }
         binding.rowClearHistory.setOnClickListener { confirmClearHistory() }
-        binding.rowPrivacy.setOnClickListener { findNavController().navigate(R.id.action_settings_to_privacy) }
-        binding.rowHelp.setOnClickListener { findNavController().navigate(R.id.action_settings_to_help) }
+        binding.rowPrivacy.setOnClickListener {
+            findNavController().navigate(R.id.action_settings_to_privacy)
+        }
+        binding.rowAdPrivacy.setOnClickListener {
+            AdConsentManager.showPrivacyOptions(requireActivity()) {
+                if (view != null) {
+                    updateAdPrivacyVisibility()
+                }
+            }
+        }
+        binding.rowHelp.setOnClickListener {
+            findNavController().navigate(R.id.action_settings_to_help)
+        }
         binding.rowAbout.setOnClickListener { findNavController().navigate(R.id.action_settings_to_about) }
 
-        binding.switchNotifications.setOnCheckedChangeListener { switchView, isChecked ->
+        binding.switchNotifications.setOnCheckedChangeListener {
+                switchView,
+                isChecked ->
             if (!switchView.isPressed) return@setOnCheckedChangeListener
-            if (isChecked) requestNotificationPermissionIfNeeded()
-            viewModel.setNotificationsEnabled(isChecked)
+            updateNotificationsSetting(isChecked)
         }
         binding.switchAutoCheck.setOnCheckedChangeListener { switchView, isChecked ->
             if (!switchView.isPressed) return@setOnCheckedChangeListener
@@ -75,6 +96,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 viewModel.settings.collect { render(it) }
             }
         }
+
+        updateAdPrivacyVisibility()
     }
 
     private fun render(settings: AppSettings) {
@@ -134,11 +157,39 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             .show()
     }
 
-    private fun requestNotificationPermissionIfNeeded() {
+    private fun updateNotificationsSetting(enabled: Boolean) {
+        if (!enabled) {
+            viewModel.setNotificationsEnabled(false)
+            return
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            val granted = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) ==
-                PackageManager.PERMISSION_GRANTED
-            if (!granted) notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            val granted = ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+
+            if (!granted) {
+                binding.switchNotifications.isChecked = false
+                notificationPermissionLauncher.launch(
+                    Manifest.permission.POST_NOTIFICATIONS
+                )
+                return
+            }
+        }
+
+        viewModel.setNotificationsEnabled(true)
+    }
+
+    private fun updateAdPrivacyVisibility() {
+        binding.rowAdPrivacy.isVisible =
+            AdConsentManager.isPrivacyOptionsRequired(requireContext())
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (view != null) {
+            updateAdPrivacyVisibility()
         }
     }
 }
