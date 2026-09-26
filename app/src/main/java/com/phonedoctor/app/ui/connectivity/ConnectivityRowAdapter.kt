@@ -11,12 +11,13 @@ import com.phonedoctor.app.databinding.ItemCategoryResultBinding
 data class ConnectivityRow(
     @DrawableRes val iconRes: Int,
     @StringRes val labelRes: Int,
-    @StringRes val statusRes: Int,
+    val statusText: String,
     @DrawableRes val pillRes: Int,
     @ColorRes val textColorRes: Int
 )
 
-class ConnectivityRowAdapter : RecyclerView.Adapter<ConnectivityRowAdapter.ViewHolder>() {
+class ConnectivityRowAdapter :
+    RecyclerView.Adapter<ConnectivityRowAdapter.ViewHolder>() {
 
     private var items: List<ConnectivityRow> = emptyList()
 
@@ -25,10 +26,19 @@ class ConnectivityRowAdapter : RecyclerView.Adapter<ConnectivityRowAdapter.ViewH
         notifyDataSetChanged()
     }
 
-    class ViewHolder(val binding: ItemCategoryResultBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(
+        val binding: ItemCategoryResultBinding
+    ) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemCategoryResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        val binding = ItemCategoryResultBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return ViewHolder(binding)
     }
 
@@ -36,9 +46,11 @@ class ConnectivityRowAdapter : RecyclerView.Adapter<ConnectivityRowAdapter.ViewH
         val item = items[position]
         holder.binding.imageIcon.setImageResource(item.iconRes)
         holder.binding.textLabel.setText(item.labelRes)
-        holder.binding.textStatus.setText(item.statusRes)
+        holder.binding.textStatus.text = item.statusText
         holder.binding.textStatus.setBackgroundResource(item.pillRes)
-        holder.binding.textStatus.setTextColor(holder.binding.root.context.getColor(item.textColorRes))
+        holder.binding.textStatus.setTextColor(
+            holder.binding.root.context.getColor(item.textColorRes)
+        )
     }
 
     override fun getItemCount(): Int = items.size
