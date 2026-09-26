@@ -59,17 +59,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_xs"
-            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textTouchPoints"
+                android:id="@+id/textCurrentPointers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/palette_white"
-                tools:text="Touch Points: 24" />
+                tools:text="Current: 2" />
+
+            <TextView
+                android:id="@+id/textMaxPointers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/palette_white"
+                tools:text="Max: 5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xxs"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textCoverage"
@@ -79,8 +94,29 @@
                 android:gravity="center"
                 android:textColor="@color/palette_cyan_400"
                 android:textStyle="bold"
-                tools:text="Coverage: 68%" />
+                tools:text="Coverage: 88%" />
+
+            <TextView
+                android:id="@+id/textEdgeCoverage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/palette_cyan_400"
+                android:textStyle="bold"
+                tools:text="Edges: 76%" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textMissedCells"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xxs"
+            android:gravity="center"
+            android:textColor="@color/palette_gray_300"
+            android:textSize="@dimen/text_caption"
+            tools:text="Untested cells: 12" />
+
     </LinearLayout>
 
     <LinearLayout
