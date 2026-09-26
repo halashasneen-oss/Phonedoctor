@@ -514,19 +514,26 @@ class ScanEngine(
         category: DiagnosticCategory,
         confirmed: Boolean
     ): CategoryResult {
-        val status = if (confirmed) TestStatus.EXCELLENT else TestStatus.FAIR
-        val summary = if (confirmed) {
-            "Confirmed by user"
-        } else {
-            "User reported an issue"
-        }
         return CategoryResult(
             category = category,
-            status = status,
-            summary = summary,
+            status = if (confirmed) {
+                TestStatus.EXCELLENT
+            } else {
+                TestStatus.UNAVAILABLE
+            },
+            summary = if (confirmed) {
+                "Verified by user"
+            } else {
+                "Not verified by user"
+            },
+            detail = if (confirmed) {
+                "Manual confirmation only; no automated measurement was performed"
+            } else {
+                "Skipped during Deep Scan"
+            },
             evidenceType = DiagnosticEvidenceType.USER_VERIFIED,
             scoreImpact = ScoreImpact.HEALTH,
-            confidence = DiagnosticConfidence.HIGH
+            confidence = DiagnosticConfidence.MEDIUM
         )
     }
 
