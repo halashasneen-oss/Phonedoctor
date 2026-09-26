@@ -19,6 +19,7 @@ import com.phonedoctor.app.R
 import com.phonedoctor.app.data.report.ReportTextGenerator
 import com.phonedoctor.app.databinding.FragmentScanResultsBinding
 import com.phonedoctor.app.databinding.ItemIssueRowBinding
+import com.phonedoctor.app.domain.model.ScanMode
 import com.phonedoctor.app.domain.model.ScanReport
 import com.phonedoctor.app.domain.util.HealthScoreCalculator
 import com.phonedoctor.app.ui.common.issueMessageRes
@@ -61,13 +62,51 @@ class ScanResultsFragment : Fragment(R.layout.fragment_scan_results) {
     }
 
     private fun render(report: ScanReport) {
-        binding.textScore.text = getString(R.string.results_health_score_fmt, report.healthScore)
-        binding.textScoreStatus.setText(HealthScoreCalculator.scoreToStatus(report.healthScore).toUiModel().labelRes)
+        val performance = report.scanMode == ScanMode.PERFORMANCE
+
+        binding.textResultsTitle.setText(
+            if (performance) {
+                R.string.results_performance_title
+            } else {
+                R.string.results_title
+            }
+        )
+        binding.textScanMode.setText(scanModeLabel(report.scanMode))
+        binding.textScore.visibility = if (performance) View.GONE else View.VISIBLE
+        binding.textScoreStatus.visibility = if (performance) View.GONE else View.VISIBLE
+        binding.textPerformanceSubtitle.visibility = if (performance) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+
+        if (!performance) {
+            binding.textScore.text = getString(
+                R.string.results_health_score_fmt,
+                report.healthScore
+            )
+            binding.textScoreStatus.setText(
+                HealthScoreCalculator
+                    .scoreToStatus(report.healthScore)
+                    .toUiModel()
+                    .labelRes
+            )
+        }
+
         categoryAdapter.submitList(report.results)
 
-        val issues = report.results.mapNotNull { result -> result.issueMessageRes()?.let { result to it } }
+        val issues = if (performance) {
+            emptyList()
+        } else {
+            report.results.mapNotNull { result ->
+                result.issueMessageRes()?.let { result to it }
+            }
+        }
         binding.containerIssues.removeAllViews()
-        if (issues.isEmpty()) {
+        if (performance) {
+            binding.textIssuesTitle.visibility = View.GONE
+            binding.textNoIssues.visibility = View.GONE
+        } else if (issues.isEmpty()) {
             binding.textIssuesTitle.visibility = View.GONE
             binding.textNoIssues.visibility = View.VISIBLE
         } else {
@@ -82,6 +121,13 @@ class ScanResultsFragment : Fragment(R.layout.fragment_scan_results) {
         }
 
         binding.buttonShare.setOnClickListener { shareReport(report) }
+    }
+
+    private fun scanModeLabel(mode: ScanMode): Int = when (mode) {
+        ScanMode.QUICK -> R.string.results_mode_quick
+        ScanMode.DEEP -> R.string.results_mode_deep
+        ScanMode.PERFORMANCE -> R.string.results_mode_performance
+        ScanMode.BACKGROUND -> R.string.results_mode_background
     }
 
     private fun shareReport(report: ScanReport) {
