@@ -91,9 +91,19 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            manifestPlaceholders["admobAppId"] = "ca-app-pub-5961173995415325~9886076332"
-            buildConfigField("boolean", "SHOW_ADS", "true")
+            val releaseAdMobAppId = secret("ADMOB_APP_ID").ifBlank {
+                "ca-app-pub-5961173995415325~9886076332"
+            }
+            val bannerAdUnitId = secret("BANNER_AD_UNIT_ID").ifBlank {
+                "ca-app-pub-5961173995415325/4633749652"
+            }
+            val interstitialAdUnitId = secret("INTERSTITIAL_AD_UNIT_ID").ifBlank {
+                "ca-app-pub-5961173995415325/4176630251"
+            }
             val rewardedAdUnitId = secret("REWARDED_AD_UNIT_ID")
+
+            manifestPlaceholders["admobAppId"] = releaseAdMobAppId
+            buildConfigField("boolean", "SHOW_ADS", "true")
             buildConfigField(
                 "boolean",
                 "REWARDED_ADS_ENABLED",
@@ -102,12 +112,12 @@ android {
             buildConfigField(
                 "String",
                 "BANNER_AD_UNIT_ID",
-                "\"ca-app-pub-5961173995415325/4633749652\""
+                "\"$bannerAdUnitId\""
             )
             buildConfigField(
                 "String",
                 "INTERSTITIAL_AD_UNIT_ID",
-                "\"ca-app-pub-5961173995415325/4176630251\""
+                "\"$interstitialAdUnitId\""
             )
             buildConfigField(
                 "String",
