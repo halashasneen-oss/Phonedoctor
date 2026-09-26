@@ -219,3 +219,13 @@ Flashlight uses `CameraManager.setTorchMode`, which does **not** require the
 - Manual QA: every screen was designed to work fully offline except the
   optional rewarded ad and the internet-reachability check in Connectivity
   Test (both degrade gracefully without network).
+
+
+## Phone Doctor 2.0
+
+The v2 diagnostic architecture separates measured health evidence from capabilities,
+current state, user verification, and informational performance benchmarks.
+
+Release configuration requires a production `REWARDED_AD_UNIT_ID` in addition to
+the signing secrets. Release builds intentionally do not fall back to Google's test
+rewarded ad unit.
