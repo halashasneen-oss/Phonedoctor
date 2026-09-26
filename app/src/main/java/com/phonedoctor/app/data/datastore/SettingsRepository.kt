@@ -3,8 +3,10 @@ package com.phonedoctor.app.data.datastore
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.phonedoctor.app.ads.AdFreePolicy
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -15,11 +17,12 @@ enum class AppLanguage(val tag: String) { ENGLISH("en"), ARABIC("ar") }
 
 data class AppSettings(
     val themeMode: AppThemeMode = AppThemeMode.SYSTEM,
-    val language: AppLanguage? = null, // null = follow system locale
+    val language: AppLanguage? = null,
     val notificationsEnabled: Boolean = true,
     val autoHealthCheckEnabled: Boolean = false,
     val isPremium: Boolean = false,
-    val onboardingCompleted: Boolean = false
+    val onboardingCompleted: Boolean = false,
+    val adFreeUntilMillis: Long = 0L
 )
 
 class SettingsRepository(private val context: Context) {
@@ -31,17 +34,22 @@ class SettingsRepository(private val context: Context) {
         val AUTO_HEALTH_CHECK_ENABLED = booleanPreferencesKey("auto_health_check_enabled")
         val IS_PREMIUM = booleanPreferencesKey("is_premium")
         val ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
+        val AD_FREE_UNTIL = longPreferencesKey("ad_free_until")
     }
 
     val settings: Flow<AppSettings> = context.dataStore.data.map { prefs ->
         AppSettings(
-            themeMode = prefs[Keys.THEME_MODE]?.let { runCatching { AppThemeMode.valueOf(it) }.getOrNull() }
-                ?: AppThemeMode.SYSTEM,
-            language = prefs[Keys.LANGUAGE]?.let { runCatching { AppLanguage.valueOf(it) }.getOrNull() },
+            themeMode = prefs[Keys.THEME_MODE]?.let {
+                runCatching { AppThemeMode.valueOf(it) }.getOrNull()
+            } ?: AppThemeMode.SYSTEM,
+            language = prefs[Keys.LANGUAGE]?.let {
+                runCatching { AppLanguage.valueOf(it) }.getOrNull()
+            },
             notificationsEnabled = prefs[Keys.NOTIFICATIONS_ENABLED] ?: true,
             autoHealthCheckEnabled = prefs[Keys.AUTO_HEALTH_CHECK_ENABLED] ?: false,
             isPremium = prefs[Keys.IS_PREMIUM] ?: false,
-            onboardingCompleted = prefs[Keys.ONBOARDING_COMPLETED] ?: false
+            onboardingCompleted = prefs[Keys.ONBOARDING_COMPLETED] ?: false,
+            adFreeUntilMillis = prefs[Keys.AD_FREE_UNTIL] ?: 0L
         )
     }
 
@@ -67,5 +75,15 @@ class SettingsRepository(private val context: Context) {
 
     suspend fun setOnboardingCompleted(completed: Boolean) {
         context.dataStore.edit { it[Keys.ONBOARDING_COMPLETED] = completed }
+    }
+
+    suspend fun grantOneHourAdFree(nowMillis: Long = System.currentTimeMillis()) {
+        context.dataStore.edit {
+            it[Keys.AD_FREE_UNTIL] = AdFreePolicy.rewardExpiry(nowMillis)
+        }
+    }
+
+    suspend fun clearTemporaryAdFree() {
+        context.dataStore.edit { it[Keys.AD_FREE_UNTIL] = 0L }
     }
 }
