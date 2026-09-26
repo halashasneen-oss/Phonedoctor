@@ -420,6 +420,9 @@
 
     <!-- ============ Test History ============ -->
     <string name="history_title">Test History</string>
+    <string name="history_filter_all">All</string>
+    <string name="history_filter_health">Health</string>
+    <string name="history_filter_performance">Performance</string>
     <string name="history_passed_fmt">%1$d Passed</string>
     <string name="history_warnings_fmt">%1$d Warnings</string>
     <string name="history_failed_fmt">%1$d Failed</string>
