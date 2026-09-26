@@ -51,6 +51,16 @@
     <string name="home_status_unknown">Not tested</string>
     <string name="home_empty_history_title">No test history yet</string>
     <string name="home_empty_history_desc">Run your first complete health check.</string>
+    <string name="home_adfree_title">1 hour without ads</string>
+    <string name="home_adfree_desc">Share Phone Doctor, then watch a rewarded ad to remove banner and interstitial ads for one hour.</string>
+    <string name="home_adfree_button">SHARE &amp; UNLOCK</string>
+    <string name="home_adfree_active">AD-FREE ACTIVE</string>
+    <string name="home_adfree_remaining">Ad-free for %1$d min %2$d sec</string>
+    <string name="home_adfree_reward_loading">Loading your rewarded ad…</string>
+    <string name="home_adfree_reward_unavailable">A rewarded ad is not available right now. Please try again later.</string>
+    <string name="home_adfree_reward_granted">Banner and interstitial ads are removed for one hour.</string>
+    <string name="home_share_text">Check your phone with Phone Doctor — battery, display, touch, audio, sensors and more.</string>
+    <string name="home_share_chooser">Share Phone Doctor</string>
 
     <!-- ============ Full Scan ============ -->
     <string name="scan_title">Checking your device…</string>
