@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.phonedoctor.app.R
 import com.phonedoctor.app.ServiceLocator
 import com.phonedoctor.app.domain.model.BatteryInfo
-import com.phonedoctor.app.domain.model.ChargingState
 import com.phonedoctor.app.domain.model.DiagnosticCategory
 import com.phonedoctor.app.domain.model.ScanReport
 import com.phonedoctor.app.domain.model.TestStatus
@@ -63,21 +62,21 @@ class HomeViewModel(
 
         val batteryStatus = batteryStatus(battery)
         val storagePercent = if (storage.totalBytes > 0) (storage.usedBytes * 100 / storage.totalBytes).toInt() else 0
-        val storageStatus = percentStatus(storagePercent, invert = false)
+        val storageStatus = capacityStatus(storagePercent)
         val memoryPercent = if (memory.totalBytes > 0) (memory.usedBytes * 100 / memory.totalBytes).toInt() else 0
-        val memoryStatus = percentStatus(memoryPercent, invert = false)
-        val sensorsAvailable = sensors.count { it.available }
-        val sensorsStatus = when {
-            sensorsAvailable == sensors.size -> TestStatus.EXCELLENT
-            sensorsAvailable > 0 -> TestStatus.GOOD
-            else -> TestStatus.UNAVAILABLE
+        val memoryStatus = when {
+            memory.totalBytes <= 0L -> TestStatus.UNAVAILABLE
+            memory.isLowMemory -> TestStatus.FAIR
+            else -> TestStatus.GOOD
         }
+        val sensorsAvailable = sensors.count { it.available }
+        val sensorsStatus = if (sensorsAvailable > 0) TestStatus.GOOD else TestStatus.UNAVAILABLE
         val connectivityStatus = when {
             connectivity.internetReachable == true -> TestStatus.EXCELLENT
             connectivity.wifiConnected || connectivity.mobileNetworkConnected -> TestStatus.FAIR
-            else -> TestStatus.POOR
+            else -> TestStatus.UNAVAILABLE
         }
-        val cameraStatus = if (cameraAvailable) TestStatus.EXCELLENT else TestStatus.UNAVAILABLE
+        val cameraStatus = if (cameraAvailable) TestStatus.GOOD else TestStatus.UNAVAILABLE
 
         val quickTests = listOf(
             QuickTestItem(
@@ -149,17 +148,23 @@ class HomeViewModel(
     }
 
     private fun batteryStatus(info: BatteryInfo): TestStatus {
-        val level = info.levelPercent ?: return TestStatus.UNAVAILABLE
+        val health = info.healthDescription
+        val temperature = info.temperatureCelsius
         return when {
-            info.chargingState == ChargingState.CHARGING || info.chargingState == ChargingState.FULL -> TestStatus.EXCELLENT
-            level >= 50 -> TestStatus.EXCELLENT
-            level >= 20 -> TestStatus.GOOD
-            level >= 10 -> TestStatus.FAIR
-            else -> TestStatus.POOR
+            health.equals("Dead", ignoreCase = true) ||
+                health.equals("Overheating", ignoreCase = true) ||
+                health.equals("Over voltage", ignoreCase = true) ||
+                health.equals("Unspecified failure", ignoreCase = true) -> TestStatus.POOR
+            health.equals("Cold", ignoreCase = true) -> TestStatus.FAIR
+            temperature != null && temperature >= 50f -> TestStatus.POOR
+            temperature != null && (temperature >= 45f || temperature <= 0f) -> TestStatus.FAIR
+            health.equals("Good", ignoreCase = true) -> TestStatus.EXCELLENT
+            temperature != null -> TestStatus.GOOD
+            else -> TestStatus.UNAVAILABLE
         }
     }
 
-    private fun percentStatus(usedPercent: Int, invert: Boolean): TestStatus = when {
+    private fun capacityStatus(usedPercent: Int): TestStatus = when {
         usedPercent < 70 -> TestStatus.EXCELLENT
         usedPercent < 85 -> TestStatus.GOOD
         usedPercent < 95 -> TestStatus.FAIR
