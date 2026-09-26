@@ -420,6 +420,9 @@
 
     <!-- ============ Test History ============ -->
     <string name="history_title">سجل الفحوصات</string>
+    <string name="history_filter_all">الكل</string>
+    <string name="history_filter_health">الصحة</string>
+    <string name="history_filter_performance">الأداء</string>
     <string name="history_passed_fmt">%1$d ناجح</string>
     <string name="history_warnings_fmt">%1$d تحذير</string>
     <string name="history_failed_fmt">%1$d فاشل</string>
