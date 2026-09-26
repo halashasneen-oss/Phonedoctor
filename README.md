@@ -145,8 +145,10 @@ APK — it does not fail, it just skips the release build with a notice.
 | `INTERSTITIAL_AD_UNIT_ID` *(optional)* | Real interstitial ad unit ID |
 | `REWARDED_AD_UNIT_ID` *(optional)* | Real rewarded ad unit ID |
 
-Omitting the AdMob secrets is safe — release builds fall back to Google's
-public test ad unit IDs rather than failing.
+Omitting `REWARDED_AD_UNIT_ID` is safe: release builds keep rewarded ads
+disabled and hide the one-hour ad-free reward card. Banner and interstitial
+release IDs are configured for this app. Debug builds use Google's public
+test ad units so development does not generate production ad traffic.
 
 ## GitHub Actions
 
@@ -181,9 +183,9 @@ opened**, never at launch:
 |---|---|
 | `CAMERA` | Camera Test screen only (live preview) |
 | `RECORD_AUDIO` | Microphone Test screen only |
-| `READ_MEDIA_IMAGES` / `READ_MEDIA_VIDEO` / `READ_MEDIA_AUDIO` (API 33+) or `READ_EXTERNAL_STORAGE` (API ≤32) | Storage screen's optional category breakdown |
-| `POST_NOTIFICATIONS` (API 33+) | Only if "Auto Health Check" or "Notifications" is enabled in Settings |
-| `VIBRATE`, `INTERNET`, `ACCESS_NETWORK_STATE`, `ACCESS_WIFI_STATE`, `BLUETOOTH_CONNECT` | Normal/install-time permissions for Vibration Test and Connectivity Test |
+| `POST_NOTIFICATIONS` (API 33+) | Only if notifications/reminders are enabled in Settings |
+| `BLUETOOTH_CONNECT` (API 31+) | Requested only when Bluetooth state needs it in Connectivity Lab |
+| `VIBRATE`, `INTERNET`, `ACCESS_NETWORK_STATE`, `ACCESS_WIFI_STATE`, `NFC` | Normal/install-time permissions for diagnostics and optional ads |
 
 Flashlight uses `CameraManager.setTorchMode`, which does **not** require the
 `CAMERA` permission.
@@ -202,9 +204,11 @@ Flashlight uses `CameraManager.setTorchMode`, which does **not** require the
   with no fake purchase flow behind it — it explains that Google Play Billing
   needs to be connected (a Play Console step outside what a repository can
   configure). The Rewarded Ad flow, however, is fully functional.
-- **AdMob production IDs**: this repo never contains a real, production AdMob
-  App ID. Builds fall back to Google's public test IDs unless real IDs are
-  supplied via `secrets.properties` (local) or GitHub Secrets (CI).
+- **AdMob production configuration**: release builds use the app's production
+  AdMob app/banner/interstitial IDs. The rewarded unit remains optional and is
+  supplied through `secrets.properties` (local) or GitHub Secrets (CI).
+  When it is absent, the rewarded flow is disabled rather than using a test
+  rewarded unit in production.
 - **Sandbox build verification**: this project was authored in a sandboxed
   environment without outbound access to `dl.google.com` / Android SDK
   manager endpoints, so the initial build/test/lint pass was verified via
@@ -216,9 +220,9 @@ Flashlight uses `CameraManager.setTorchMode`, which does **not** require the
 - `./gradlew test` — JVM unit tests covering `HealthScoreCalculator`,
   `FormatUtils`, and the Room `CategoryResultListConverter` round trip.
 - `./gradlew lint` — Android Lint.
-- Manual QA: every screen was designed to work fully offline except the
-  optional rewarded ad and the internet-reachability check in Connectivity
-  Test (both degrade gracefully without network).
+- Manual QA: diagnostics are designed to work locally wherever possible.
+  Network-dependent exceptions are AdMob and the user-initiated DNS/TCP probe;
+  both degrade safely when unavailable.
 
 
 ## Phone Doctor 2.0
