@@ -7,9 +7,11 @@ import com.phonedoctor.app.domain.model.DiagnosticConfidence
 import com.phonedoctor.app.domain.model.DiagnosticEvidenceType
 import com.phonedoctor.app.domain.model.ScanReport
 import com.phonedoctor.app.domain.model.ScoreImpact
+import com.phonedoctor.app.domain.model.ScanMode
 import com.phonedoctor.app.domain.model.TestStatus
 import com.phonedoctor.app.domain.model.ThermalState
 import com.phonedoctor.app.domain.util.HealthScoreCalculator
+import com.phonedoctor.app.domain.util.PerformanceBenchmarkMath
 
 /** One step completing during a full scan; the UI renders these as they arrive. */
 data class ScanProgressEvent(
@@ -30,63 +32,104 @@ class ScanEngine(
     private val memoryRepository: MemoryRepository,
     private val thermalRepository: ThermalRepository,
     private val sensorsRepository: SensorsRepository,
-    private val connectivityRepository: ConnectivityRepository
+    private val connectivityRepository: ConnectivityRepository,
+    private val cpuBenchmarkEngine: CpuBenchmarkEngine,
+    private val memoryBenchmarkEngine: MemoryBenchmarkEngine,
+    private val storageBenchmarkEngine: StorageBenchmarkEngine
 ) {
 
-    private val automaticOrder = listOf(
+    private val quickOrder = listOf(
+        DiagnosticCategory.BATTERY,
+        DiagnosticCategory.THERMAL,
+        DiagnosticCategory.STORAGE,
+        DiagnosticCategory.MEMORY,
+        DiagnosticCategory.SENSORS,
+        DiagnosticCategory.CAMERA,
+        DiagnosticCategory.CONNECTIVITY
+    )
+
+    private val deepAutomaticOrder = listOf(
         DiagnosticCategory.BATTERY,
         DiagnosticCategory.STORAGE,
         DiagnosticCategory.MEMORY,
         DiagnosticCategory.CPU,
         DiagnosticCategory.THERMAL
     )
+
     private val interactiveOrder = listOf(
         DiagnosticCategory.DISPLAY,
         DiagnosticCategory.TOUCH,
         DiagnosticCategory.AUDIO,
         DiagnosticCategory.MICROPHONE
     )
-    private val tailAutomaticOrder = listOf(
+
+    private val deepTailOrder = listOf(
         DiagnosticCategory.SENSORS,
         DiagnosticCategory.CAMERA,
         DiagnosticCategory.CONNECTIVITY
     )
 
-    val totalSteps = automaticOrder.size + interactiveOrder.size + tailAutomaticOrder.size
+    private val performanceOrder = listOf(
+        DiagnosticCategory.CPU,
+        DiagnosticCategory.MEMORY,
+        DiagnosticCategory.STORAGE,
+        DiagnosticCategory.THERMAL
+    )
+
+    fun categoriesFor(mode: ScanMode): List<DiagnosticCategory> = when (mode) {
+        ScanMode.QUICK,
+        ScanMode.BACKGROUND -> quickOrder
+        ScanMode.DEEP -> deepAutomaticOrder + interactiveOrder + deepTailOrder
+        ScanMode.PERFORMANCE -> performanceOrder
+    }
+
+    suspend fun runMode(
+        mode: ScanMode,
+        cameraAvailable: Boolean,
+        requestUserConfirmation: suspend (DiagnosticCategory) -> Boolean = { true },
+        onProgress: suspend (ScanProgressEvent) -> Unit = {}
+    ): ScanReport = when (mode) {
+        ScanMode.QUICK -> runQuick(
+            cameraAvailable = cameraAvailable,
+            scanMode = ScanMode.QUICK,
+            onProgress = onProgress
+        )
+        ScanMode.BACKGROUND -> runQuick(
+            cameraAvailable = cameraAvailable,
+            scanMode = ScanMode.BACKGROUND,
+            onProgress = onProgress
+        )
+        ScanMode.DEEP -> runDeep(
+            cameraAvailable = cameraAvailable,
+            requestUserConfirmation = requestUserConfirmation,
+            onProgress = onProgress
+        )
+        ScanMode.PERFORMANCE -> runPerformance(onProgress)
+    }
 
     suspend fun runAutomatic(
         cameraAvailable: Boolean,
         onProgress: suspend (ScanProgressEvent) -> Unit = {}
-    ): ScanReport {
-        val results = mutableListOf<CategoryResult>()
-        val order = automaticOrder + tailAutomaticOrder
-        var completed = 0
-
-        suspend fun emit(result: CategoryResult) {
-            results += result
-            completed++
-            onProgress(ScanProgressEvent(result.category, result, completed, order.size))
-        }
-
-        emit(measureBattery())
-        emit(measureStorage())
-        emit(measureMemory())
-        emit(measureCpu())
-        emit(measureThermal())
-        emit(measureSensors())
-        emit(measureCamera(cameraAvailable))
-        emit(measureConnectivity())
-
-        return ScanReport(
-            timestampMillis = System.currentTimeMillis(),
-            healthScore = HealthScoreCalculator.calculate(results),
-            results = results
-        )
-    }
+    ): ScanReport = runMode(
+        mode = ScanMode.BACKGROUND,
+        cameraAvailable = cameraAvailable,
+        onProgress = onProgress
+    )
 
     suspend fun run(
         cameraAvailable: Boolean,
         requestUserConfirmation: suspend (DiagnosticCategory) -> Boolean,
+        onProgress: suspend (ScanProgressEvent) -> Unit
+    ): ScanReport = runMode(
+        mode = ScanMode.DEEP,
+        cameraAvailable = cameraAvailable,
+        requestUserConfirmation = requestUserConfirmation,
+        onProgress = onProgress
+    )
+
+    private suspend fun runQuick(
+        cameraAvailable: Boolean,
+        scanMode: ScanMode,
         onProgress: suspend (ScanProgressEvent) -> Unit
     ): ScanReport {
         val results = mutableListOf<CategoryResult>()
@@ -95,7 +138,52 @@ class ScanEngine(
         suspend fun emit(result: CategoryResult) {
             results += result
             completed++
-            onProgress(ScanProgressEvent(result.category, result, completed, totalSteps))
+            onProgress(
+                ScanProgressEvent(
+                    result.category,
+                    result,
+                    completed,
+                    quickOrder.size
+                )
+            )
+        }
+
+        emit(measureBattery())
+        emit(measureThermal())
+        emit(measureStorage())
+        emit(measureMemory())
+        emit(measureSensors())
+        emit(measureCamera(cameraAvailable))
+        emit(measureConnectivity())
+
+        return ScanReport(
+            timestampMillis = System.currentTimeMillis(),
+            healthScore = HealthScoreCalculator.calculate(results),
+            results = results,
+            scanMode = scanMode
+        )
+    }
+
+    private suspend fun runDeep(
+        cameraAvailable: Boolean,
+        requestUserConfirmation: suspend (DiagnosticCategory) -> Boolean,
+        onProgress: suspend (ScanProgressEvent) -> Unit
+    ): ScanReport {
+        val results = mutableListOf<CategoryResult>()
+        val order = categoriesFor(ScanMode.DEEP)
+        var completed = 0
+
+        suspend fun emit(result: CategoryResult) {
+            results += result
+            completed++
+            onProgress(
+                ScanProgressEvent(
+                    result.category,
+                    result,
+                    completed,
+                    order.size
+                )
+            )
         }
 
         emit(measureBattery())
@@ -105,7 +193,12 @@ class ScanEngine(
         emit(measureThermal())
 
         for (category in interactiveOrder) {
-            emit(interactiveResult(category, requestUserConfirmation(category)))
+            emit(
+                interactiveResult(
+                    category,
+                    requestUserConfirmation(category)
+                )
+            )
         }
 
         emit(measureSensors())
@@ -115,7 +208,167 @@ class ScanEngine(
         return ScanReport(
             timestampMillis = System.currentTimeMillis(),
             healthScore = HealthScoreCalculator.calculate(results),
-            results = results
+            results = results,
+            scanMode = ScanMode.DEEP
+        )
+    }
+
+    private suspend fun runPerformance(
+        onProgress: suspend (ScanProgressEvent) -> Unit
+    ): ScanReport {
+        val results = mutableListOf<CategoryResult>()
+        var completed = 0
+
+        suspend fun emit(result: CategoryResult) {
+            results += result
+            completed++
+            onProgress(
+                ScanProgressEvent(
+                    result.category,
+                    result,
+                    completed,
+                    performanceOrder.size
+                )
+            )
+        }
+
+        emit(measureCpuPerformance())
+        emit(measureMemoryPerformance())
+        emit(measureStoragePerformance())
+        emit(measureThermalPerformance())
+
+        return ScanReport(
+            timestampMillis = System.currentTimeMillis(),
+            healthScore = 0,
+            results = results,
+            scanMode = ScanMode.PERFORMANCE
+        )
+    }
+
+    private suspend fun measureCpuPerformance(): CategoryResult {
+        val cores = Runtime.getRuntime().availableProcessors().coerceAtLeast(1)
+        return runCatching {
+            cpuBenchmarkEngine.runBenchmark(cores)
+        }.fold(
+            onSuccess = { benchmark ->
+                CategoryResult(
+                    category = DiagnosticCategory.CPU,
+                    status = TestStatus.GOOD,
+                    summary = benchmark.singleThreadOpsPerSecond.toString() +
+                        " ops/s single · " +
+                        benchmark.multiThreadOpsPerSecond.toString() +
+                        " ops/s multi",
+                    detail = "Local throughput benchmark with " +
+                        benchmark.workerCount +
+                        " workers; no cross-device health threshold applied",
+                    evidenceType = DiagnosticEvidenceType.MEASURED,
+                    scoreImpact = ScoreImpact.INFORMATIONAL,
+                    confidence = DiagnosticConfidence.HIGH
+                )
+            },
+            onFailure = { error ->
+                CategoryResult(
+                    category = DiagnosticCategory.CPU,
+                    status = TestStatus.UNAVAILABLE,
+                    summary = "CPU benchmark unavailable",
+                    detail = error.message,
+                    evidenceType = DiagnosticEvidenceType.MEASURED,
+                    scoreImpact = ScoreImpact.INFORMATIONAL,
+                    confidence = DiagnosticConfidence.HIGH
+                )
+            }
+        )
+    }
+
+    private suspend fun measureMemoryPerformance(): CategoryResult {
+        return runCatching {
+            memoryBenchmarkEngine.run()
+        }.fold(
+            onSuccess = { benchmark ->
+                val mibPerSecond = PerformanceBenchmarkMath.mebibytesPerSecond(
+                    benchmark.copyBytesPerSecond
+                )
+                CategoryResult(
+                    category = DiagnosticCategory.MEMORY,
+                    status = if (benchmark.allocationSucceeded) {
+                        TestStatus.GOOD
+                    } else {
+                        TestStatus.FAIR
+                    },
+                    summary = "%.1f MiB/s memory copy".format(mibPerSecond),
+                    detail = "Allocation probe " +
+                        if (benchmark.allocationSucceeded) {
+                            "passed; performance is informational"
+                        } else {
+                            "could not allocate safely; performance is informational"
+                        },
+                    evidenceType = DiagnosticEvidenceType.MEASURED,
+                    scoreImpact = ScoreImpact.INFORMATIONAL,
+                    confidence = DiagnosticConfidence.HIGH
+                )
+            },
+            onFailure = { error ->
+                CategoryResult(
+                    category = DiagnosticCategory.MEMORY,
+                    status = TestStatus.UNAVAILABLE,
+                    summary = "RAM benchmark unavailable",
+                    detail = error.message,
+                    evidenceType = DiagnosticEvidenceType.MEASURED,
+                    scoreImpact = ScoreImpact.INFORMATIONAL,
+                    confidence = DiagnosticConfidence.HIGH
+                )
+            }
+        )
+    }
+
+    private suspend fun measureStoragePerformance(): CategoryResult {
+        return runCatching {
+            storageBenchmarkEngine.run()
+        }.fold(
+            onSuccess = { benchmark ->
+                val writeMiB = PerformanceBenchmarkMath.mebibytesPerSecond(
+                    benchmark.writeBytesPerSecond
+                )
+                val readMiB = PerformanceBenchmarkMath.mebibytesPerSecond(
+                    benchmark.readBytesPerSecond
+                )
+                CategoryResult(
+                    category = DiagnosticCategory.STORAGE,
+                    status = TestStatus.GOOD,
+                    summary = "%.1f MiB/s write · %.1f MiB/s read".format(
+                        writeMiB,
+                        readMiB
+                    ),
+                    detail = "App-private sequential cache benchmark using " +
+                        benchmark.testBytes +
+                        " bytes; not raw NAND/UFS health",
+                    evidenceType = DiagnosticEvidenceType.MEASURED,
+                    scoreImpact = ScoreImpact.INFORMATIONAL,
+                    confidence = DiagnosticConfidence.HIGH
+                )
+            },
+            onFailure = { error ->
+                CategoryResult(
+                    category = DiagnosticCategory.STORAGE,
+                    status = TestStatus.UNAVAILABLE,
+                    summary = "Storage benchmark unavailable",
+                    detail = error.message,
+                    evidenceType = DiagnosticEvidenceType.MEASURED,
+                    scoreImpact = ScoreImpact.INFORMATIONAL,
+                    confidence = DiagnosticConfidence.HIGH
+                )
+            }
+        )
+    }
+
+    private suspend fun measureThermalPerformance(): CategoryResult {
+        val result = measureThermal()
+        return result.copy(
+            detail = listOfNotNull(
+                result.detail,
+                "Thermal state captured after bounded performance tests"
+            ).joinToString(" · "),
+            scoreImpact = ScoreImpact.INFORMATIONAL
         )
     }
 
