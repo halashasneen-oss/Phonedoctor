@@ -15,13 +15,37 @@ class TouchTestFragment : Fragment(R.layout.fragment_touch_test) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.touchGrid.onStatsChanged = { points, coverage ->
-            binding.textTouchPoints.text = getString(R.string.touch_points) + ": $points"
-            binding.textCoverage.text = getString(R.string.touch_coverage) + ": " + getString(R.string.touch_coverage_fmt, coverage)
+        binding.touchGrid.onStatsChanged = { stats ->
+            binding.textCurrentPointers.text = getString(
+                R.string.touch_current_fingers_fmt,
+                stats.currentPointers
+            )
+            binding.textMaxPointers.text = getString(
+                R.string.touch_max_fingers_fmt,
+                stats.maxSimultaneousPointers
+            )
+            binding.textCoverage.text = getString(
+                R.string.touch_coverage_value_fmt,
+                stats.coveragePercent
+            )
+            binding.textEdgeCoverage.text = getString(
+                R.string.touch_edge_coverage_fmt,
+                stats.edgeCoveragePercent
+            )
+            binding.textMissedCells.text = getString(
+                R.string.touch_missed_cells_fmt,
+                stats.missedCells
+            )
         }
 
-        binding.buttonClose.setOnClickListener { findNavController().navigateUp() }
-        binding.buttonReset.setOnClickListener { binding.touchGrid.reset() }
-        binding.buttonFinish.setOnClickListener { findNavController().navigateUp() }
+        binding.buttonClose.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.buttonReset.setOnClickListener {
+            binding.touchGrid.reset()
+        }
+        binding.buttonFinish.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }
