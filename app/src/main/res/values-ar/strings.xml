@@ -117,6 +117,14 @@
     <string name="battery_temperature">حرارة البطارية</string>
     <string name="battery_voltage">الجهد الكهربائي</string>
     <string name="battery_current">التيار</string>
+    <string name="battery_current_average">متوسط التيار</string>
+    <string name="battery_charge_counter">الشحنة المتبقية</string>
+    <string name="battery_energy_remaining">الطاقة المتبقية</string>
+    <string name="battery_cycle_count">دورات البطارية</string>
+    <string name="battery_charge_time_remaining">الوقت التقريبي لاكتمال الشحن</string>
+    <string name="battery_estimated_power">قدرة البطارية التقديرية</string>
+    <string name="battery_time_hours_minutes">%1$d ساعة %2$d دقيقة</string>
+    <string name="battery_time_minutes">%1$d دقيقة</string>
     <string name="battery_technology">تقنية البطارية</string>
     <string name="battery_health">سلامة البطارية</string>
     <string name="battery_charging">قيد الشحن</string>
