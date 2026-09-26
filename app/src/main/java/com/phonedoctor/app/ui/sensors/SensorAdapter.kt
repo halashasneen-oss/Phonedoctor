@@ -33,10 +33,15 @@ class SensorAdapter : RecyclerView.Adapter<SensorAdapter.ViewHolder>() {
         if (index >= 0) notifyItemChanged(index)
     }
 
-    class ViewHolder(val binding: ItemSensorRowBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ItemSensorRowBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemSensorRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemSensorRowBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return ViewHolder(binding)
     }
 
@@ -48,7 +53,9 @@ class SensorAdapter : RecyclerView.Adapter<SensorAdapter.ViewHolder>() {
         if (!item.available) {
             holder.binding.textStatus.setText(R.string.sensor_not_available)
             holder.binding.textStatus.setBackgroundResource(R.drawable.bg_pill_neutral)
-            holder.binding.textStatus.setTextColor(context.getColor(R.color.color_text_secondary))
+            holder.binding.textStatus.setTextColor(
+                context.getColor(R.color.color_text_secondary)
+            )
             holder.binding.textReading.visibility = View.GONE
             holder.binding.textMetadata.visibility = View.GONE
             return
@@ -56,7 +63,9 @@ class SensorAdapter : RecyclerView.Adapter<SensorAdapter.ViewHolder>() {
 
         holder.binding.textStatus.setText(R.string.sensor_available)
         holder.binding.textStatus.setBackgroundResource(R.drawable.bg_pill_success)
-        holder.binding.textStatus.setTextColor(context.getColor(R.color.color_success))
+        holder.binding.textStatus.setTextColor(
+            context.getColor(R.color.color_success)
+        )
         holder.binding.textReading.visibility = View.VISIBLE
         holder.binding.textMetadata.visibility = View.VISIBLE
 
@@ -68,36 +77,63 @@ class SensorAdapter : RecyclerView.Adapter<SensorAdapter.ViewHolder>() {
                 append(context.getString(accuracyLabel(it.accuracy)))
                 it.sampleRateHz?.let { hz ->
                     append(" · ")
-                    append("%.1f Hz".format(hz))
+                    append(context.getString(R.string.sensor_sample_rate_fmt, hz))
                 }
             }
         } ?: "…"
 
         holder.binding.textMetadata.text = buildString {
-            item.displayName?.let {
-                append(it)
+            item.displayName?.let { name ->
+                append(name)
                 item.vendor?.let { vendor -> append(" · ").append(vendor) }
                 append("\n")
             }
-            item.resolution?.let { append("Resolution: ").append(it).append(" · ") }
-            item.maximumRange?.let { append("Range: ").append(it).append(" · ") }
-            item.powerMilliAmps?.let { append("Power: ").append(it).append(" mA") }
-            append("\n")
+
+            val primary = mutableListOf<String>()
+            item.resolution?.let {
+                primary += context.getString(R.string.sensor_resolution_fmt, it)
+            }
+            item.maximumRange?.let {
+                primary += context.getString(R.string.sensor_range_fmt, it)
+            }
+            item.powerMilliAmps?.let {
+                primary += context.getString(R.string.sensor_power_fmt, it)
+            }
+            append(primary.joinToString(" · "))
+
+            val secondary = mutableListOf<String>()
             item.minDelayMicroseconds?.let {
-                append("Min delay: ").append(it).append(" µs · ")
+                secondary += context.getString(R.string.sensor_min_delay_fmt, it)
             }
             item.reportingMode?.let {
-                append(reportingModeLabel(it)).append(" · ")
+                secondary += context.getString(reportingModeLabel(it))
             }
             item.wakeUpSensor?.let {
-                append(if (it) "Wake-up" else "Non wake-up")
+                secondary += context.getString(
+                    if (it) {
+                        R.string.sensor_wakeup
+                    } else {
+                        R.string.sensor_non_wakeup
+                    }
+                )
             }
+            if (secondary.isNotEmpty()) {
+                append("\n")
+                append(secondary.joinToString(" · "))
+            }
+
             append("\n")
-            append("FIFO: ")
-            append(item.fifoReservedEventCount ?: 0)
-            append("/")
-            append(item.fifoMaxEventCount ?: 0)
-            item.version?.let { append(" · v").append(it) }
+            append(
+                context.getString(
+                    R.string.sensor_fifo_fmt,
+                    item.fifoReservedEventCount ?: 0,
+                    item.fifoMaxEventCount ?: 0
+                )
+            )
+            item.version?.let {
+                append(" · ")
+                append(context.getString(R.string.sensor_version_fmt, it))
+            }
         }.trim()
     }
 
@@ -110,11 +146,11 @@ class SensorAdapter : RecyclerView.Adapter<SensorAdapter.ViewHolder>() {
         else -> R.string.sensor_accuracy_unreliable
     }
 
-    private fun reportingModeLabel(mode: Int): String = when (mode) {
-        Sensor.REPORTING_MODE_CONTINUOUS -> "Continuous"
-        Sensor.REPORTING_MODE_ON_CHANGE -> "On-change"
-        Sensor.REPORTING_MODE_ONE_SHOT -> "One-shot"
-        Sensor.REPORTING_MODE_SPECIAL_TRIGGER -> "Special trigger"
-        else -> "Mode $mode"
+    private fun reportingModeLabel(mode: Int): Int = when (mode) {
+        Sensor.REPORTING_MODE_CONTINUOUS -> R.string.sensor_mode_continuous
+        Sensor.REPORTING_MODE_ON_CHANGE -> R.string.sensor_mode_on_change
+        Sensor.REPORTING_MODE_ONE_SHOT -> R.string.sensor_mode_one_shot
+        Sensor.REPORTING_MODE_SPECIAL_TRIGGER -> R.string.sensor_mode_special_trigger
+        else -> R.string.sensor_mode_unknown
     }
 }
