@@ -32,7 +32,13 @@ class ServiceLocator(context: Context) {
     private val appContext = context.applicationContext
 
     val database: AppDatabase by lazy {
-        Room.databaseBuilder(appContext, AppDatabase::class.java, "phone_doctor.db").build()
+        Room.databaseBuilder(
+            appContext,
+            AppDatabase::class.java,
+            "phone_doctor.db"
+        )
+            .addMigrations(AppDatabase.MIGRATION_1_2)
+            .build()
     }
 
     val settingsRepository: SettingsRepository by lazy { SettingsRepository(appContext) }
