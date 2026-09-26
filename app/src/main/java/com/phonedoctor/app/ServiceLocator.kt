@@ -66,7 +66,10 @@ class ServiceLocator(context: Context) {
             memoryRepository = memoryRepository,
             thermalRepository = thermalRepository,
             sensorsRepository = sensorsRepository,
-            connectivityRepository = connectivityRepository
+            connectivityRepository = connectivityRepository,
+            cpuBenchmarkEngine = cpuBenchmarkEngine,
+            memoryBenchmarkEngine = memoryBenchmarkEngine,
+            storageBenchmarkEngine = storageBenchmarkEngine
         )
     }
 
