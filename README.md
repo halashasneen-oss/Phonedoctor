@@ -145,10 +145,10 @@ APK — it does not fail, it just skips the release build with a notice.
 | `INTERSTITIAL_AD_UNIT_ID` *(optional)* | Real interstitial ad unit ID |
 | `REWARDED_AD_UNIT_ID` *(optional)* | Real rewarded ad unit ID |
 
-Omitting `REWARDED_AD_UNIT_ID` is safe: release builds keep rewarded ads
-disabled and hide the one-hour ad-free reward card. Banner and interstitial
-release IDs are configured for this app. Debug builds use Google's public
-test ad units so development does not generate production ad traffic.
+Omitting `REWARDED_AD_UNIT_ID` is safe: release builds use the app's built-in
+production rewarded ad unit. The secret can still override it later without
+code changes. Debug builds use Google's public test ad units so development
+does not generate production ad traffic.
 
 ## GitHub Actions
 
@@ -204,11 +204,10 @@ Flashlight uses `CameraManager.setTorchMode`, which does **not** require the
   with no fake purchase flow behind it — it explains that Google Play Billing
   needs to be connected (a Play Console step outside what a repository can
   configure). The Rewarded Ad flow, however, is fully functional.
-- **AdMob production configuration**: release builds use the app's production
-  AdMob app/banner/interstitial IDs. The rewarded unit remains optional and is
-  supplied through `secrets.properties` (local) or GitHub Secrets (CI).
-  When it is absent, the rewarded flow is disabled rather than using a test
-  rewarded unit in production.
+- **AdMob production configuration**: release builds use production
+  app/banner/interstitial/rewarded IDs. All may be overridden through
+  `secrets.properties` (local) or GitHub Secrets (CI). Debug builds continue
+  to use Google test ad units.
 - **Sandbox build verification**: this project was authored in a sandboxed
   environment without outbound access to `dl.google.com` / Android SDK
   manager endpoints, so the initial build/test/lint pass was verified via
@@ -230,6 +229,6 @@ Flashlight uses `CameraManager.setTorchMode`, which does **not** require the
 The v2 diagnostic architecture separates measured health evidence from capabilities,
 current state, user verification, and informational performance benchmarks.
 
-Release configuration requires a production `REWARDED_AD_UNIT_ID` in addition to
-the signing secrets. Release builds intentionally do not fall back to Google's test
-rewarded ad unit.
+Release configuration includes a built-in production rewarded ad unit and also
+supports an optional `REWARDED_AD_UNIT_ID` override. Release builds never use
+Google's rewarded test ad unit.
