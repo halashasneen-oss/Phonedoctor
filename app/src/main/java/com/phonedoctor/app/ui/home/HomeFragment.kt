@@ -87,16 +87,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             launchShareFlow()
         }
 
+        // Render the retained Home state immediately when returning from a
+        // diagnostic destination instead of waiting for the lifecycle
+        // collector to dispatch its first value.
+        renderHomeState(viewModel.uiState.value)
+
+        // Keep the rewarded CTA deterministic on first paint. Consent only
+        // controls whether the button can start the ad flow, not whether the
+        // feature exists in the UI.
+        binding.cardAdFreeReward.visibility = if (
+            BuildConfig.SHOW_ADS && BuildConfig.REWARDED_ADS_ENABLED
+        ) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
-                    viewModel.uiState.collect { state ->
-                        binding.healthRing.progress = state.healthScore
-                        binding.textHealthScore.text = "${state.healthScore}%"
-                        binding.textHealthStatus.setText(state.healthStatusRes)
-                        binding.textLastCheck.text = state.lastCheckText
-                        quickTestAdapter.submitList(state.quickTests)
-                    }
+                    viewModel.uiState.collect(::renderHomeState)
                 }
 
                 launch {
@@ -112,6 +122,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         }
+    }
+
+    private fun renderHomeState(state: HomeUiState) {
+        binding.healthRing.progress = state.healthScore
+        binding.textHealthScore.text = "${state.healthScore}%"
+        binding.textHealthStatus.setText(state.healthStatusRes)
+        binding.textLastCheck.text = state.lastCheckText
+        quickTestAdapter.submitList(state.quickTests)
     }
 
     private fun renderAdState(settings: AppSettings, canRequestAds: Boolean) {
@@ -132,7 +150,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             isPremium = settings.isPremium,
             adFreeUntilMillis = settings.adFreeUntilMillis
         )
-        binding.buttonAdFreeReward.isEnabled = !adFree
+        binding.buttonAdFreeReward.isEnabled = !adFree && canRequestAds
 
         countdownJob?.cancel()
         if (adFree) {
@@ -275,6 +293,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onResume() {
         super.onResume()
+        // A diagnostic can change ambient device state, so refresh the cards.
+        // Also reset the scroll position after returning so the Home controls
+        // never reopen on an empty lower section while RecyclerViews relayout.
+        binding.root.post {
+            if (view != null) {
+                binding.root.fullScroll(View.FOCUS_UP)
+            }
+        }
         viewModel.refresh()
     }
 
