@@ -88,9 +88,9 @@ jobs:
           REWARDED_AD_UNIT_ID: ${{ secrets.REWARDED_AD_UNIT_ID }}
         run: |
           if [ -z "$REWARDED_AD_UNIT_ID" ]; then
-            echo "::notice::REWARDED_AD_UNIT_ID is not configured. Release will build with rewarded ads disabled; banner/interstitial ads remain available."
+            echo "::notice::REWARDED_AD_UNIT_ID secret is not configured. Release will use the built-in production rewarded ad unit."
           else
-            echo "Production rewarded ad unit is configured."
+            echo "Rewarded ad unit override is configured."
           fi
 
       - name: Decode release keystore
