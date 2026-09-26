@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.phonedoctor.app.R
 import com.phonedoctor.app.data.audio.MicRecorder
 import com.phonedoctor.app.databinding.FragmentMicrophoneTestBinding
+import com.phonedoctor.app.domain.util.MicrophoneStatsCalculator
+import com.phonedoctor.app.ui.common.serviceLocator
 import com.phonedoctor.app.ui.common.viewBinding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -24,12 +27,22 @@ class MicrophoneTestFragment : Fragment(R.layout.fragment_microphone_test) {
     private lateinit var recorder: MicRecorder
     private var isRecording = false
     private var levelJob: Job? = null
+    private val levelSamples = mutableListOf<Int>()
 
     private val maxRecordingMs = 10_000L
 
-    private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-        if (granted) beginRecording() else Snackbar.make(binding.root, R.string.common_permission_required, Snackbar.LENGTH_SHORT).show()
-    }
+    private val permissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (granted) {
+                beginRecording()
+            } else {
+                Snackbar.make(
+                    binding.root,
+                    R.string.common_permission_required,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,6 +52,15 @@ class MicrophoneTestFragment : Fragment(R.layout.fragment_microphone_test) {
         binding.buttonRecord.setOnClickListener { onRecordClicked() }
         binding.buttonPlay.setOnClickListener { onPlayClicked() }
         binding.buttonDelete.setOnClickListener { onDeleteClicked() }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            val routes = serviceLocator().audioDiagnosticsRepository.getRoutes()
+            binding.textInputRoutes.text = if (routes.inputDevices.isEmpty()) {
+                getString(R.string.common_not_available)
+            } else {
+                routes.inputDevices.joinToString("\n")
+            }
+        }
     }
 
     private fun onRecordClicked() {
@@ -46,16 +68,31 @@ class MicrophoneTestFragment : Fragment(R.layout.fragment_microphone_test) {
             stopRecording()
             return
         }
-        val granted = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.RECORD_AUDIO) ==
-            PackageManager.PERMISSION_GRANTED
-        if (granted) beginRecording() else permissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
+
+        val granted = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.RECORD_AUDIO
+        ) == PackageManager.PERMISSION_GRANTED
+
+        if (granted) {
+            beginRecording()
+        } else {
+            permissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
+        }
     }
 
     private fun beginRecording() {
         runCatching { recorder.startRecording() }.onFailure {
-            Snackbar.make(binding.root, R.string.common_not_available, Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(
+                binding.root,
+                R.string.common_not_available,
+                Snackbar.LENGTH_SHORT
+            ).show()
             return
         }
+
+        levelSamples.clear()
+        binding.textMicStats.isVisible = false
         isRecording = true
         binding.buttonRecord.setText(R.string.mic_stop_recording)
         binding.buttonPlay.isEnabled = false
@@ -63,10 +100,17 @@ class MicrophoneTestFragment : Fragment(R.layout.fragment_microphone_test) {
 
         levelJob = viewLifecycleOwner.lifecycleScope.launch {
             val startTime = System.currentTimeMillis()
-            while (isRecording && System.currentTimeMillis() - startTime < maxRecordingMs) {
+            while (
+                isRecording &&
+                System.currentTimeMillis() - startTime < maxRecordingMs
+            ) {
                 val amplitude = recorder.getCurrentAmplitude()
-                binding.levelMeter.setProgressCompat((amplitude * 100 / 32767).coerceIn(0, 100), true)
-                delay(120)
+                levelSamples += amplitude
+                binding.levelMeter.setProgressCompat(
+                    MicrophoneStatsCalculator.toPercent(amplitude),
+                    true
+                )
+                delay(120L)
             }
             if (isRecording) stopRecording()
         }
@@ -76,11 +120,26 @@ class MicrophoneTestFragment : Fragment(R.layout.fragment_microphone_test) {
         isRecording = false
         levelJob?.cancel()
         recorder.stopRecording()
+
         binding.buttonRecord.setText(R.string.mic_start_recording)
         binding.levelMeter.setProgressCompat(0, true)
+
         val hasRecording = recorder.currentFile != null
         binding.buttonPlay.isEnabled = hasRecording
         binding.buttonDelete.isEnabled = hasRecording
+
+        val stats = MicrophoneStatsCalculator.calculate(levelSamples)
+        binding.textMicStats.isVisible = stats.sampleCount > 0
+        if (stats.sampleCount > 0) {
+            binding.textMicStats.text = getString(
+                R.string.mic_stats_fmt,
+                stats.averagePercent,
+                stats.peakPercent,
+                stats.clippingSamples,
+                stats.silentSamples,
+                stats.sampleCount
+            )
+        }
     }
 
     private fun onPlayClicked() {
@@ -91,7 +150,11 @@ class MicrophoneTestFragment : Fragment(R.layout.fragment_microphone_test) {
         recorder.deleteRecording()
         binding.buttonPlay.isEnabled = false
         binding.buttonDelete.isEnabled = false
-        Snackbar.make(binding.root, R.string.mic_recording_deleted, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(
+            binding.root,
+            R.string.mic_recording_deleted,
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 
     override fun onDestroyView() {
