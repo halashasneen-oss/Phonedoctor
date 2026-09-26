@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
     android:minHeight="@dimen/min_touch_target"
     android:orientation="horizontal"
     android:paddingHorizontal="@dimen/spacing_md"
-    android:paddingVertical="@dimen/spacing_xs">
+    android:paddingVertical="@dimen/spacing_sm">
 
     <FrameLayout
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_marginTop="2dp"
         android:background="@drawable/bg_icon_tile">
 
         <ImageView
@@ -25,24 +25,71 @@
             tools:src="@drawable/ic_battery" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/textLabel"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_sm"
         android:layout_weight="1"
-        android:textAppearance="@style/TextAppearance.PhoneDoctor.Subtitle"
-        tools:text="@string/category_battery" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_pill_success"
-        android:paddingHorizontal="@dimen/spacing_sm"
-        android:paddingVertical="2dp"
-        android:textAppearance="@style/TextAppearance.PhoneDoctor.Caption"
-        android:textColor="@color/color_success"
-        tools:text="@string/home_status_excellent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.PhoneDoctor.Subtitle"
+                tools:text="@string/category_battery" />
+
+            <TextView
+                android:id="@+id/textStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_success"
+                android:paddingHorizontal="@dimen/spacing_sm"
+                android:paddingVertical="2dp"
+                android:textAppearance="@style/TextAppearance.PhoneDoctor.Caption"
+                android:textColor="@color/color_success"
+                tools:text="@string/home_status_excellent" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xxs"
+            android:textAppearance="@style/TextAppearance.PhoneDoctor.Body"
+            android:visibility="gone"
+            tools:text="Battery health Good · 31.4°C"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/textDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xxs"
+            android:textAppearance="@style/TextAppearance.PhoneDoctor.Caption"
+            android:textColor="@color/color_text_secondary"
+            android:visibility="gone"
+            tools:text="OEM health observation"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/textEvidence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xxs"
+            android:textAppearance="@style/TextAppearance.PhoneDoctor.Caption"
+            android:textColor="@color/color_primary"
+            android:visibility="gone"
+            tools:text="Measured · Health evidence · High confidence"
+            tools:visibility="visible" />
+
+    </LinearLayout>
 
 </LinearLayout>
