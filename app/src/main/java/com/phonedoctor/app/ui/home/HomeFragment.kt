@@ -121,7 +121,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             return
         }
 
-        binding.cardAdFreeReward.visibility = View.VISIBLE
+        binding.cardAdFreeReward.visibility = if (
+            BuildConfig.REWARDED_ADS_ENABLED
+        ) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
         val adFree = AdFreePolicy.isAdFree(
             isPremium = settings.isPremium,
             adFreeUntilMillis = settings.adFreeUntilMillis
@@ -217,7 +223,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun showRewardedAdForAdFreeHour() {
-        if (!AdConsentManager.canRequestAds.value) {
+        if (
+            !BuildConfig.REWARDED_ADS_ENABLED ||
+            BuildConfig.REWARDED_AD_UNIT_ID.isBlank() ||
+            !AdConsentManager.canRequestAds.value
+        ) {
             Snackbar.make(
                 binding.root,
                 R.string.home_adfree_reward_unavailable,
