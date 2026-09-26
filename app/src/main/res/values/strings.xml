@@ -152,6 +152,11 @@
     <string name="storage_category_documents">Documents</string>
     <string name="storage_category_other">Other</string>
     <string name="storage_view_breakdown">View Breakdown</string>
+    <string name="storage_benchmark_title">Storage Performance Test</string>
+    <string name="storage_benchmark_desc">Writes and reads a temporary file inside Phone Doctor’s private cache, then deletes it. No personal files are scanned or modified.</string>
+    <string name="storage_run_benchmark">RUN STORAGE PERFORMANCE TEST</string>
+    <string name="storage_benchmark_result_fmt">Test size: %1$s\nWrite: %2$.1f MiB/s (%3$d ms)\nRead: %4$.1f MiB/s (%5$d ms)</string>
+    <string name="storage_benchmark_note">Results reflect this app-local sequential test and can be affected by caching, temperature and background activity. They are not raw UFS/NAND health values.</string>
     <string name="storage_permission_rationale">To show a breakdown by file type, Phone Doctor needs permission to read media on this device. This is optional and only used to compute sizes on your device.</string>
 
     <!-- ============ Memory ============ -->
@@ -161,6 +166,14 @@
     <string name="memory_used">Used RAM</string>
     <string name="memory_status">Memory Status</string>
     <string name="memory_low_memory_warning">Device is running low on memory.</string>
+    <string name="memory_low_threshold">Low-memory Threshold</string>
+    <string name="memory_benchmark_title">RAM Performance Test</string>
+    <string name="memory_benchmark_desc">Measures local memory-copy throughput and performs a small allocation probe. The test is bounded to avoid excessive memory pressure.</string>
+    <string name="memory_run_benchmark">RUN RAM PERFORMANCE TEST</string>
+    <string name="memory_benchmark_result_fmt">Memory copy: %1$.1f MiB/s\nCopy buffer: %2$s\nAllocation probe: %3$s — %4$s</string>
+    <string name="memory_allocation_passed">Passed</string>
+    <string name="memory_allocation_failed">Could not allocate safely</string>
+    <string name="memory_benchmark_note">This is a local Phone Doctor throughput measurement. RAM usage percentage alone is not treated as hardware health.</string>
 
     <!-- ============ CPU / Device Info quick screen ============ -->
     <string name="cpu_title">CPU Lab</string>
