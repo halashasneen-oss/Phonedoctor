@@ -190,6 +190,7 @@
     <string name="cpu_stress_title">اختبار الأداء المستمر للمعالج</string>
     <string name="cpu_stress_desc">يشغّل حملًا محدودًا لمدة 10 ثوانٍ لقياس ثبات الأداء والتغير الحراري. أوقف الاستخدام إذا شعرت أن الجهاز أصبح ساخنًا بشكل غير طبيعي.</string>
     <string name="cpu_run_stress">تشغيل اختبار ضغط لمدة 10 ثوانٍ</string>
+    <string name="cpu_cancel_stress">إلغاء اختبار الضغط</string>
     <string name="cpu_stress_progress_fmt">اختبار الضغط: %1$d%%</string>
     <string name="cpu_stress_result_fmt">المدة: %1$d ث\nالأداء الأولي: %2$s عملية/ث\nالأداء النهائي: %3$s عملية/ث\nثبات الأداء: %4$d%%\nالحالة الحرارية: %5$s ← %6$s\nالهامش الحراري: %7$s ← %8$s</string>
 
