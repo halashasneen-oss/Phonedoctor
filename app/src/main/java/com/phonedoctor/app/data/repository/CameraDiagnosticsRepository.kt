@@ -5,6 +5,7 @@ import android.graphics.ImageFormat
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraMetadata
 import android.hardware.camera2.CameraManager
+import android.os.Build
 import com.phonedoctor.app.domain.model.CameraCapabilityInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -71,9 +72,15 @@ class CameraDiagnosticsRepository(private val context: Context) {
                     rawCapture = capabilities.contains(
                         CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES_RAW
                     ),
-                    logicalMultiCamera = capabilities.contains(
-                        CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES_LOGICAL_MULTI_CAMERA
-                    ),
+                    logicalMultiCamera = if (
+                        Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+                    ) {
+                        capabilities.contains(
+                            CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES_LOGICAL_MULTI_CAMERA
+                        )
+                    } else {
+                        false
+                    },
                     maxJpegWidth = maxJpeg?.width,
                     maxJpegHeight = maxJpeg?.height,
                     sensorOrientationDegrees = characteristics[
@@ -91,13 +98,21 @@ class CameraDiagnosticsRepository(private val context: Context) {
         else -> "Unknown"
     }
 
-    private fun hardwareLevelLabel(value: Int?): String = when (value) {
+    private fun hardwareLevelLabel(value: Int?): String {
+        if (
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.P &&
+            value == CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_EXTERNAL
+        ) {
+            return "EXTERNAL"
+        }
+
+        return when (value) {
         CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_3 -> "LEVEL_3"
         CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_FULL -> "FULL"
         CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_LIMITED -> "LIMITED"
         CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_LEGACY -> "LEGACY"
-        CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_EXTERNAL -> "EXTERNAL"
         else -> "Unknown"
+        }
     }
 
     private fun afModeLabel(mode: Int): String = when (mode) {
