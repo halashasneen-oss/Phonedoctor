@@ -12,6 +12,7 @@ import com.phonedoctor.app.domain.model.TestStatus
 import com.phonedoctor.app.domain.model.ThermalState
 import com.phonedoctor.app.domain.util.HealthScoreCalculator
 import com.phonedoctor.app.domain.util.PerformanceBenchmarkMath
+import kotlinx.coroutines.CancellationException
 
 /** One step completing during a full scan; the UI renders these as they arrive. */
 data class ScanProgressEvent(
@@ -267,6 +268,7 @@ class ScanEngine(
                 )
             },
             onFailure = { error ->
+                if (error is CancellationException) throw error
                 CategoryResult(
                     category = DiagnosticCategory.CPU,
                     status = TestStatus.UNAVAILABLE,
@@ -308,6 +310,7 @@ class ScanEngine(
                 )
             },
             onFailure = { error ->
+                if (error is CancellationException) throw error
                 CategoryResult(
                     category = DiagnosticCategory.MEMORY,
                     status = TestStatus.UNAVAILABLE,
@@ -348,6 +351,7 @@ class ScanEngine(
                 )
             },
             onFailure = { error ->
+                if (error is CancellationException) throw error
                 CategoryResult(
                     category = DiagnosticCategory.STORAGE,
                     status = TestStatus.UNAVAILABLE,
