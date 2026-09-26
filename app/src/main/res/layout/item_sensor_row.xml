@@ -39,6 +39,15 @@
             tools:text="@string/sensor_accelerometer" />
 
         <TextView
+            android:id="@+id/textMetadata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xxs"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="@dimen/text_caption"
+            tools:text="BMI160 · Bosch\nResolution: 0.001 · Range: 19.6 · Power: 0.18 mA" />
+
+        <TextView
             android:id="@+id/textReading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
