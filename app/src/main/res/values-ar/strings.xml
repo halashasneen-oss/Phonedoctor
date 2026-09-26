@@ -68,6 +68,7 @@
     <string name="scan_item_storage">التخزين</string>
     <string name="scan_item_memory">الذاكرة</string>
     <string name="scan_item_cpu">المعالج</string>
+    <string name="scan_item_thermal">الحرارة</string>
     <string name="scan_item_display">الشاشة</string>
     <string name="scan_item_touch">اللمس</string>
     <string name="scan_item_audio">الصوت</string>
@@ -109,6 +110,7 @@
     <string name="category_camera">الكاميرا</string>
     <string name="category_sensors">الحساسات</string>
     <string name="category_connectivity">الاتصال</string>
+    <string name="category_thermal">الحالة الحرارية</string>
 
     <!-- ============ Battery ============ -->
     <string name="battery_title">البطارية</string>
@@ -170,6 +172,22 @@
     <string name="cpu_supported_abis">واجهات المعالج المدعومة</string>
     <string name="cpu_screen_resolution">دقة الشاشة</string>
     <string name="cpu_refresh_rate">معدل التحديث</string>
+
+    <!-- ============ Thermal Lab ============ -->
+    <string name="thermal_title">مختبر الحرارة</string>
+    <string name="thermal_status">الحالة الحرارية</string>
+    <string name="thermal_headroom_current">الهامش الحراري الحالي</string>
+    <string name="thermal_headroom_forecast">الهامش المتوقع بعد 10 ثوانٍ</string>
+    <string name="thermal_severe_threshold">حد الاختناق الشديد</string>
+    <string name="thermal_headroom_note">اقتراب قيمة الهامش الحراري من 1.0 يعني أن الجهاز يقترب من حد الاختناق الحراري الشديد. توفر هذه القيمة يعتمد على الجهاز.</string>
+    <string name="thermal_refresh">تحديث الحالة الحرارية</string>
+    <string name="thermal_state_none">لا يوجد اختناق حراري</string>
+    <string name="thermal_state_light">اختناق خفيف</string>
+    <string name="thermal_state_moderate">اختناق متوسط</string>
+    <string name="thermal_state_severe">اختناق شديد</string>
+    <string name="thermal_state_critical">حالة حرارية حرجة</string>
+    <string name="thermal_state_emergency">حالة طارئة</string>
+    <string name="thermal_state_shutdown">إيقاف وشيك</string>
 
     <!-- ============ Display Test ============ -->
     <string name="display_title">اختبار الشاشة</string>
