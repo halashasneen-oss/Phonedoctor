@@ -3,6 +3,7 @@ package com.phonedoctor.app.data.repository
 import android.content.Context
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
+import android.os.Build
 import com.phonedoctor.app.domain.model.AudioRouteInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -22,6 +23,18 @@ class AudioDiagnosticsRepository(private val context: Context) {
     }
 
     private fun deviceLabel(device: AudioDeviceInfo): String {
+        if (
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+            device.type == AudioDeviceInfo.TYPE_USB_HEADSET
+        ) {
+            val product = device.productName?.toString()?.trim().orEmpty()
+            return if (product.isNotBlank()) {
+                "USB headset · $product"
+            } else {
+                "USB headset"
+            }
+        }
+
         val type = when (device.type) {
             AudioDeviceInfo.TYPE_BUILTIN_SPEAKER -> "Built-in speaker"
             AudioDeviceInfo.TYPE_BUILTIN_EARPIECE -> "Earpiece"
@@ -30,7 +43,6 @@ class AudioDiagnosticsRepository(private val context: Context) {
             AudioDeviceInfo.TYPE_BLUETOOTH_A2DP -> "Bluetooth audio"
             AudioDeviceInfo.TYPE_BLUETOOTH_SCO -> "Bluetooth headset"
             AudioDeviceInfo.TYPE_USB_DEVICE -> "USB audio"
-            AudioDeviceInfo.TYPE_USB_HEADSET -> "USB headset"
             AudioDeviceInfo.TYPE_HDMI -> "HDMI"
             AudioDeviceInfo.TYPE_BUILTIN_MIC -> "Built-in microphone"
             AudioDeviceInfo.TYPE_TELEPHONY -> "Telephony"
