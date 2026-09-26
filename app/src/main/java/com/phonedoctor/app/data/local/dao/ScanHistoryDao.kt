@@ -16,7 +16,11 @@ interface ScanHistoryDao {
     @Query("SELECT * FROM scan_history ORDER BY timestampMillis DESC")
     fun observeAll(): Flow<List<ScanHistoryEntity>>
 
-    @Query("SELECT * FROM scan_history ORDER BY timestampMillis DESC LIMIT 1")
+    @Query(
+        "SELECT * FROM scan_history " +
+            "WHERE scanMode != 'PERFORMANCE' " +
+            "ORDER BY timestampMillis DESC LIMIT 1"
+    )
     fun observeLatest(): Flow<ScanHistoryEntity?>
 
     @Query("SELECT * FROM scan_history WHERE id = :id")
