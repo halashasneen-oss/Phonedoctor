@@ -12,6 +12,7 @@ import com.phonedoctor.app.data.repository.MemoryRepository
 import com.phonedoctor.app.data.repository.ScanEngine
 import com.phonedoctor.app.data.repository.SensorsRepository
 import com.phonedoctor.app.data.repository.StorageRepository
+import com.phonedoctor.app.data.repository.ThermalRepository
 
 /**
  * Lightweight manual service locator used instead of a DI framework. The app
@@ -33,6 +34,7 @@ class ServiceLocator(context: Context) {
     val deviceInfoRepository: DeviceInfoRepository by lazy { DeviceInfoRepository(appContext) }
     val sensorsRepository: SensorsRepository by lazy { SensorsRepository(appContext) }
     val connectivityRepository: ConnectivityRepository by lazy { ConnectivityRepository(appContext) }
+    val thermalRepository: ThermalRepository by lazy { ThermalRepository(appContext) }
     val historyRepository: HistoryRepository by lazy { HistoryRepository(database.scanHistoryDao()) }
 
     val scanEngine: ScanEngine by lazy {
@@ -40,6 +42,7 @@ class ServiceLocator(context: Context) {
             batteryRepository = batteryRepository,
             storageRepository = storageRepository,
             memoryRepository = memoryRepository,
+            thermalRepository = thermalRepository,
             sensorsRepository = sensorsRepository,
             connectivityRepository = connectivityRepository
         )
