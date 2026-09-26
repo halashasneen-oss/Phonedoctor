@@ -190,6 +190,7 @@
     <string name="cpu_stress_title">Sustained CPU Test</string>
     <string name="cpu_stress_desc">Runs a bounded 10-second CPU load to measure sustained performance and thermal change. Stop using the test if the device feels unusually hot.</string>
     <string name="cpu_run_stress">RUN 10-SECOND STRESS TEST</string>
+    <string name="cpu_cancel_stress">CANCEL STRESS TEST</string>
     <string name="cpu_stress_progress_fmt">Stress test: %1$d%%</string>
     <string name="cpu_stress_result_fmt">Duration: %1$d s\nInitial throughput: %2$s ops/s\nFinal throughput: %3$s ops/s\nSustained performance: %4$d%%\nThermal: %5$s → %6$s\nThermal headroom: %7$s → %8$s</string>
 
