@@ -117,6 +117,14 @@
     <string name="battery_temperature">Battery Temperature</string>
     <string name="battery_voltage">Voltage</string>
     <string name="battery_current">Current</string>
+    <string name="battery_current_average">Average Current</string>
+    <string name="battery_charge_counter">Charge Counter</string>
+    <string name="battery_energy_remaining">Remaining Energy</string>
+    <string name="battery_cycle_count">Battery Cycles</string>
+    <string name="battery_charge_time_remaining">Estimated Time to Full</string>
+    <string name="battery_estimated_power">Estimated Battery Power</string>
+    <string name="battery_time_hours_minutes">%1$d h %2$d min</string>
+    <string name="battery_time_minutes">%1$d min</string>
     <string name="battery_technology">Battery Technology</string>
     <string name="battery_health">Battery Health</string>
     <string name="battery_charging">Charging</string>
