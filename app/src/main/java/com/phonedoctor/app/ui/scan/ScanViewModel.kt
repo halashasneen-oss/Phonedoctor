@@ -36,7 +36,7 @@ class ScanViewModel(
 
     private val categoryOrder = listOf(
         DiagnosticCategory.BATTERY, DiagnosticCategory.STORAGE, DiagnosticCategory.MEMORY,
-        DiagnosticCategory.CPU, DiagnosticCategory.DISPLAY, DiagnosticCategory.TOUCH,
+        DiagnosticCategory.CPU, DiagnosticCategory.THERMAL, DiagnosticCategory.DISPLAY, DiagnosticCategory.TOUCH,
         DiagnosticCategory.AUDIO, DiagnosticCategory.MICROPHONE, DiagnosticCategory.SENSORS,
         DiagnosticCategory.CAMERA, DiagnosticCategory.CONNECTIVITY
     )
@@ -116,6 +116,7 @@ class ScanViewModel(
         DiagnosticCategory.STORAGE -> com.phonedoctor.app.R.string.scan_item_storage
         DiagnosticCategory.MEMORY -> com.phonedoctor.app.R.string.scan_item_memory
         DiagnosticCategory.CPU -> com.phonedoctor.app.R.string.scan_item_cpu
+        DiagnosticCategory.THERMAL -> com.phonedoctor.app.R.string.scan_item_thermal
         DiagnosticCategory.DISPLAY -> com.phonedoctor.app.R.string.scan_item_display
         DiagnosticCategory.TOUCH -> com.phonedoctor.app.R.string.scan_item_touch
         DiagnosticCategory.AUDIO -> com.phonedoctor.app.R.string.scan_item_audio
