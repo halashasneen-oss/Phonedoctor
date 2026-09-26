@@ -265,6 +265,13 @@
     <string name="speaker_right">Right Channel</string>
     <string name="speaker_both">Both Channels</string>
     <string name="speaker_result_question">Could you hear the test tone clearly?</string>
+    <string name="speaker_frequency_tests">Frequency Tests</string>
+    <string name="speaker_tone_low">250 Hz</string>
+    <string name="speaker_tone_mid">1 kHz</string>
+    <string name="speaker_tone_high">4 kHz</string>
+    <string name="speaker_sweep">PLAY 200 Hz–4 kHz SWEEP</string>
+    <string name="speaker_output_routes">Detected Output Devices</string>
+    <string name="speaker_result_note">Hearing the tones is a user verification. Phone Doctor does not claim an objective acoustic-quality score.</string>
 
     <!-- ============ Microphone Test ============ -->
     <string name="mic_title">Microphone Test</string>
@@ -276,6 +283,9 @@
     <string name="mic_delete_recording">DELETE RECORDING</string>
     <string name="mic_recording_deleted">Recording deleted</string>
     <string name="mic_max_duration_notice">Recording stops automatically after 10 seconds.</string>
+    <string name="mic_input_routes">Detected Input Devices</string>
+    <string name="mic_stats_fmt">Average level: %1$d%%\nPeak level: %2$d%%\nClipping samples: %3$d\nSilent samples: %4$d\nSamples analyzed: %5$d</string>
+    <string name="mic_stats_note">These values summarize MediaRecorder input levels during this recording. They are signal-level indicators, not an absolute microphone quality score.</string>
 
     <!-- ============ Vibration Test ============ -->
     <string name="vibration_title">Vibration Test</string>
