@@ -59,8 +59,8 @@
     <string name="home_adfree_reward_loading">Loading your rewarded ad…</string>
     <string name="home_adfree_reward_unavailable">A rewarded ad is not available right now. Please try again later.</string>
     <string name="home_adfree_reward_granted">Banner and interstitial ads are removed for one hour.</string>
-    <string name="home_share_text">Check your phone with Phone Doctor — battery, display, touch, audio, sensors and more.</string>
-    <string name="home_share_chooser">Share Phone Doctor</string>
+    <string name="home_share_text">Want to know what’s really going on inside your phone? Phone Doctor checks your battery, screen, touch, audio, sensors, camera, performance and more — all in one place. Try it now:</string>
+    <string name="home_share_chooser">Share Phone Doctor with your friends</string>
 
     <!-- ============ Full Scan ============ -->
     <string name="scan_title">Checking your device…</string>
