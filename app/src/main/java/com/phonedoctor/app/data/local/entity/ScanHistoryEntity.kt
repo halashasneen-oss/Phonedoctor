@@ -9,6 +9,7 @@ import com.phonedoctor.app.domain.model.DiagnosticCategory
 import com.phonedoctor.app.domain.model.DiagnosticConfidence
 import com.phonedoctor.app.domain.model.DiagnosticEvidenceType
 import com.phonedoctor.app.domain.model.ScoreImpact
+import com.phonedoctor.app.domain.model.ScanMode
 import com.phonedoctor.app.domain.model.TestStatus
 
 private const val RECORD_SEPARATOR = ""
@@ -20,7 +21,8 @@ data class ScanHistoryEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0L,
     val timestampMillis: Long,
     val healthScore: Int,
-    val results: List<CategoryResult>
+    val results: List<CategoryResult>,
+    val scanMode: String = ScanMode.DEEP.name
 )
 
 class CategoryResultListConverter {
