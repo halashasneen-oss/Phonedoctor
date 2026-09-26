@@ -13,7 +13,6 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.phonedoctor.app.PhoneDoctorApp
 import com.phonedoctor.app.R
-import com.phonedoctor.app.domain.model.DiagnosticCategory
 import com.phonedoctor.app.ui.MainActivity
 import kotlinx.coroutines.flow.first
 
@@ -32,26 +31,16 @@ class AutoHealthCheckWorker(
         val serviceLocator = app.serviceLocator
         val engine = serviceLocator.scanEngine
 
-        val report = engine.run(
-            cameraAvailable = false,
-            requestUserConfirmation = { true }, // background run: skip interactive categories favorably rather than blocking
-            onProgress = { }
+        val report = engine.runAutomatic(
+            cameraAvailable = applicationContext.packageManager.hasSystemFeature(
+                android.content.pm.PackageManager.FEATURE_CAMERA_ANY
+            )
         )
-        // Interactive categories (display/touch/audio/microphone) are not meaningful
-        // without user presence, so exclude them from the persisted background result.
-        val filtered = report.copy(
-            results = report.results.filterNot {
-                it.category == DiagnosticCategory.DISPLAY ||
-                    it.category == DiagnosticCategory.TOUCH ||
-                    it.category == DiagnosticCategory.AUDIO ||
-                    it.category == DiagnosticCategory.MICROPHONE
-            }
-        )
-        serviceLocator.historyRepository.save(filtered)
+        serviceLocator.historyRepository.save(report)
 
         val notificationsEnabled = serviceLocator.settingsRepository.settings.first().notificationsEnabled
         if (notificationsEnabled) {
-            postNotification(filtered.healthScore)
+            postNotification(report.healthScore)
         }
         return Result.success()
     }
