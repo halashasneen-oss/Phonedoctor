@@ -94,6 +94,7 @@
     <string name="results_issue_storage_full">مساحة التخزين شبه ممتلئة.</string>
     <string name="results_issue_battery_drain">البطارية تنفد بسرعة.</string>
     <string name="results_issue_memory_high">استخدام الذاكرة مرتفع.</string>
+    <string name="results_issue_thermal">الاختناق الحراري يؤثر على أداء الجهاز.</string>
     <string name="results_issue_no_connectivity">لا يوجد اتصال بالشبكة.</string>
 
     <!-- ============ Categories ============ -->
