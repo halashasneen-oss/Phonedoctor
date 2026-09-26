@@ -5,6 +5,7 @@ enum class DiagnosticCategory {
     STORAGE,
     MEMORY,
     CPU,
+    THERMAL,
     DISPLAY,
     TOUCH,
     AUDIO,
