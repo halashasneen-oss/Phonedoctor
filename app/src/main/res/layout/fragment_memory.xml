@@ -94,10 +94,86 @@
                 android:nestedScrollingEnabled="false"
                 android:paddingVertical="@dimen/spacing_xs"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="3"
+                tools:itemCount="4"
                 tools:listitem="@layout/item_info_row" />
 
         </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.PhoneDoctor.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/memory_benchmark_title"
+                    android:textAppearance="@style/TextAppearance.PhoneDoctor.Subtitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:text="@string/memory_benchmark_desc"
+                    android:textAppearance="@style/TextAppearance.PhoneDoctor.Body" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonRunMemoryBenchmark"
+                    style="@style/Widget.PhoneDoctor.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:text="@string/memory_run_benchmark" />
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progressMemoryBenchmark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/textMemoryBenchmarkResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="@dimen/text_body"
+                    android:visibility="gone"
+                    tools:text="Memory copy: 5,200 MiB/s"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/textMemoryBenchmarkNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:text="@string/memory_benchmark_note"
+                    android:textAppearance="@style/TextAppearance.PhoneDoctor.Caption"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textMemoryError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:textColor="@color/color_error"
+            android:textSize="@dimen/text_body"
+            android:visibility="gone"
+            tools:text="Memory benchmark failed"
+            tools:visibility="visible" />
 
     </LinearLayout>
 
