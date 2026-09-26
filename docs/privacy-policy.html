@@ -27,7 +27,7 @@
 <body>
 
 <h1>Phone Doctor — Privacy Policy</h1>
-<p class="updated">Last updated: September 9, 2026</p>
+<p class="updated">Last updated: September 26, 2026</p>
 
 <p>Phone Doctor ("the App") is a device diagnostics app developed for Android.
 This page explains what information the App accesses, how it is used, and
@@ -57,9 +57,11 @@ diagnostic test or enable the matching feature, and only uses it for that purpos
 <ul>
   <li><strong>Camera</strong> — used only during the Camera Test screen, to preview and verify the camera works. No photos or video are saved or transmitted.</li>
   <li><strong>Microphone</strong> — used only during the Microphone Test screen, to check that audio input is captured. Any recording made is temporary, stays on-device, and is discarded after the test.</li>
+  <li><strong>Bluetooth Connect</strong> — requested only on Android versions that require it when you choose to inspect Bluetooth state in Connectivity Lab. Phone Doctor does not use this permission to infer location.</li>
   <li><strong>Notifications</strong> — used only if you enable the optional automatic health-check reminder in Settings.</li>
 </ul>
-<p>Phone Doctor does <strong>not</strong> request broad photo, video, audio, or external-storage read access. The Storage Test reads only basic total/used/free space information available to the App without media-library permissions. For detailed storage management, the App opens Android's system storage settings. Diagnostic reports are created in app-private storage and may be shared only when you choose to share them through Android's system sharing interface.</p>
+<p>Phone Doctor does <strong>not</strong> request broad photo, video, audio-library, external-storage read, or location access for diagnostics. The Storage Test reads only basic total/used/free space information available to the App without media-library permissions. For detailed storage management, the App opens Android's system storage settings. GNSS/GPS is reported only as a device capability unless you separately grant location access outside the App's current diagnostic flow. Diagnostic reports are created in app-private storage and may be shared only when you choose to share them through Android's system sharing interface.</p>
+<p>The optional DNS/TCP connectivity test runs only when you press its button. It resolves <code>example.com</code> and opens a short TCP connection to port 443 to measure basic DNS and connection latency. It is not a bandwidth test and does not upload your personal files, diagnostic history, microphone recordings, or account information.</p>
 <p>You can review and revoke applicable permissions at any time from your
 device's Android Settings, and you can delete all locally stored test
 history at any time from the App's own Settings screen.</p>
@@ -70,8 +72,12 @@ history at any time from the App's own Settings screen.</p>
 advertising identifiers) according to Google's own advertising and consent
 policies, independently of the App. You can see Google's practices here:
 <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com/technologies/ads</a>.
-Where required, the App presents a consent dialog before showing
-personalized ads. A paid Premium tier, where offered, removes ads.</p>
+Where required, the App uses Google's User Messaging Platform (UMP) consent
+flow before requesting ads. When Google requires privacy options to remain
+available, Phone Doctor exposes those choices again from Settings. Phone
+Doctor also offers an optional rewarded-ad flow that can disable Phone Doctor
+ads for one hour after the ad reward is earned. The App cannot verify that a
+share-sheet destination actually published a post.</p>
 
 <h2>5. Third-party services</h2>
 <p>The only third-party service integrated into the App is Google AdMob
