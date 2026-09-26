@@ -2,6 +2,9 @@ package com.phonedoctor.app.domain.util
 
 import com.phonedoctor.app.domain.model.CategoryResult
 import com.phonedoctor.app.domain.model.DiagnosticCategory
+import com.phonedoctor.app.domain.model.DiagnosticConfidence
+import com.phonedoctor.app.domain.model.DiagnosticEvidenceType
+import com.phonedoctor.app.domain.model.ScoreImpact
 import com.phonedoctor.app.domain.model.TestStatus
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -9,7 +12,7 @@ import org.junit.Test
 class HealthScoreCalculatorTest {
 
     @Test
-    fun `all excellent results score 100`() {
+    fun `all excellent health results score 100`() {
         val results = DiagnosticCategory.entries.map {
             CategoryResult(it, TestStatus.EXCELLENT, "ok")
         }
@@ -22,24 +25,73 @@ class HealthScoreCalculatorTest {
     }
 
     @Test
-    fun `unavailable categories are excluded from the average`() {
+    fun `unavailable health categories are excluded from average`() {
         val results = listOf(
             CategoryResult(DiagnosticCategory.BATTERY, TestStatus.EXCELLENT, "ok"),
             CategoryResult(DiagnosticCategory.CAMERA, TestStatus.UNAVAILABLE, "no camera")
         )
-        // Only BATTERY (EXCELLENT=100) should count, CAMERA is skipped entirely.
         assertEquals(100, HealthScoreCalculator.calculate(results))
     }
 
     @Test
-    fun `mixed statuses average correctly`() {
+    fun `informational warnings do not reduce health score`() {
         val results = listOf(
-            CategoryResult(DiagnosticCategory.BATTERY, TestStatus.EXCELLENT, "ok"), // 100
-            CategoryResult(DiagnosticCategory.STORAGE, TestStatus.GOOD, "ok"), // 80
-            CategoryResult(DiagnosticCategory.MEMORY, TestStatus.FAIR, "ok"), // 50
-            CategoryResult(DiagnosticCategory.CPU, TestStatus.POOR, "ok") // 15
+            CategoryResult(
+                category = DiagnosticCategory.BATTERY,
+                status = TestStatus.EXCELLENT,
+                summary = "healthy",
+                evidenceType = DiagnosticEvidenceType.MEASURED,
+                scoreImpact = ScoreImpact.HEALTH
+            ),
+            CategoryResult(
+                category = DiagnosticCategory.STORAGE,
+                status = TestStatus.POOR,
+                summary = "98% used",
+                evidenceType = DiagnosticEvidenceType.CURRENT_STATE,
+                scoreImpact = ScoreImpact.INFORMATIONAL
+            ),
+            CategoryResult(
+                category = DiagnosticCategory.CONNECTIVITY,
+                status = TestStatus.FAIR,
+                summary = "offline",
+                evidenceType = DiagnosticEvidenceType.CURRENT_STATE,
+                scoreImpact = ScoreImpact.INFORMATIONAL
+            )
         )
-        // (100 + 80 + 50 + 15) / 4 = 61.25 -> rounds to 61
+
+        assertEquals(100, HealthScoreCalculator.calculate(results))
+        assertEquals(1, HealthScoreCalculator.scoredCategoryCount(results))
+    }
+
+    @Test
+    fun `confidence weights health evidence`() {
+        val results = listOf(
+            CategoryResult(
+                DiagnosticCategory.BATTERY,
+                TestStatus.EXCELLENT,
+                "high confidence",
+                confidence = DiagnosticConfidence.HIGH
+            ),
+            CategoryResult(
+                DiagnosticCategory.DISPLAY,
+                TestStatus.POOR,
+                "low confidence",
+                confidence = DiagnosticConfidence.LOW
+            )
+        )
+
+        // (100*1.0 + 15*0.5) / 1.5 = 71.67 -> 72
+        assertEquals(72, HealthScoreCalculator.calculate(results))
+    }
+
+    @Test
+    fun `mixed statuses average correctly with equal confidence`() {
+        val results = listOf(
+            CategoryResult(DiagnosticCategory.BATTERY, TestStatus.EXCELLENT, "ok"),
+            CategoryResult(DiagnosticCategory.STORAGE, TestStatus.GOOD, "ok"),
+            CategoryResult(DiagnosticCategory.MEMORY, TestStatus.FAIR, "ok"),
+            CategoryResult(DiagnosticCategory.CPU, TestStatus.POOR, "ok")
+        )
         assertEquals(61, HealthScoreCalculator.calculate(results))
     }
 
