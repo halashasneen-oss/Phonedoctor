@@ -42,7 +42,22 @@ class TestHistoryFragment : Fragment(R.layout.fragment_test_history) {
         binding.recyclerHistory.adapter = adapter
         binding.buttonBack.setOnClickListener { findNavController().navigateUp() }
         binding.buttonClear.setOnClickListener { confirmClear() }
-        binding.buttonRunFromEmpty.setOnClickListener { findNavController().navigate(R.id.scanFragment) }
+        binding.buttonRunFromEmpty.setOnClickListener {
+            findNavController().navigate(R.id.scanFragment)
+        }
+        binding.toggleHistoryFilter.addOnButtonCheckedListener {
+                _,
+                checkedId,
+                isChecked ->
+            if (!isChecked) return@addOnButtonCheckedListener
+            viewModel.setFilter(
+                when (checkedId) {
+                    R.id.buttonHistoryHealth -> HistoryFilter.HEALTH
+                    R.id.buttonHistoryPerformance -> HistoryFilter.PERFORMANCE
+                    else -> HistoryFilter.ALL
+                }
+            )
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
