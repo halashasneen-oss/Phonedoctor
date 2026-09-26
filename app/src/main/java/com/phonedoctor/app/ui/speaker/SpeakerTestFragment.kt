@@ -9,6 +9,7 @@ import com.phonedoctor.app.R
 import com.phonedoctor.app.data.audio.ToneChannel
 import com.phonedoctor.app.data.audio.TonePlayer
 import com.phonedoctor.app.databinding.FragmentSpeakerTestBinding
+import com.phonedoctor.app.ui.common.serviceLocator
 import com.phonedoctor.app.ui.common.viewBinding
 import kotlinx.coroutines.launch
 
@@ -21,14 +22,31 @@ class SpeakerTestFragment : Fragment(R.layout.fragment_speaker_test) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonBack.setOnClickListener { findNavController().navigateUp() }
-        binding.buttonPlay.setOnClickListener { play(ToneChannel.BOTH) }
-        binding.buttonPlayLeft.setOnClickListener { play(ToneChannel.LEFT) }
-        binding.buttonPlayRight.setOnClickListener { play(ToneChannel.RIGHT) }
+        binding.buttonPlay.setOnClickListener { playTone(ToneChannel.BOTH, 1_000.0) }
+        binding.buttonPlayLeft.setOnClickListener { playTone(ToneChannel.LEFT, 1_000.0) }
+        binding.buttonPlayRight.setOnClickListener { playTone(ToneChannel.RIGHT, 1_000.0) }
+        binding.buttonToneLow.setOnClickListener { playTone(ToneChannel.BOTH, 250.0) }
+        binding.buttonToneMid.setOnClickListener { playTone(ToneChannel.BOTH, 1_000.0) }
+        binding.buttonToneHigh.setOnClickListener { playTone(ToneChannel.BOTH, 4_000.0) }
+        binding.buttonSweep.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                tonePlayer.playSweep()
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            val routes = serviceLocator().audioDiagnosticsRepository.getRoutes()
+            binding.textOutputRoutes.text = if (routes.outputDevices.isEmpty()) {
+                getString(R.string.common_not_available)
+            } else {
+                routes.outputDevices.joinToString("\n")
+            }
+        }
     }
 
-    private fun play(channel: ToneChannel) {
+    private fun playTone(channel: ToneChannel, frequencyHz: Double) {
         viewLifecycleOwner.lifecycleScope.launch {
-            tonePlayer.playTone(channel)
+            tonePlayer.playTone(channel, frequencyHz)
         }
     }
 
