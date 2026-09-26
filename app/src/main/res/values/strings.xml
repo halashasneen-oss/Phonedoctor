@@ -68,6 +68,7 @@
     <string name="scan_item_storage">Storage</string>
     <string name="scan_item_memory">Memory</string>
     <string name="scan_item_cpu">CPU</string>
+    <string name="scan_item_thermal">Thermal</string>
     <string name="scan_item_display">Display</string>
     <string name="scan_item_touch">Touch</string>
     <string name="scan_item_audio">Audio</string>
@@ -109,6 +110,7 @@
     <string name="category_camera">Camera</string>
     <string name="category_sensors">Sensors</string>
     <string name="category_connectivity">Connectivity</string>
+    <string name="category_thermal">Thermal</string>
 
     <!-- ============ Battery ============ -->
     <string name="battery_title">Battery</string>
@@ -170,6 +172,22 @@
     <string name="cpu_supported_abis">Supported ABIs</string>
     <string name="cpu_screen_resolution">Screen Resolution</string>
     <string name="cpu_refresh_rate">Refresh Rate</string>
+
+    <!-- ============ Thermal Lab ============ -->
+    <string name="thermal_title">Thermal Lab</string>
+    <string name="thermal_status">Thermal Status</string>
+    <string name="thermal_headroom_current">Current Thermal Headroom</string>
+    <string name="thermal_headroom_forecast">10s Forecast Headroom</string>
+    <string name="thermal_severe_threshold">Severe Threshold</string>
+    <string name="thermal_headroom_note">A headroom value near 1.0 means the device is approaching the severe thermal throttling threshold. Availability depends on the device.</string>
+    <string name="thermal_refresh">REFRESH THERMAL STATUS</string>
+    <string name="thermal_state_none">No throttling</string>
+    <string name="thermal_state_light">Light throttling</string>
+    <string name="thermal_state_moderate">Moderate throttling</string>
+    <string name="thermal_state_severe">Severe throttling</string>
+    <string name="thermal_state_critical">Critical</string>
+    <string name="thermal_state_emergency">Emergency</string>
+    <string name="thermal_state_shutdown">Shutdown imminent</string>
 
     <!-- ============ Display Test ============ -->
     <string name="display_title">Display Test</string>
