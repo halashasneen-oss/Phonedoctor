@@ -11,6 +11,7 @@ import com.phonedoctor.app.data.repository.ConnectivityRepository
 import com.phonedoctor.app.data.repository.CpuBenchmarkEngine
 import com.phonedoctor.app.data.repository.CpuRepository
 import com.phonedoctor.app.data.repository.DeviceInfoRepository
+import com.phonedoctor.app.data.repository.GpuMediaRepository
 import com.phonedoctor.app.data.repository.HistoryRepository
 import com.phonedoctor.app.data.repository.MemoryBenchmarkEngine
 import com.phonedoctor.app.data.repository.MemoryRepository
@@ -50,6 +51,7 @@ class ServiceLocator(context: Context) {
     val cpuBenchmarkEngine: CpuBenchmarkEngine by lazy { CpuBenchmarkEngine() }
     val thermalRepository: ThermalRepository by lazy { ThermalRepository(appContext) }
     val historyRepository: HistoryRepository by lazy { HistoryRepository(database.scanHistoryDao()) }
+    val gpuMediaRepository: GpuMediaRepository by lazy { GpuMediaRepository(appContext) }
 
     val scanEngine: ScanEngine by lazy {
         ScanEngine(
