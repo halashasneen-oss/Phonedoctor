@@ -19,6 +19,7 @@ import com.phonedoctor.app.R
 import com.phonedoctor.app.data.report.PdfReportGenerator
 import com.phonedoctor.app.data.report.ReportTextGenerator
 import com.phonedoctor.app.databinding.FragmentReportDetailsBinding
+import com.phonedoctor.app.domain.model.ScanMode
 import com.phonedoctor.app.domain.model.ScanReport
 import com.phonedoctor.app.domain.util.FormatUtils
 import com.phonedoctor.app.ui.common.serviceLocator
@@ -60,10 +61,33 @@ class ReportDetailsFragment : Fragment(R.layout.fragment_report_details) {
 
     private fun render(report: ScanReport) {
         currentReport = report
+        val performance = report.scanMode == ScanMode.PERFORMANCE
+
+        binding.textReportTitle.setText(
+            if (performance) {
+                R.string.report_performance_title
+            } else {
+                R.string.report_title
+            }
+        )
         binding.textDevice.text = "${Build.MANUFACTURER} ${Build.MODEL}"
-        binding.textDate.text = FormatUtils.formatDateTime(report.timestampMillis)
-        binding.textHealth.text = "${report.healthScore}%"
+        binding.textDate.text =
+            FormatUtils.formatDateTime(report.timestampMillis)
+        binding.textScanType.setText(scanModeLabel(report.scanMode))
+        binding.rowHealth.visibility =
+            if (performance) View.GONE else View.VISIBLE
+        if (!performance) {
+            binding.textHealth.text = "${report.healthScore}%"
+        }
+
         categoryAdapter.submitList(report.results)
+    }
+
+    private fun scanModeLabel(mode: ScanMode): Int = when (mode) {
+        ScanMode.QUICK -> R.string.results_mode_quick
+        ScanMode.DEEP -> R.string.results_mode_deep
+        ScanMode.PERFORMANCE -> R.string.results_mode_performance
+        ScanMode.BACKGROUND -> R.string.results_mode_background
     }
 
     private fun shareAsText(report: ScanReport) {
