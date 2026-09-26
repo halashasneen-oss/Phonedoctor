@@ -62,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_md"
             android:layout_marginTop="@dimen/spacing_md"
+            android:visibility="gone"
             app:cardCornerRadius="16dp"
             app:strokeColor="@color/color_outline"
             app:strokeWidth="1dp">
