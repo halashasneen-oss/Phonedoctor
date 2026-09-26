@@ -294,12 +294,23 @@
     <string name="vibration_test_long">اختبار اهتزاز طويل</string>
     <string name="vibration_test_pattern">اختبار نمط الاهتزاز</string>
     <string name="vibration_has_amplitude_control">التحكم بشدة الاهتزاز</string>
+    <string name="vibration_amplitude_fmt">التحكم بالشدة: %1$s</string>
+    <string name="vibration_capabilities_title">قدرات محرك الاهتزاز</string>
+    <string name="vibration_capabilities_fmt">معرف المحرك: %1$s\nالتأثيرات الجاهزة: %2$s\nالنبضات اللمسية: %3$s</string>
+    <string name="vibration_capabilities_legacy">التقرير التفصيلي لقدرات التأثيرات غير متاح في إصدار Android هذا.</string>
+    <string name="vibration_test_click_effect">اختبار تأثير النقرة</string>
+    <string name="vibration_user_verify_note">يستطيع التطبيق طلب تأثيرات اهتزاز، لكن المستخدم وحده يستطيع التأكد أن الاهتزاز يعمل بشكل صحيح.</string>
 
     <!-- ============ Flashlight Test ============ -->
     <string name="flashlight_title">اختبار المصباح</string>
     <string name="flashlight_instructions">شغّل المصباح وأطفئه للتأكد من أنه يعمل.</string>
     <string name="flashlight_turn_on">تشغيل المصباح</string>
     <string name="flashlight_turn_off">إطفاء المصباح</string>
+    <string name="flashlight_capabilities_title">قدرات المصباح</string>
+    <string name="flashlight_strength_value_fmt">مستوى السطوع: %1$d / %2$d</string>
+    <string name="flashlight_strength_supported_fmt">التحكم اليدوي بالسطوع مدعوم · الافتراضي %1$d · الأقصى %2$d</string>
+    <string name="flashlight_strength_not_supported">هذا الجهاز يتيح تشغيل وإطفاء المصباح فقط.</string>
+    <string name="flashlight_strength_note">مستويات السطوع هي مستويات يحددها عتاد الجهاز وليست لومن أو واط.</string>
 
     <!-- ============ Camera Test ============ -->
     <string name="camera_title">اختبار الكاميرا</string>
@@ -323,6 +334,26 @@
     <string name="sensor_available">متاح</string>
     <string name="sensor_not_available">غير متاح</string>
     <string name="sensor_live_reading">قراءة حيّة</string>
+    <string name="sensors_summary_fmt">%1$d من أصل %2$d حساسات مدعومة</string>
+    <string name="sensors_optional_note">غياب الحساسات الاختيارية لا يُعتبر عطلًا في الجهاز.</string>
+    <string name="sensor_accuracy_high">دقة عالية</string>
+    <string name="sensor_accuracy_medium">دقة متوسطة</string>
+    <string name="sensor_accuracy_low">دقة منخفضة</string>
+    <string name="sensor_accuracy_unreliable">الدقة غير متاحة</string>
+    <string name="sensor_sample_rate_fmt">%1$.1f هرتز</string>
+    <string name="sensor_resolution_fmt">الدقة: %1$.4f</string>
+    <string name="sensor_range_fmt">المدى: %1$.3f</string>
+    <string name="sensor_power_fmt">الاستهلاك: %1$.3f mA</string>
+    <string name="sensor_min_delay_fmt">أقل تأخير: %1$d µs</string>
+    <string name="sensor_fifo_fmt">FIFO: %1$d / %2$d</string>
+    <string name="sensor_version_fmt">الإصدار %1$d</string>
+    <string name="sensor_wakeup">يوقظ الجهاز</string>
+    <string name="sensor_non_wakeup">لا يوقظ الجهاز</string>
+    <string name="sensor_mode_continuous">مستمر</string>
+    <string name="sensor_mode_on_change">عند التغيير</string>
+    <string name="sensor_mode_one_shot">قراءة واحدة</string>
+    <string name="sensor_mode_special_trigger">مُحفّز خاص</string>
+    <string name="sensor_mode_unknown">وضع غير معروف</string>
 
     <!-- ============ Connectivity ============ -->
     <string name="connectivity_title">الاتصال</string>
@@ -446,4 +477,14 @@
     <string name="cd_logo">شعار Phone Doctor</string>
     <string name="cd_flashlight_beam">معاينة ضوء المصباح</string>
     <string name="cd_camera_preview">معاينة الكاميرا</string>
+    <string name="buttons_title">مختبر أزرار الجهاز</string>
+    <string name="buttons_instructions">اضغط الأزرار الفعلية المدعومة أثناء بقاء هذه الشاشة مفتوحة. يستقبل Phone Doctor فقط أحداث الأزرار التي يسمح Android للتطبيقات العادية برؤيتها.</string>
+    <string name="buttons_detected_fmt">تم اكتشاف %1$d / %2$d</string>
+    <string name="buttons_volume_up">رفع الصوت</string>
+    <string name="buttons_volume_down">خفض الصوت</string>
+    <string name="buttons_camera">زر الكاميرا</string>
+    <string name="buttons_focus">زر تركيز الكاميرا</string>
+    <string name="buttons_detected">تم اكتشافه</string>
+    <string name="buttons_waiting">بانتظار الضغط على الزر</string>
+    <string name="buttons_power_note">Android لا يرسل زر التشغيل Power إلى التطبيقات العادية، لذلك لا يدّعي Phone Doctor أنه يستطيع اختباره.</string>
 </resources>
