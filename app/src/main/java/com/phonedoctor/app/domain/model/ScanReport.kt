@@ -4,7 +4,8 @@ data class ScanReport(
     val id: Long = 0L,
     val timestampMillis: Long,
     val healthScore: Int,
-    val results: List<CategoryResult>
+    val results: List<CategoryResult>,
+    val scanMode: ScanMode = ScanMode.DEEP
 ) {
     val passedCount: Int get() = results.count { it.status == TestStatus.EXCELLENT || it.status == TestStatus.GOOD }
     val warningCount: Int get() = results.count { it.status == TestStatus.FAIR }
