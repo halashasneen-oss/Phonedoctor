@@ -71,14 +71,13 @@ class VibrationTestFragment : Fragment(R.layout.fragment_vibration_test) {
             return getString(R.string.vibration_capabilities_legacy)
         }
 
-        val effectIds = intArrayOf(
+        val effectLabels = listOf("Tick", "Click", "Heavy click", "Double click")
+        val effectSupport = vibrator.areEffectsSupported(
             VibrationEffect.EFFECT_TICK,
             VibrationEffect.EFFECT_CLICK,
             VibrationEffect.EFFECT_HEAVY_CLICK,
             VibrationEffect.EFFECT_DOUBLE_CLICK
         )
-        val effectLabels = listOf("Tick", "Click", "Heavy click", "Double click")
-        val effectSupport = vibrator.areEffectsSupported(*effectIds)
         val effectsText = effectLabels.indices.joinToString(", ") { index ->
             val status = when (effectSupport[index]) {
                 Vibrator.VIBRATION_EFFECT_SUPPORT_YES -> "✓"
@@ -88,17 +87,20 @@ class VibrationTestFragment : Fragment(R.layout.fragment_vibration_test) {
             "${effectLabels[index]} $status"
         }
 
-        val primitiveIds = intArrayOf(
+        val primitiveLabels = listOf("Click", "Thud", "Tick")
+        val primitiveSupport = vibrator.arePrimitivesSupported(
             VibrationEffect.Composition.PRIMITIVE_CLICK,
             VibrationEffect.Composition.PRIMITIVE_THUD,
             VibrationEffect.Composition.PRIMITIVE_TICK
         )
-        val primitiveLabels = listOf("Click", "Thud", "Tick")
-        val primitiveSupport = vibrator.arePrimitivesSupported(*primitiveIds)
         val durations = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            vibrator.getPrimitiveDurations(*primitiveIds)
+            vibrator.getPrimitiveDurations(
+                VibrationEffect.Composition.PRIMITIVE_CLICK,
+                VibrationEffect.Composition.PRIMITIVE_THUD,
+                VibrationEffect.Composition.PRIMITIVE_TICK
+            )
         } else {
-            IntArray(primitiveIds.size)
+            IntArray(primitiveLabels.size)
         }
 
         val primitivesText = primitiveLabels.indices.joinToString(", ") { index ->
