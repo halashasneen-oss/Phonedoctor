@@ -64,6 +64,17 @@
 
     <!-- ============ Full Scan ============ -->
     <string name="scan_title">جارٍ فحص جهازك…</string>
+    <string name="scan_choose_mode_title">اختر نوع الفحص</string>
+    <string name="scan_choose_mode_body">اختر مستوى الفحص المناسب. اختبارات الأداء الثقيلة نسبيًا لا تعمل إلا عند اختيار فحص الأداء.</string>
+    <string name="scan_mode_quick">فحص سريع</string>
+    <string name="scan_mode_quick_desc">فحوصات تلقائية سريعة فقط: البطارية، الحرارة، حالة التخزين والذاكرة، الحساسات، وجود الكاميرا والاتصال.</string>
+    <string name="scan_mode_deep">فحص عميق</string>
+    <string name="scan_mode_deep_desc">الفحوصات التلقائية الكاملة مع اختبارات اختيارية يؤكدها المستخدم للشاشة واللمس والسماعة والميكروفون.</string>
+    <string name="scan_mode_performance">فحص الأداء</string>
+    <string name="scan_mode_performance_desc">يشغّل Benchmarks محدودة للمعالج وRAM والتخزين داخل مساحة التطبيق ثم يقرأ الحالة الحرارية. النتائج معلوماتية ولا تغيّر Health Score.</string>
+    <string name="scan_quick_title">الفحص السريع</string>
+    <string name="scan_deep_title">الفحص العميق</string>
+    <string name="scan_performance_title">فحص الأداء</string>
     <string name="scan_item_battery">البطارية</string>
     <string name="scan_item_storage">التخزين</string>
     <string name="scan_item_memory">الذاكرة</string>
@@ -87,6 +98,12 @@
 
     <!-- ============ Scan Results ============ -->
     <string name="results_title">نتائج الفحص</string>
+    <string name="results_performance_title">نتائج الأداء</string>
+    <string name="results_performance_subtitle">نتائج Benchmark معلوماتية وليست درجة لصحة العتاد.</string>
+    <string name="results_mode_quick">فحص سريع</string>
+    <string name="results_mode_deep">فحص عميق</string>
+    <string name="results_mode_performance">فحص الأداء</string>
+    <string name="results_mode_background">فحص خلفي</string>
     <string name="results_health_score_fmt">%1$d / 100</string>
     <string name="results_issues_found">المشاكل المكتشفة</string>
     <string name="results_no_issues">لم يتم العثور على أي مشاكل. هاتفك بحالة ممتازة.</string>
@@ -407,6 +424,7 @@
     <string name="history_warnings_fmt">%1$d تحذير</string>
     <string name="history_failed_fmt">%1$d فاشل</string>
     <string name="history_health_fmt">الصحة %1$d%%</string>
+    <string name="history_performance">أداء</string>
     <string name="history_clear_all">مسح السجل</string>
     <string name="history_clear_confirm_title">مسح كل السجل؟</string>
     <string name="history_clear_confirm_message">سيؤدي هذا إلى حذف كل نتائج الفحص المحفوظة على هذا الجهاز نهائيًا. لا يمكن التراجع عن هذا الإجراء.</string>
@@ -416,6 +434,8 @@
     <string name="report_device">الجهاز</string>
     <string name="report_date">التاريخ</string>
     <string name="report_overall_health">الصحة العامة</string>
+    <string name="report_scan_type">نوع الفحص</string>
+    <string name="report_performance_summary">تقرير أداء — قيم Benchmark معلوماتية وليست درجة لصحة العتاد.</string>
     <string name="report_share">مشاركة التقرير</string>
     <string name="report_export_pdf">تصدير كملف PDF</string>
     <string name="report_generating">جارٍ إنشاء التقرير…</string>
