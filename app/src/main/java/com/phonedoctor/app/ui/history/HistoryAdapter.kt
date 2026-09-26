@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.phonedoctor.app.R
 import com.phonedoctor.app.databinding.ItemHistoryRowBinding
+import com.phonedoctor.app.domain.model.ScanMode
 import com.phonedoctor.app.domain.model.ScanReport
 import com.phonedoctor.app.domain.util.FormatUtils
 
@@ -19,25 +20,77 @@ class HistoryAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(val binding: ItemHistoryRowBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(
+        val binding: ItemHistoryRowBinding
+    ) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemHistoryRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        val binding = ItemHistoryRowBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: ViewHolder,
+        position: Int
+    ) {
         val item = items[position]
         val context = holder.binding.root.context
-        holder.binding.textDate.text = FormatUtils.formatDateTime(item.timestampMillis)
-        holder.binding.textHealth.text = "${item.healthScore}%"
 
-        val parts = mutableListOf(context.getString(R.string.history_passed_fmt, item.passedCount))
-        if (item.warningCount > 0) parts += context.getString(R.string.history_warnings_fmt, item.warningCount)
-        if (item.failedCount > 0) parts += context.getString(R.string.history_failed_fmt, item.failedCount)
+        holder.binding.textDate.text =
+            FormatUtils.formatDateTime(item.timestampMillis)
+
+        holder.binding.textHealth.text =
+            if (item.scanMode == ScanMode.PERFORMANCE) {
+                context.getString(R.string.history_performance)
+            } else {
+                "${item.healthScore}%"
+            }
+
+        val modeLabel = context.getString(
+            when (item.scanMode) {
+                ScanMode.QUICK -> R.string.results_mode_quick
+                ScanMode.DEEP -> R.string.results_mode_deep
+                ScanMode.PERFORMANCE -> R.string.results_mode_performance
+                ScanMode.BACKGROUND -> R.string.results_mode_background
+            }
+        )
+
+        val parts = mutableListOf(modeLabel)
+        if (item.scanMode == ScanMode.PERFORMANCE) {
+            parts += context.getString(
+                R.string.history_results_fmt,
+                item.results.size
+            )
+        } else {
+            parts += context.getString(
+                R.string.history_passed_fmt,
+                item.passedCount
+            )
+            if (item.warningCount > 0) {
+                parts += context.getString(
+                    R.string.history_warnings_fmt,
+                    item.warningCount
+                )
+            }
+            if (item.failedCount > 0) {
+                parts += context.getString(
+                    R.string.history_failed_fmt,
+                    item.failedCount
+                )
+            }
+        }
         holder.binding.textSummary.text = parts.joinToString("   ")
 
-        holder.binding.root.setOnClickListener { onClick(item) }
+        holder.binding.root.setOnClickListener {
+            onClick(item)
+        }
     }
 
     override fun getItemCount(): Int = items.size
