@@ -173,6 +173,25 @@
     <string name="cpu_supported_abis">Supported ABIs</string>
     <string name="cpu_screen_resolution">Screen Resolution</string>
     <string name="cpu_refresh_rate">Refresh Rate</string>
+    <string name="cpu_soc_manufacturer">SoC Manufacturer</string>
+    <string name="cpu_soc_model">SoC Model</string>
+    <string name="cpu_board">Board</string>
+    <string name="cpu_hardware">Hardware</string>
+    <string name="cpu_core_frequency_fmt">Core %1$d Frequency</string>
+    <string name="cpu_frequency_current_max_fmt">%1$d MHz current / %2$d MHz max</string>
+    <string name="cpu_frequency_current_fmt">%1$d MHz current</string>
+    <string name="cpu_frequency_max_fmt">%1$d MHz max</string>
+    <string name="cpu_refresh_info">REFRESH CPU INFO</string>
+    <string name="cpu_benchmark_title">CPU Benchmark</string>
+    <string name="cpu_benchmark_desc">Runs a short local workload to measure single-thread and multi-thread throughput. No data leaves your phone.</string>
+    <string name="cpu_run_benchmark">RUN CPU BENCHMARK</string>
+    <string name="cpu_benchmark_result_fmt">Single-thread: %1$s ops/s\nMulti-thread: %2$s ops/s\nWorkers: %3$d</string>
+    <string name="cpu_benchmark_note">This is a Phone Doctor local throughput measurement, not a Geekbench or manufacturer score. Compare repeated runs on the same device under similar conditions.</string>
+    <string name="cpu_stress_title">Sustained CPU Test</string>
+    <string name="cpu_stress_desc">Runs a bounded 10-second CPU load to measure sustained performance and thermal change. Stop using the test if the device feels unusually hot.</string>
+    <string name="cpu_run_stress">RUN 10-SECOND STRESS TEST</string>
+    <string name="cpu_stress_progress_fmt">Stress test: %1$d%%</string>
+    <string name="cpu_stress_result_fmt">Duration: %1$d s\nInitial throughput: %2$s ops/s\nFinal throughput: %3$s ops/s\nSustained performance: %4$d%%\nThermal: %5$s → %6$s\nThermal headroom: %7$s → %8$s</string>
 
     <!-- ============ Thermal Lab ============ -->
     <string name="thermal_title">Thermal Lab</string>
