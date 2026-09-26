@@ -32,8 +32,8 @@ android {
         applicationId = "com.phonedoctor.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 4
-        versionName = "1.0.3"
+        versionCode = 5
+        versionName = "2.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -105,7 +105,7 @@ android {
             buildConfigField(
                 "String",
                 "REWARDED_AD_UNIT_ID",
-                "\"${secret("REWARDED_AD_UNIT_ID").ifBlank { "ca-app-pub-3940256099942544/5224354917" }}\""
+                "\"${secret("REWARDED_AD_UNIT_ID")}\""
             )
 
             signingConfigs.findByName("release")?.let { signingConfig = it }
