@@ -507,4 +507,23 @@
     <string name="buttons_detected">تم اكتشافه</string>
     <string name="buttons_waiting">بانتظار الضغط على الزر</string>
     <string name="buttons_power_note">Android لا يرسل زر التشغيل Power إلى التطبيقات العادية، لذلك لا يدّعي Phone Doctor أنه يستطيع اختباره.</string>
+    <string name="gpu_media_title">مختبر GPU والوسائط</string>
+    <string name="gpu_section_title">قدرات الرسوميات</string>
+    <string name="gpu_vendor">الشركة المصنعة للـ GPU</string>
+    <string name="gpu_renderer">معالج الرسوميات</string>
+    <string name="gpu_opengl_version">إصدار OpenGL ES</string>
+    <string name="gpu_glsl_version">إصدار GLSL</string>
+    <string name="gpu_vulkan_hardware_level">مستوى عتاد Vulkan</string>
+    <string name="gpu_vulkan_version">إصدار عتاد Vulkan</string>
+    <string name="media_section_title">قدرات ترميز وفك الوسائط</string>
+    <string name="media_total_codecs">إجمالي وحدات الترميز</string>
+    <string name="media_decoders_encoders">فك الترميز / الترميز</string>
+    <string name="media_decoders_encoders_fmt">%1$d / %2$d</string>
+    <string name="media_hardware_codecs">وحدات مسرعة عتاديًا</string>
+    <string name="media_software_codecs">وحدات برمجية فقط</string>
+    <string name="media_vendor_codecs">وحدات الشركة المصنّعة</string>
+    <string name="media_codec_hardware_fmt">فك عتادي: %1$d · ترميز عتادي: %2$d</string>
+    <string name="media_codec_summary_fmt">فك الترميز: %1$d · الترميز: %2$d\n%3$s</string>
+    <string name="gpu_media_note">هذه قدرات يبلغ عنها EGL وميزات النظام وMediaCodec، وليست Benchmark للـGPU ولا درجة صحة للعتاد.</string>
+    <string name="gpu_media_refresh">تحديث معلومات GPU والوسائط</string>
 </resources>
