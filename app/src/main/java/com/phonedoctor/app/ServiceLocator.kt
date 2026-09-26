@@ -6,6 +6,7 @@ import com.phonedoctor.app.data.datastore.SettingsRepository
 import com.phonedoctor.app.data.local.AppDatabase
 import com.phonedoctor.app.data.repository.AudioDiagnosticsRepository
 import com.phonedoctor.app.data.repository.BatteryRepository
+import com.phonedoctor.app.data.repository.CameraDiagnosticsRepository
 import com.phonedoctor.app.data.repository.ConnectivityRepository
 import com.phonedoctor.app.data.repository.CpuBenchmarkEngine
 import com.phonedoctor.app.data.repository.CpuRepository
@@ -34,6 +35,7 @@ class ServiceLocator(context: Context) {
 
     val settingsRepository: SettingsRepository by lazy { SettingsRepository(appContext) }
     val batteryRepository: BatteryRepository by lazy { BatteryRepository(appContext) }
+    val cameraDiagnosticsRepository: CameraDiagnosticsRepository by lazy { CameraDiagnosticsRepository(appContext) }
     val audioDiagnosticsRepository: AudioDiagnosticsRepository by lazy { AudioDiagnosticsRepository(appContext) }
     val storageRepository: StorageRepository by lazy { StorageRepository(appContext) }
     val storageBenchmarkEngine: StorageBenchmarkEngine by lazy { StorageBenchmarkEngine(appContext) }
