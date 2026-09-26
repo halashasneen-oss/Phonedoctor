@@ -265,6 +265,13 @@
     <string name="speaker_right">القناة اليمنى</string>
     <string name="speaker_both">كلتا القناتين</string>
     <string name="speaker_result_question">هل سمعت نغمة الاختبار بوضوح؟</string>
+    <string name="speaker_frequency_tests">اختبارات التردد</string>
+    <string name="speaker_tone_low">250 هرتز</string>
+    <string name="speaker_tone_mid">1 كيلوهرتز</string>
+    <string name="speaker_tone_high">4 كيلوهرتز</string>
+    <string name="speaker_sweep">تشغيل تدرّج 200 هرتز–4 كيلوهرتز</string>
+    <string name="speaker_output_routes">أجهزة إخراج الصوت المكتشفة</string>
+    <string name="speaker_result_note">سماع النغمات هو تحقق من المستخدم، ولا يدّعي Phone Doctor تقديم درجة موضوعية لجودة الصوت.</string>
 
     <!-- ============ Microphone Test ============ -->
     <string name="mic_title">اختبار الميكروفون</string>
@@ -276,6 +283,9 @@
     <string name="mic_delete_recording">حذف التسجيل</string>
     <string name="mic_recording_deleted">تم حذف التسجيل</string>
     <string name="mic_max_duration_notice">يتوقف التسجيل تلقائيًا بعد 10 ثوانٍ.</string>
+    <string name="mic_input_routes">أجهزة إدخال الصوت المكتشفة</string>
+    <string name="mic_stats_fmt">متوسط المستوى: %1$d%%\nأعلى مستوى: %2$d%%\nعينات التشبع: %3$d\nالعينات الصامتة: %4$d\nالعينات المحللة: %5$d</string>
+    <string name="mic_stats_note">تلخص هذه القيم مستويات الإدخال التي يوفرها MediaRecorder أثناء التسجيل، وهي مؤشرات للإشارة وليست درجة مطلقة لجودة الميكروفون.</string>
 
     <!-- ============ Vibration Test ============ -->
     <string name="vibration_title">اختبار الاهتزاز</string>
@@ -298,6 +308,7 @@
     <string name="camera_switch">تبديل الكاميرا</string>
     <string name="camera_permission_rationale">يحتاج Phone Doctor إذن الكاميرا لعرض معاينة مباشرة والتأكد من عملها. لا يتم حفظ أو رفع أي شيء.</string>
     <string name="camera_not_available">لم يتم العثور على كاميرا في هذا الجهاز.</string>
+    <string name="camera_capabilities_fmt">عدد الكاميرات المكتشفة: %1$d\nمعرف الكاميرا: %2$s\nمستوى العتاد: %3$s\nالأبعاد البؤرية: %4$s\nأعلى دقة JPEG: %5$s\nالفلاش: %6$s\nالتثبيت البصري OIS: %7$s\nRAW: %8$s\nكاميرا منطقية متعددة: %9$s\nالتركيز التلقائي: %10$s\nاتجاه المستشعر: %11$s°</string>
 
     <!-- ============ Sensors Test ============ -->
     <string name="sensors_title">اختبار الحساسات</string>
