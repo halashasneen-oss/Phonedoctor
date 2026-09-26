@@ -4,12 +4,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.phonedoctor.app.R
+import com.phonedoctor.app.ads.AdConsentManager
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        AdConsentManager.requestConsent(this)
 
         val startWithOnboarding = intent.getBooleanExtra(EXTRA_START_WITH_ONBOARDING, false)
         if (startWithOnboarding) {
