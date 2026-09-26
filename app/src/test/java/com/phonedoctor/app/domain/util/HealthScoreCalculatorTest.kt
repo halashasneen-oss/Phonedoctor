@@ -64,6 +64,29 @@ class HealthScoreCalculatorTest {
     }
 
     @Test
+    fun `performance-only informational results do not fabricate health score`() {
+        val results = listOf(
+            CategoryResult(
+                category = DiagnosticCategory.CPU,
+                status = TestStatus.GOOD,
+                summary = "benchmark",
+                evidenceType = DiagnosticEvidenceType.MEASURED,
+                scoreImpact = ScoreImpact.INFORMATIONAL
+            ),
+            CategoryResult(
+                category = DiagnosticCategory.MEMORY,
+                status = TestStatus.FAIR,
+                summary = "benchmark",
+                evidenceType = DiagnosticEvidenceType.MEASURED,
+                scoreImpact = ScoreImpact.INFORMATIONAL
+            )
+        )
+
+        assertEquals(0, HealthScoreCalculator.calculate(results))
+        assertEquals(0, HealthScoreCalculator.scoredCategoryCount(results))
+    }
+
+    @Test
     fun `confidence weights health evidence`() {
         val results = listOf(
             CategoryResult(
