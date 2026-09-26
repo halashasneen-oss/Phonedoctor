@@ -12,6 +12,7 @@ fun DiagnosticCategory.toUiModel(): CategoryUiModel = when (this) {
     DiagnosticCategory.STORAGE -> CategoryUiModel(R.drawable.ic_storage, R.string.category_storage)
     DiagnosticCategory.MEMORY -> CategoryUiModel(R.drawable.ic_memory, R.string.category_memory)
     DiagnosticCategory.CPU -> CategoryUiModel(R.drawable.ic_cpu, R.string.category_cpu)
+    DiagnosticCategory.THERMAL -> CategoryUiModel(R.drawable.ic_cpu, R.string.category_thermal)
     DiagnosticCategory.DISPLAY -> CategoryUiModel(R.drawable.ic_display, R.string.category_display)
     DiagnosticCategory.TOUCH -> CategoryUiModel(R.drawable.ic_touch, R.string.category_touch)
     DiagnosticCategory.AUDIO -> CategoryUiModel(R.drawable.ic_speaker, R.string.category_audio)
