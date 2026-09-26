@@ -14,6 +14,7 @@ fun CategoryResult.issueMessageRes(): Int? {
         DiagnosticCategory.STORAGE -> R.string.results_issue_storage_full
         DiagnosticCategory.BATTERY -> R.string.results_issue_battery_drain
         DiagnosticCategory.MEMORY -> R.string.results_issue_memory_high
+        DiagnosticCategory.THERMAL -> R.string.results_issue_thermal
         DiagnosticCategory.CONNECTIVITY -> if (status == TestStatus.POOR) R.string.results_issue_no_connectivity else null
         else -> null
     }
