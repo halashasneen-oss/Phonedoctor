@@ -35,6 +35,7 @@
         <action android:id="@+id/action_home_to_history" app:destination="@id/testHistoryFragment" />
         <action android:id="@+id/action_home_to_vibration" app:destination="@id/vibrationTestFragment" />
         <action android:id="@+id/action_home_to_flashlight" app:destination="@id/flashlightTestFragment" />
+        <action android:id="@+id/action_home_to_buttons" app:destination="@id/hardwareButtonsFragment" />
         <action android:id="@+id/action_home_to_cpu" app:destination="@id/cpuFragment" />
         <action android:id="@+id/action_home_to_thermal" app:destination="@id/thermalFragment" />
     </fragment>
@@ -111,6 +112,11 @@
         android:id="@+id/flashlightTestFragment"
         android:name="com.phonedoctor.app.ui.flashlight.FlashlightTestFragment"
         tools:layout="@layout/fragment_flashlight_test" />
+
+    <fragment
+        android:id="@+id/hardwareButtonsFragment"
+        android:name="com.phonedoctor.app.ui.buttons.HardwareButtonsFragment"
+        tools:layout="@layout/fragment_hardware_buttons" />
 
     <fragment
         android:id="@+id/cameraTestFragment"
