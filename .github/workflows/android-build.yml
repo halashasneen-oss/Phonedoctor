@@ -82,6 +82,16 @@ jobs:
             echo "::notice::Release signing secrets (KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD) are not configured for this repository, so release APK/AAB build is skipped. Debug build above is the full result for this run. See README.md 'GitHub Actions / Secrets setup' to enable release builds."
           fi
 
+      - name: Validate release ad configuration
+        if: steps.signing_check.outputs.has_signing == 'true'
+        env:
+          REWARDED_AD_UNIT_ID: ${{ secrets.REWARDED_AD_UNIT_ID }}
+        run: |
+          if [ -z "$REWARDED_AD_UNIT_ID" ]; then
+            echo "::error::REWARDED_AD_UNIT_ID is required for production release builds. A Google test rewarded unit is intentionally not used in Release."
+            exit 1
+          fi
+
       - name: Decode release keystore
         if: steps.signing_check.outputs.has_signing == 'true'
         env:
