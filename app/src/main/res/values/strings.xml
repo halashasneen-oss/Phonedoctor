@@ -94,6 +94,7 @@
     <string name="results_issue_storage_full">Storage is almost full.</string>
     <string name="results_issue_battery_drain">Battery is discharging quickly.</string>
     <string name="results_issue_memory_high">Memory usage is high.</string>
+    <string name="results_issue_thermal">Thermal throttling is affecting the device.</string>
     <string name="results_issue_no_connectivity">No network connectivity detected.</string>
 
     <!-- ============ Categories (shared across Results / Report / History) ============ -->
