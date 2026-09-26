@@ -294,12 +294,23 @@
     <string name="vibration_test_long">TEST LONG VIBRATION</string>
     <string name="vibration_test_pattern">TEST PATTERN</string>
     <string name="vibration_has_amplitude_control">Amplitude Control</string>
+    <string name="vibration_amplitude_fmt">Amplitude control: %1$s</string>
+    <string name="vibration_capabilities_title">Vibrator Capabilities</string>
+    <string name="vibration_capabilities_fmt">Vibrator ID: %1$s\nPredefined effects: %2$s\nHaptic primitives: %3$s</string>
+    <string name="vibration_capabilities_legacy">Detailed effect capability reporting is not available on this Android version.</string>
+    <string name="vibration_test_click_effect">TEST CLICK EFFECT</string>
+    <string name="vibration_user_verify_note">The app can request haptic effects, but only you can verify that the vibration feels correct.</string>
 
     <!-- ============ Flashlight Test ============ -->
     <string name="flashlight_title">Flashlight Test</string>
     <string name="flashlight_instructions">Turn the flashlight on and off to confirm it works.</string>
     <string name="flashlight_turn_on">TURN ON FLASHLIGHT</string>
     <string name="flashlight_turn_off">TURN OFF</string>
+    <string name="flashlight_capabilities_title">Torch Capabilities</string>
+    <string name="flashlight_strength_value_fmt">Brightness level: %1$d / %2$d</string>
+    <string name="flashlight_strength_supported_fmt">Manual brightness supported · default %1$d · max %2$d</string>
+    <string name="flashlight_strength_not_supported">This device exposes on/off torch control only.</string>
+    <string name="flashlight_strength_note">Brightness levels are device-defined HAL levels, not lumens or watts.</string>
 
     <!-- ============ Camera Test ============ -->
     <string name="camera_title">Camera Test</string>
@@ -323,6 +334,26 @@
     <string name="sensor_available">Available</string>
     <string name="sensor_not_available">Not Available</string>
     <string name="sensor_live_reading">Live reading</string>
+    <string name="sensors_summary_fmt">%1$d of %2$d sensors supported</string>
+    <string name="sensors_optional_note">Unsupported optional sensors do not count as a hardware failure.</string>
+    <string name="sensor_accuracy_high">High accuracy</string>
+    <string name="sensor_accuracy_medium">Medium accuracy</string>
+    <string name="sensor_accuracy_low">Low accuracy</string>
+    <string name="sensor_accuracy_unreliable">Accuracy unavailable</string>
+    <string name="sensor_sample_rate_fmt">%1$.1f Hz</string>
+    <string name="sensor_resolution_fmt">Resolution: %1$.4f</string>
+    <string name="sensor_range_fmt">Range: %1$.3f</string>
+    <string name="sensor_power_fmt">Power: %1$.3f mA</string>
+    <string name="sensor_min_delay_fmt">Min delay: %1$d µs</string>
+    <string name="sensor_fifo_fmt">FIFO: %1$d / %2$d</string>
+    <string name="sensor_version_fmt">v%1$d</string>
+    <string name="sensor_wakeup">Wake-up</string>
+    <string name="sensor_non_wakeup">Non wake-up</string>
+    <string name="sensor_mode_continuous">Continuous</string>
+    <string name="sensor_mode_on_change">On-change</string>
+    <string name="sensor_mode_one_shot">One-shot</string>
+    <string name="sensor_mode_special_trigger">Special trigger</string>
+    <string name="sensor_mode_unknown">Unknown mode</string>
 
     <!-- ============ Connectivity ============ -->
     <string name="connectivity_title">Connectivity</string>
@@ -446,4 +477,14 @@
     <string name="cd_logo">Phone Doctor logo</string>
     <string name="cd_flashlight_beam">Flashlight beam preview</string>
     <string name="cd_camera_preview">Camera preview</string>
+    <string name="buttons_title">Hardware Buttons Lab</string>
+    <string name="buttons_instructions">Press the supported physical buttons while this screen is open. Phone Doctor listens only for button events Android exposes to normal apps.</string>
+    <string name="buttons_detected_fmt">%1$d / %2$d detected</string>
+    <string name="buttons_volume_up">Volume Up</string>
+    <string name="buttons_volume_down">Volume Down</string>
+    <string name="buttons_camera">Camera Button</string>
+    <string name="buttons_focus">Camera Focus Button</string>
+    <string name="buttons_detected">Detected</string>
+    <string name="buttons_waiting">Waiting for button press</string>
+    <string name="buttons_power_note">Android does not deliver the Power button to ordinary apps, so Phone Doctor does not claim to test it.</string>
 </resources>
