@@ -89,11 +89,11 @@
     <string name="scan_item_connectivity">Connectivity</string>
     <string name="scan_cancel">Cancel Scan</string>
     <string name="scan_interactive_required">This check needs a quick look from you</string>
-    <string name="scan_interactive_display">Please glance at the display test to confirm the screen looks correct.</string>
-    <string name="scan_interactive_touch">Tap the screen a few times to confirm touch is responding.</string>
-    <string name="scan_interactive_audio">Play a short test tone to confirm the speaker works.</string>
-    <string name="scan_interactive_microphone">Say something out loud to confirm the microphone picks up sound.</string>
-    <string name="scan_interactive_continue">Continue</string>
+    <string name="scan_interactive_display">Confirm whether the display appears normal in everyday use. For color, gradient and pixel-pattern checks, use Display Lab from Home.</string>
+    <string name="scan_interactive_touch">Confirm whether touch is responding normally. For coverage, edge and multi-touch measurements, use Touch Lab from Home.</string>
+    <string name="scan_interactive_audio">Confirm whether the speaker is working normally. For frequency and channel tests, use Speaker Lab from Home.</string>
+    <string name="scan_interactive_microphone">Confirm whether the microphone works normally. For recorded signal-level statistics, use Microphone Lab from Home.</string>
+    <string name="scan_interactive_continue">I VERIFIED IT WORKS</string>
     <string name="scan_interactive_skip">Skip this test</string>
 
     <!-- ============ Scan Results ============ -->
