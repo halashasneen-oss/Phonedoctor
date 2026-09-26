@@ -293,6 +293,33 @@
                 <View style="@style/Divider" />
 
                 <LinearLayout
+                    android:id="@+id/rowAdPrivacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/min_touch_target"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_md"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/settings_ad_privacy"
+                        android:textAppearance="@style/TextAppearance.PhoneDoctor.Subtitle" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="@color/color_text_secondary" />
+                </LinearLayout>
+
+                <View style="@style/Divider" />
+
+                <LinearLayout
                     android:id="@+id/rowHelp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
