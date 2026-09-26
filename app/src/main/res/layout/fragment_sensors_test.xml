@@ -33,6 +33,38 @@
             android:textAppearance="@style/TextAppearance.PhoneDoctor.Title" />
     </LinearLayout>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSummary"
+        style="@style/Widget.PhoneDoctor.Card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_md"
+        android:layout_marginBottom="@dimen/spacing_sm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardSummary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textSensorsSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.PhoneDoctor.Subtitle"
+                tools:text="6 of 8 sensors supported" />
+
+            <TextView
+                android:id="@+id/textSensorsNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xxs"
+                android:textAppearance="@style/TextAppearance.PhoneDoctor.Caption" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSensors"
         android:layout_width="match_parent"
