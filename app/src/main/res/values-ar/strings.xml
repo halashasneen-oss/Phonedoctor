@@ -89,11 +89,11 @@
     <string name="scan_item_connectivity">الاتصال</string>
     <string name="scan_cancel">إلغاء الفحص</string>
     <string name="scan_interactive_required">هذا الاختبار يحتاج نظرة سريعة منك</string>
-    <string name="scan_interactive_display">يرجى إلقاء نظرة على اختبار الشاشة للتأكد من أنها تبدو صحيحة.</string>
-    <string name="scan_interactive_touch">المس الشاشة عدة مرات للتأكد من استجابة اللمس.</string>
-    <string name="scan_interactive_audio">شغّل نغمة اختبار قصيرة للتأكد من عمل مكبر الصوت.</string>
-    <string name="scan_interactive_microphone">تحدث بصوت مسموع للتأكد من التقاط الميكروفون للصوت.</string>
-    <string name="scan_interactive_continue">متابعة</string>
+    <string name="scan_interactive_display">أكد إن كانت الشاشة تبدو طبيعية في الاستخدام اليومي. لاختبارات الألوان والتدرج والأنماط استخدم مختبر الشاشة من الرئيسية.</string>
+    <string name="scan_interactive_touch">أكد إن كان اللمس يستجيب بشكل طبيعي. لقياس التغطية والحواف واللمس المتعدد استخدم مختبر اللمس من الرئيسية.</string>
+    <string name="scan_interactive_audio">أكد إن كانت السماعة تعمل بشكل طبيعي. لاختبارات التردد والقنوات استخدم مختبر السماعة من الرئيسية.</string>
+    <string name="scan_interactive_microphone">أكد إن كان الميكروفون يعمل بشكل طبيعي. لإحصاءات مستوى الإشارة والتسجيل استخدم مختبر الميكروفون من الرئيسية.</string>
+    <string name="scan_interactive_continue">أكدت أنه يعمل</string>
     <string name="scan_interactive_skip">تخطي هذا الاختبار</string>
 
     <!-- ============ Scan Results ============ -->
