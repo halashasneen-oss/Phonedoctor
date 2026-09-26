@@ -106,6 +106,15 @@
                 android:text="@string/display_result_question"
                 android:textAppearance="@style/TextAppearance.PhoneDoctor.Title" />
 
+            <TextView
+                android:id="@+id/textDisplayCapabilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:textAppearance="@style/TextAppearance.PhoneDoctor.Caption"
+                android:textColor="@color/color_text_secondary"
+                tools:text="Resolution: 1080 × 2400&#10;Current refresh: 120 Hz&#10;Supported: 60, 120 Hz&#10;HDR: HDR10+&#10;Wide color: Yes" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonResultYes"
                 style="@style/Widget.PhoneDoctor.Button.Primary"
