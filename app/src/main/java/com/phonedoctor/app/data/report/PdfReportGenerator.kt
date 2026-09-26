@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.pdf.PdfDocument
 import android.os.Build
 import com.phonedoctor.app.R
+import com.phonedoctor.app.domain.model.ScanMode
 import com.phonedoctor.app.domain.model.ScanReport
 import com.phonedoctor.app.domain.util.FormatUtils
 import com.phonedoctor.app.ui.common.toUiModel
@@ -30,20 +31,59 @@ object PdfReportGenerator {
         val bodyPaint = Paint().apply { color = Color.BLACK; textSize = 13f }
         val scorePaint = Paint().apply { color = Color.BLACK; textSize = 36f; isFakeBoldText = true }
 
+        val performance = report.scanMode == ScanMode.PERFORMANCE
+        val titleRes = if (performance) {
+            R.string.report_performance_title
+        } else {
+            R.string.report_title
+        }
+
         var y = 48f
-        canvas.drawText(context.getString(R.string.report_title), 40f, y, titlePaint)
+        canvas.drawText(context.getString(titleRes), 40f, y, titlePaint)
 
         y += 30f
         canvas.drawText("${context.getString(R.string.report_device)}: ${Build.MANUFACTURER} ${Build.MODEL}", 40f, y, labelPaint)
         y += 18f
-        canvas.drawText("${context.getString(R.string.report_date)}: ${FormatUtils.formatDateTime(report.timestampMillis)}", 40f, y, labelPaint)
+        canvas.drawText(
+            "${context.getString(R.string.report_date)}: " +
+                FormatUtils.formatDateTime(report.timestampMillis),
+            40f,
+            y,
+            labelPaint
+        )
 
-        y += 44f
-        canvas.drawText("${report.healthScore}%", 40f, y, scorePaint)
-        y += 20f
-        canvas.drawText(context.getString(R.string.report_overall_health), 40f, y, labelPaint)
+        y += 18f
+        canvas.drawText(
+            "${context.getString(R.string.report_scan_type)}: " +
+                context.getString(scanModeLabel(report.scanMode)),
+            40f,
+            y,
+            labelPaint
+        )
 
-        y += 36f
+        if (performance) {
+            y += 28f
+            drawWrappedText(
+                canvas,
+                context.getString(R.string.report_performance_summary),
+                40f,
+                y,
+                PAGE_WIDTH - 80,
+                labelPaint
+            )
+            y += 36f
+        } else {
+            y += 44f
+            canvas.drawText("${report.healthScore}%", 40f, y, scorePaint)
+            y += 20f
+            canvas.drawText(
+                context.getString(R.string.report_overall_health),
+                40f,
+                y,
+                labelPaint
+            )
+            y += 36f
+        }
         val lineY = y
         canvas.drawLine(40f, lineY, (PAGE_WIDTH - 40).toFloat(), lineY, Paint().apply { color = Color.LTGRAY })
 
@@ -67,6 +107,13 @@ object PdfReportGenerator {
         FileOutputStream(file).use { document.writeTo(it) }
         document.close()
         return file
+    }
+
+    private fun scanModeLabel(mode: ScanMode): Int = when (mode) {
+        ScanMode.QUICK -> R.string.results_mode_quick
+        ScanMode.DEEP -> R.string.results_mode_deep
+        ScanMode.PERFORMANCE -> R.string.results_mode_performance
+        ScanMode.BACKGROUND -> R.string.results_mode_background
     }
 
     private fun drawWrappedText(canvas: Canvas, text: String, x: Float, startY: Float, maxWidth: Int, paint: Paint) {
