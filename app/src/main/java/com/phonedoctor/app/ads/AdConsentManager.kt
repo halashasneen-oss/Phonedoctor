@@ -51,6 +51,10 @@ object AdConsentManager {
     private fun complete(context: Context, consentInformation: ConsentInformation) {
         val allowed = consentInformation.canRequestAds()
         _canRequestAds.value = allowed
-        if (allowed) AdManager.initialize(context)
+        if (allowed) {
+            AdManager.initialize(context)
+        } else {
+            AdManager.clearCachedAds()
+        }
     }
 }
