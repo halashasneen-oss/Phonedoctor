@@ -100,7 +100,9 @@ android {
             val interstitialAdUnitId = secret("INTERSTITIAL_AD_UNIT_ID").ifBlank {
                 "ca-app-pub-5961173995415325/4176630251"
             }
-            val rewardedAdUnitId = secret("REWARDED_AD_UNIT_ID")
+            val rewardedAdUnitId = secret("REWARDED_AD_UNIT_ID").ifBlank {
+                "ca-app-pub-5961173995415325/3815584864"
+            }
 
             manifestPlaceholders["admobAppId"] = releaseAdMobAppId
             buildConfigField("boolean", "SHOW_ADS", "true")
