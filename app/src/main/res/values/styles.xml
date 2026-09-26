@@ -43,20 +43,26 @@
 
     <!-- ============ Buttons ============ -->
     <style name="Widget.PhoneDoctor.Button.Primary" parent="Widget.Material3.Button">
-        <item name="android:minHeight">@dimen/primary_button_height</item>
+        <item name="android:minHeight">60dp</item>
         <item name="android:textAppearance">@style/TextAppearance.PhoneDoctor.ButtonLarge</item>
         <item name="backgroundTint">@color/color_primary</item>
         <item name="android:textColor">@color/color_on_primary</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.PhoneDoctor.Medium</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.PhoneDoctor.Full</item>
+        <item name="strokeColor">@color/palette_cyan_300</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:elevation">@dimen/elevation_raised</item>
         <item name="rippleColor">@color/color_ripple</item>
     </style>
 
     <style name="Widget.PhoneDoctor.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="android:minHeight">@dimen/primary_button_height</item>
+        <item name="android:minHeight">58dp</item>
         <item name="android:textAppearance">@style/TextAppearance.PhoneDoctor.ButtonLarge</item>
         <item name="android:textColor">@color/color_primary</item>
-        <item name="strokeColor">@color/color_outline</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.PhoneDoctor.Medium</item>
+        <item name="backgroundTint">@color/color_surface_variant</item>
+        <item name="strokeColor">@color/color_neon_border</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.PhoneDoctor.Full</item>
+        <item name="android:elevation">@dimen/elevation_card</item>
         <item name="rippleColor">@color/color_ripple</item>
     </style>
 
@@ -69,8 +75,10 @@
     <!-- ============ Cards ============ -->
     <style name="Widget.PhoneDoctor.Card" parent="Widget.Material3.CardView.Elevated">
         <item name="cardBackgroundColor">@color/color_card</item>
-        <item name="cardCornerRadius">@dimen/radius_md</item>
+        <item name="cardCornerRadius">@dimen/radius_lg</item>
         <item name="cardElevation">@dimen/elevation_card</item>
+        <item name="strokeColor">@color/color_outline</item>
+        <item name="strokeWidth">1dp</item>
         <item name="contentPadding">@dimen/spacing_md</item>
         <item name="rippleColor">@color/color_ripple</item>
     </style>

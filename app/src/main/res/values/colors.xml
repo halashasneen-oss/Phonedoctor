@@ -47,50 +47,52 @@
     <color name="palette_gray_800">#1E293B</color>
     <color name="palette_gray_900">#0F172A</color>
 
-    <!-- ============ Semantic tokens (LIGHT mode values; values-night overrides) ============ -->
-    <color name="color_primary">@color/palette_cyan_600</color>
-    <color name="color_on_primary">@color/palette_white</color>
-    <color name="color_primary_container">@color/palette_gray_100</color>
-    <color name="color_on_primary_container">@color/palette_cyan_700</color>
+    <!-- ============ Futuristic AI semantic tokens ============ -->
+    <color name="color_primary">#22D3EE</color>
+    <color name="color_on_primary">#03111D</color>
+    <color name="color_primary_container">#0A2740</color>
+    <color name="color_on_primary_container">#A5F3FC</color>
 
-    <color name="color_secondary">@color/palette_blue_600</color>
-    <color name="color_on_secondary">@color/palette_white</color>
+    <color name="color_secondary">#60A5FA</color>
+    <color name="color_on_secondary">#04111E</color>
 
-    <color name="color_background">@color/palette_gray_50</color>
-    <color name="color_on_background">@color/palette_gray_900</color>
+    <color name="color_background">#030812</color>
+    <color name="color_on_background">#F4F8FC</color>
 
-    <color name="color_surface">@color/palette_white</color>
-    <color name="color_on_surface">@color/palette_gray_900</color>
-    <color name="color_surface_variant">@color/palette_gray_100</color>
-    <color name="color_on_surface_variant">@color/palette_gray_600</color>
+    <color name="color_surface">#071321</color>
+    <color name="color_on_surface">#F4F8FC</color>
+    <color name="color_surface_variant">#0B1D30</color>
+    <color name="color_on_surface_variant">#A9BDD0</color>
 
-    <color name="color_outline">@color/palette_gray_300</color>
+    <color name="color_outline">#174C67</color>
+    <color name="color_neon_border">#287FA3</color>
+    <color name="color_surface_glass">#CC0A1A2B</color>
 
-    <color name="color_error">@color/palette_red_600</color>
-    <color name="color_on_error">@color/palette_white</color>
+    <color name="color_error">@color/palette_red_400</color>
+    <color name="color_on_error">@color/palette_navy_950</color>
 
-    <color name="color_success">@color/palette_green_600</color>
-    <color name="color_on_success">@color/palette_white</color>
-    <color name="color_warning">@color/palette_amber_600</color>
-    <color name="color_on_warning">@color/palette_gray_900</color>
-    <color name="color_danger">@color/palette_red_600</color>
-    <color name="color_on_danger">@color/palette_white</color>
+    <color name="color_success">#34E6A1</color>
+    <color name="color_on_success">#03130E</color>
+    <color name="color_warning">@color/palette_amber_400</color>
+    <color name="color_on_warning">@color/palette_navy_950</color>
+    <color name="color_danger">@color/palette_red_400</color>
+    <color name="color_on_danger">@color/palette_navy_950</color>
 
-    <color name="color_text_primary">@color/palette_gray_900</color>
-    <color name="color_text_secondary">@color/palette_gray_500</color>
-    <color name="color_text_disabled">@color/palette_gray_300</color>
+    <color name="color_text_primary">#F7FBFF</color>
+    <color name="color_text_secondary">#A8BED0</color>
+    <color name="color_text_disabled">#50677B</color>
 
-    <color name="color_card">@color/palette_white</color>
-    <color name="color_card_elevated">@color/palette_gray_50</color>
-    <color name="color_divider">@color/palette_gray_200</color>
-    <color name="color_scrim">#66000000</color>
+    <color name="color_card">#081624</color>
+    <color name="color_card_elevated">#0B1E31</color>
+    <color name="color_divider">#12344B</color>
+    <color name="color_scrim">#B3000000</color>
 
-    <color name="color_ripple">#1F0891B2</color>
+    <color name="color_ripple">#4022D3EE</color>
 
-    <color name="color_success_bg">#1A16A34A</color>
-    <color name="color_warning_bg">#1AD97706</color>
-    <color name="color_danger_bg">#1ADC2626</color>
-    <color name="color_neutral_bg">#1A64748B</color>
-    <color name="color_primary_bg">#1A0891B2</color>
+    <color name="color_success_bg">#2634E6A1</color>
+    <color name="color_warning_bg">#26FBBF24</color>
+    <color name="color_danger_bg">#26F87171</color>
+    <color name="color_neutral_bg">#2694A3B8</color>
+    <color name="color_primary_bg">#2A22D3EE</color>
 
 </resources>

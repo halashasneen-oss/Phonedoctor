@@ -72,6 +72,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val moreToolAdapter = MoreToolAdapter(viewModel.uiState.value.moreTools) { tool ->
             findNavController().navigate(tool.navActionId)
         }
+        binding.recyclerMoreTools.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerMoreTools.adapter = moreToolAdapter
 
         binding.buttonSettings.setOnClickListener {

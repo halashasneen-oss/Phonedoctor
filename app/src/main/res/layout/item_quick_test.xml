@@ -7,9 +7,11 @@
     android:layout_margin="@dimen/spacing_xs"
     android:checkable="true"
     android:minHeight="@dimen/quick_test_card_min_height"
-    app:cardBackgroundColor="@color/color_card"
+    app:cardBackgroundColor="@color/color_card_elevated"
     app:cardCornerRadius="@dimen/radius_md"
-    app:cardElevation="@dimen/elevation_card"
+    app:cardElevation="4dp"
+    app:strokeColor="@color/color_outline"
+    app:strokeWidth="1dp"
     app:rippleColor="@color/color_ripple">
 
     <LinearLayout

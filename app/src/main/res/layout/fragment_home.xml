@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
+    android:background="@drawable/bg_app_surface"
     android:clipToPadding="false"
     android:fillViewport="true">
 
@@ -27,7 +27,7 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:contentDescription="@string/cd_logo"
-                android:src="@mipmap/ic_launcher_foreground" />
+                android:src="@drawable/ic_launcher_custom" />
 
             <TextView
                 android:layout_width="0dp"
@@ -63,8 +63,10 @@
             android:layout_marginHorizontal="@dimen/spacing_md"
             android:layout_marginTop="@dimen/spacing_md"
             android:visibility="gone"
-            app:cardCornerRadius="16dp"
-            app:strokeColor="@color/color_outline"
+            app:cardBackgroundColor="@color/color_card_elevated"
+            app:cardCornerRadius="@dimen/radius_lg"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/color_neon_border"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -73,20 +75,41 @@
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_md">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_adfree_title"
-                    android:textAppearance="@style/TextAppearance.PhoneDoctor.Title" />
-
-                <TextView
-                    android:id="@+id/textAdFreeRewardStatus"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_xs"
-                    android:text="@string/home_adfree_desc"
-                    android:textColor="@color/color_text_secondary"
-                    android:textSize="@dimen/text_body" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:contentDescription="@string/cd_logo"
+                        android:src="@drawable/ic_launcher_custom" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_adfree_title"
+                            android:textAppearance="@style/TextAppearance.PhoneDoctor.Title" />
+
+                        <TextView
+                            android:id="@+id/textAdFreeRewardStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_xxs"
+                            android:text="@string/home_adfree_desc"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="@dimen/text_body" />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonAdFreeReward"
@@ -249,10 +272,9 @@
             android:id="@+id/recyclerMoreTools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_md"
+            android:layout_margin="@dimen/spacing_sm"
             android:nestedScrollingEnabled="false"
             android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="3"
             tools:listitem="@layout/item_more_tool" />
 
