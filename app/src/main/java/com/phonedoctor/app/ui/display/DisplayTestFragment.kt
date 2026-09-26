@@ -173,11 +173,19 @@ class DisplayTestFragment : Fragment(R.layout.fragment_display_test) {
         )
     }
 
-    private fun hdrTypeLabel(type: Int): String = when (type) {
-        Display.HdrCapabilities.HDR_TYPE_DOLBY_VISION -> "Dolby Vision"
-        Display.HdrCapabilities.HDR_TYPE_HDR10 -> "HDR10"
-        Display.HdrCapabilities.HDR_TYPE_HLG -> "HLG"
-        Display.HdrCapabilities.HDR_TYPE_HDR10_PLUS -> "HDR10+"
-        else -> "HDR $type"
+    private fun hdrTypeLabel(type: Int): String {
+        if (
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q &&
+            type == Display.HdrCapabilities.HDR_TYPE_HDR10_PLUS
+        ) {
+            return "HDR10+"
+        }
+
+        return when (type) {
+            Display.HdrCapabilities.HDR_TYPE_DOLBY_VISION -> "Dolby Vision"
+            Display.HdrCapabilities.HDR_TYPE_HDR10 -> "HDR10"
+            Display.HdrCapabilities.HDR_TYPE_HLG -> "HLG"
+            else -> "HDR $type"
+        }
     }
 }
