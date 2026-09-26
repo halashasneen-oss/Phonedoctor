@@ -62,7 +62,7 @@ class CpuBenchmarkEngine {
                 state = state xor (state shl 17)
                 state *= -7046029254386353131L
             }
-            operations += WORK_BATCH
+            operations += WORK_BATCH.toLong()
         }
 
         blackHole = blackHole xor state
@@ -76,7 +76,7 @@ class CpuBenchmarkEngine {
     companion object {
         const val DEFAULT_STRESS_SECONDS = 10
         const val MAX_STRESS_SECONDS = 15
-        private const val WORK_BATCH = 256L
+        private const val WORK_BATCH = 256
 
         @Volatile
         private var blackHole: Long = 0L
