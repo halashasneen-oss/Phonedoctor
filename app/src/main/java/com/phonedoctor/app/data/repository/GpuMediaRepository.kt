@@ -148,6 +148,11 @@ class GpuMediaRepository(private val context: Context) {
             return GlStrings()
         }
 
+        val config = configs[0] ?: run {
+            EGL14.eglTerminate(display)
+            return GlStrings()
+        }
+
         val contextAttributes = intArrayOf(
             EGL14.EGL_CONTEXT_CLIENT_VERSION,
             2,
@@ -155,7 +160,7 @@ class GpuMediaRepository(private val context: Context) {
         )
         val eglContext = EGL14.eglCreateContext(
             display,
-            configs[0],
+            config,
             EGL14.EGL_NO_CONTEXT,
             contextAttributes,
             0
@@ -174,7 +179,7 @@ class GpuMediaRepository(private val context: Context) {
         )
         val surface = EGL14.eglCreatePbufferSurface(
             display,
-            configs[0],
+            config,
             pbufferAttributes,
             0
         )
