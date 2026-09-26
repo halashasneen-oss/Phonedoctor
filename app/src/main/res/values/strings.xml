@@ -477,11 +477,11 @@
     <!-- ============ Privacy ============ -->
     <string name="privacy_title">Privacy</string>
     <string name="privacy_intro">Phone Doctor is designed to perform device diagnostics locally whenever possible. Diagnostic results and personal files are not uploaded to a Phone Doctor server.</string>
-    <string name="privacy_data_body">Phone Doctor does not collect your IMEI, serial number, advertising ID, or MAC address. Test history, settings and any temporary recordings are stored only on your device and can be deleted at any time from Settings.</string>
+    <string name="privacy_data_body">Phone Doctor does not collect your IMEI, serial number, MAC address, account credentials, or personal files. Test history, settings and temporary microphone recordings stay in app-private storage on your device. The optional DNS/TCP connectivity test contacts example.com only when you start it and does not upload personal data.</string>
     <string name="privacy_ads_title">Advertising</string>
-    <string name="privacy_ads_body">The free version of Phone Doctor may show ads served by Google AdMob. Ads may use data according to Google\'s advertising and consent settings. You can remove ads with Phone Doctor Premium.</string>
+    <string name="privacy_ads_body">Phone Doctor may show ads served by Google AdMob. Where required, Google\'s UMP consent flow is shown before ad requests, and eligible users can reopen ad privacy choices from Settings. The optional rewarded-ad flow can disable Phone Doctor ads for one hour after the reward is earned.</string>
     <string name="privacy_permissions_title">Permissions</string>
-    <string name="privacy_permissions_body">Camera, microphone, storage and notification permissions are only requested when you open the matching test, and only used for that test.</string>
+    <string name="privacy_permissions_body">Camera and microphone are requested only for their matching test screens. Bluetooth Connect is requested only when needed to read Bluetooth state on newer Android versions. Notifications are requested only if you enable reminders. Phone Doctor does not request broad photo, video, audio-library, external-storage, or location permission for diagnostics.</string>
 
     <!-- ============ Premium ============ -->
     <string name="premium_title">Phone Doctor Premium</string>
