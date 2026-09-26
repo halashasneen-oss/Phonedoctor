@@ -66,7 +66,7 @@ android {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
             isDebuggable = true
-            buildConfigField("boolean", "SHOW_ADS", "false")
+            buildConfigField("boolean", "SHOW_ADS", "true")
             buildConfigField(
                 "String",
                 "BANNER_AD_UNIT_ID",
@@ -168,6 +168,7 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.play.services.ads)
+    implementation(libs.google.ump)
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.2")
 
     testImplementation(libs.junit)
