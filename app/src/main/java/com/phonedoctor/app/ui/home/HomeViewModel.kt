@@ -201,6 +201,7 @@ class HomeViewModel(
         MoreToolItem(R.drawable.ic_cpu, R.string.cpu_title, R.id.action_home_to_cpu),
         MoreToolItem(R.drawable.ic_cpu, R.string.thermal_title, R.id.action_home_to_thermal),
         MoreToolItem(R.drawable.ic_vibration, R.string.vibration_title, R.id.action_home_to_vibration),
-        MoreToolItem(R.drawable.ic_flashlight, R.string.flashlight_title, R.id.action_home_to_flashlight)
+        MoreToolItem(R.drawable.ic_flashlight, R.string.flashlight_title, R.id.action_home_to_flashlight),
+        MoreToolItem(R.drawable.ic_device_info, R.string.buttons_title, R.id.action_home_to_buttons)
     )
 }
