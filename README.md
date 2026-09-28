@@ -164,8 +164,8 @@ does not generate production ad traffic.
 
 ## Privacy
 
-See the in-app Privacy screen (Settings → Privacy) and
-[`PRIVACY.md`](#) equivalent copy below:
+See the in-app Privacy screen (Settings → Privacy) and the published policy:
+https://halashasneen-oss.github.io/Phonedoctor/privacy-policy.html
 
 > Phone Doctor is designed to perform device diagnostics locally whenever
 > possible. Diagnostic results and personal files are not uploaded to a
