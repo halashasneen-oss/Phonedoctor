@@ -3,107 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phone Doctor – Privacy Policy</title>
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index,follow">
+<title>Phone Doctor — Privacy Policy</title>
 <style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 32px 20px 64px;
-    line-height: 1.6;
-    color: #1a1a2e;
-    background: #ffffff;
+  :root {
+    --bg: #02060d;
+    --surface: #071321;
+    --surface-2: #0b1e31;
+    --border: #174c67;
+    --cyan: #22d3ee;
+    --cyan-soft: #a5f3fc;
+    --text: #f7fbff;
+    --muted: #a8bed0;
+    --green: #34e6a1;
   }
-  h1 { font-size: 1.6rem; margin-bottom: 4px; }
-  .updated { color: #666; font-size: 0.9rem; margin-bottom: 32px; }
-  h2 { font-size: 1.15rem; margin-top: 32px; color: #0f3460; }
-  ul { padding-left: 20px; }
-  li { margin-bottom: 6px; }
-  a { color: #16a3d1; }
-  .contact { background: #f4f7fb; border-radius: 8px; padding: 16px 20px; margin-top: 32px; }
-  footer { margin-top: 48px; color: #888; font-size: 0.85rem; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background:
+      radial-gradient(circle at top right, rgba(34,211,238,.12), transparent 32rem),
+      linear-gradient(145deg, #02060d 0%, #061522 48%, #03101b 100%);
+    color: var(--text);
+    line-height: 1.68;
+  }
+  main {
+    width: min(900px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 36px 0 72px;
+  }
+  .hero, section, .contact {
+    background: linear-gradient(145deg, rgba(11,30,49,.96), rgba(7,19,33,.96));
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: 0 18px 55px rgba(0,0,0,.28);
+  }
+  .hero {
+    padding: 28px;
+    margin-bottom: 18px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cyan-soft);
+    font-weight: 800;
+    letter-spacing: .02em;
+  }
+  .pulse {
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 22px rgba(52,230,161,.7);
+  }
+  h1 {
+    margin: 12px 0 4px;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+  }
+  .updated { margin: 0; color: var(--muted); }
+  .summary {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(34,211,238,.08);
+    border: 1px solid rgba(34,211,238,.22);
+    color: #dffaff;
+  }
+  section {
+    padding: 24px 26px;
+    margin-top: 16px;
+  }
+  h2 {
+    margin: 0 0 12px;
+    font-size: 1.18rem;
+    color: var(--cyan-soft);
+  }
+  p { margin: 10px 0; }
+  ul { margin: 10px 0; padding-left: 24px; }
+  li { margin: 7px 0; }
+  strong { color: #fff; }
+  code {
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: #06111d;
+    border: 1px solid #12344b;
+    color: var(--cyan-soft);
+  }
+  a { color: var(--cyan); }
+  .contact {
+    margin-top: 18px;
+    padding: 22px 26px;
+  }
+  footer {
+    margin-top: 28px;
+    text-align: center;
+    color: #7890a5;
+    font-size: .88rem;
+  }
+  .badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 10px;
+    border: 1px solid rgba(52,230,161,.35);
+    border-radius: 999px;
+    color: #bff8dc;
+    background: rgba(52,230,161,.08);
+    font-size: .86rem;
+  }
 </style>
 </head>
 <body>
+<main>
 
-<h1>Phone Doctor — Privacy Policy</h1>
-<p class="updated">Last updated: September 26, 2026</p>
+  <div class="hero">
+    <div class="brand"><span class="pulse"></span> Phone Doctor</div>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: September 28, 2026 · Applies to Phone Doctor 2.1.0 and later until this page is revised.</p>
+    <div class="summary">
+      Phone Doctor is designed around local, on-device diagnostics. The App does not require an account and does not operate a developer-controlled backend for storing your diagnostic history.
+    </div>
+    <span class="badge">Package: com.phonedoctor.app</span>
+  </div>
 
-<p>Phone Doctor ("the App") is a device diagnostics app developed for Android.
-This page explains what information the App accesses, how it is used, and
-the choices you have. Phone Doctor is built to run its diagnostics locally
-on your device wherever possible.</p>
+  <section>
+    <h2>1. Local diagnostics and local storage</h2>
+    <p>Phone Doctor ("the App") is an Android device diagnostics utility. Most diagnostic work is performed locally using Android system APIs and device hardware interfaces.</p>
+    <p>Diagnostic results, scan history, settings, consent-related app state, and the temporary one-hour ad-free reward state are stored in Android app-private storage on your device. Phone Doctor does not upload your diagnostic history to a developer-controlled server.</p>
+  </section>
 
-<h2>1. No account, no server-side storage</h2>
-<p>Phone Doctor does not require you to create an account and does not have
-a backend server. Diagnostic results, test history, and app settings are
-stored only in the App's local storage on your device, using Android's
-standard app-private storage. This data is never uploaded to us or to any
-server we control.</p>
+  <section>
+    <h2>2. Information Phone Doctor does not request or intentionally collect</h2>
+    <p>The App does not require an account and does not ask you to provide your name, email address, password, or other account credentials.</p>
+    <p>For diagnostics, Phone Doctor does not intentionally collect or store:</p>
+    <ul>
+      <li>IMEI or device serial number</li>
+      <li>MAC address</li>
+      <li>Your photo, video, music, or document library</li>
+      <li>Your precise or approximate location</li>
+      <li>The content of calls, SMS messages, contacts, or other personal communications</li>
+    </ul>
+    <p>Advertising-related data may be processed directly by Google through the Google Mobile Ads SDK as described in Section 7.</p>
+  </section>
 
-<h2>2. Information the App does not collect</h2>
-<p>The App does not collect, transmit, or store:</p>
-<ul>
-  <li>Your IMEI or device serial number</li>
-  <li>Your advertising ID beyond what Google AdMob uses directly (see Section 4)</li>
-  <li>Your MAC address</li>
-  <li>Your name, email address, or any account credentials (none are requested)</li>
-  <li>The contents of your photos, videos, audio files, or personal documents</li>
-</ul>
+  <section>
+    <h2>3. Permissions and hardware access</h2>
+    <p>Phone Doctor requests sensitive runtime permissions only when a feature needs them:</p>
+    <ul>
+      <li><strong>Camera</strong> — used when you open Camera Test to preview the camera and read supported camera capabilities. Phone Doctor does not save or upload camera photos or video as part of the diagnostic flow.</li>
+      <li><strong>Microphone</strong> — used when you run Microphone Test. A short temporary recording may be created in the App's private cache to measure signal characteristics. It remains on-device and is deleted by the diagnostic flow.</li>
+      <li><strong>Bluetooth Connect</strong> — on Android versions that require it, used only when Bluetooth state/details are requested in Connectivity Lab. It is not used by Phone Doctor to infer your location.</li>
+      <li><strong>Notifications</strong> — requested only if you enable a feature that needs health-check/reminder notifications.</li>
+    </ul>
+    <p>The App also declares normal Android permissions such as Internet, network state, Wi-Fi state, NFC, and vibration where required for diagnostics or advertising. These normal permissions do not expose your personal files to Phone Doctor.</p>
+  </section>
 
-<h2>3. Permissions the App requests</h2>
-<p>Phone Doctor only requests a permission when you open the matching
-diagnostic test or enable the matching feature, and only uses it for that purpose:</p>
-<ul>
-  <li><strong>Camera</strong> — used only during the Camera Test screen, to preview and verify the camera works. No photos or video are saved or transmitted.</li>
-  <li><strong>Microphone</strong> — used only during the Microphone Test screen, to check that audio input is captured. Any recording made is temporary, stays on-device, and is discarded after the test.</li>
-  <li><strong>Bluetooth Connect</strong> — requested only on Android versions that require it when you choose to inspect Bluetooth state in Connectivity Lab. Phone Doctor does not use this permission to infer location.</li>
-  <li><strong>Notifications</strong> — used only if you enable the optional automatic health-check reminder in Settings.</li>
-</ul>
-<p>Phone Doctor does <strong>not</strong> request broad photo, video, audio-library, external-storage read, or location access for diagnostics. The Storage Test reads only basic total/used/free space information available to the App without media-library permissions. For detailed storage management, the App opens Android's system storage settings. GNSS/GPS is reported only as a device capability unless you separately grant location access outside the App's current diagnostic flow. Diagnostic reports are created in app-private storage and may be shared only when you choose to share them through Android's system sharing interface.</p>
-<p>The optional DNS/TCP connectivity test runs only when you press its button. It resolves <code>example.com</code> and opens a short TCP connection to port 443 to measure basic DNS and connection latency. It is not a bandwidth test and does not upload your personal files, diagnostic history, microphone recordings, or account information.</p>
-<p>You can review and revoke applicable permissions at any time from your
-device's Android Settings, and you can delete all locally stored test
-history at any time from the App's own Settings screen.</p>
+  <section>
+    <h2>4. Storage, sensors, thermal and performance diagnostics</h2>
+    <ul>
+      <li><strong>Storage:</strong> the App reads basic device storage capacity/usage information available through Android. It does not request broad media-library or external-storage read access. Performance testing may create a temporary test file inside the App's private cache, measure local sequential read/write performance, and delete that file afterward.</li>
+      <li><strong>Memory:</strong> RAM diagnostics use system memory information and bounded in-app memory benchmark buffers.</li>
+      <li><strong>CPU / Performance:</strong> user-initiated benchmark work runs locally on the device and may temporarily increase CPU utilization.</li>
+      <li><strong>Thermal:</strong> supported Android thermal APIs are used to display thermal state/headroom where the device exposes them.</li>
+      <li><strong>Sensors:</strong> Phone Doctor reads available sensor metadata and live samples locally for diagnostic display. Missing optional sensors are treated as device capability information, not personal data.</li>
+      <li><strong>Display, touch, speaker, vibration, flashlight and hardware buttons:</strong> these tests operate locally and do not upload test interactions.</li>
+    </ul>
+  </section>
 
-<h2>4. Advertising</h2>
-<p>The free version of Phone Doctor may show ads served by
-<strong>Google AdMob</strong>. AdMob may collect and use data (such as
-advertising identifiers) according to Google's own advertising and consent
-policies, independently of the App. You can see Google's practices here:
-<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com/technologies/ads</a>.
-Where required, the App uses Google's User Messaging Platform (UMP) consent
-flow before requesting ads. When Google requires privacy options to remain
-available, Phone Doctor exposes those choices again from Settings. Phone
-Doctor also offers an optional rewarded-ad flow that can disable Phone Doctor
-ads for one hour after the ad reward is earned. The App cannot verify that a
-share-sheet destination actually published a post.</p>
+  <section>
+    <h2>5. Connectivity Lab and network probe</h2>
+    <p>Connectivity Lab may display device/network state such as Wi-Fi availability, mobile connectivity capability, Ethernet, VPN, NFC, Bluetooth, DNS servers, estimated link information, and connected USB device descriptors where Android makes those details available.</p>
+    <p>The optional network probe runs only when you request it. It resolves <code>example.com</code> and attempts a short TCP connection to port 443 to measure basic DNS and TCP connection latency. It is not a bandwidth upload test and does not send your diagnostic history, microphone recordings, reports, or personal files.</p>
+  </section>
 
-<h2>5. Third-party services</h2>
-<p>The only third-party service integrated into the App is Google AdMob
-(Section 4). Phone Doctor does not integrate any analytics, crash-reporting,
-or advertising SDK beyond AdMob.</p>
+  <section>
+    <h2>6. Reports and sharing</h2>
+    <p>Phone Doctor can create diagnostic report text/PDF files in app-controlled storage. A report is shared outside the App only when you explicitly choose a destination through Android's system share interface.</p>
+    <p>The App also offers an optional share flow connected to the rewarded-ad feature. Phone Doctor opens Android's share sheet, but the App does not verify whether the selected destination actually publishes or sends the shared message.</p>
+  </section>
 
-<h2>6. Data retention and deletion</h2>
-<p>All diagnostic history and settings live only on your device. Uninstalling
-the App removes this data. You can also clear test history at any time from
-Settings → Clear History, without uninstalling the App.</p>
+  <section>
+    <h2>7. Advertising, consent and rewarded ads</h2>
+    <p>The free version of Phone Doctor may display banner, interstitial, and rewarded advertisements using <strong>Google AdMob / Google Mobile Ads SDK</strong>. Google may process technical and advertising-related information, which can include device or advertising identifiers, IP address, ad interactions, and other data described by Google's own policies.</p>
+    <p>Where required, Phone Doctor uses <strong>Google User Messaging Platform (UMP)</strong> to request/manage advertising consent before ads are requested. When Google requires privacy options to remain available, the App provides access to those choices from Settings.</p>
+    <p>The rewarded-ad feature can grant one hour without Phone Doctor banner and interstitial ads after the ad reward is earned. The expiry time for that temporary reward is stored locally in the App's private settings.</p>
+    <p>Google advertising information:
+      <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google advertising technologies</a>.
+      Google privacy information:
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.
+    </p>
+  </section>
 
-<h2>7. Children's privacy</h2>
-<p>Phone Doctor is a general-audience utility app and is not directed at
-children. It does not knowingly collect personal information from children.</p>
+  <section>
+    <h2>8. Third-party services</h2>
+    <p>Phone Doctor integrates Google's Mobile Ads SDK and Google's User Messaging Platform for advertising and consent. The App does not currently integrate Firebase Analytics, a developer-operated analytics platform, or a developer-operated crash-reporting backend.</p>
+    <p>This Privacy Policy page itself is hosted using GitHub Pages. Visiting this web page may result in GitHub processing ordinary web-request information under GitHub's own privacy practices. This is separate from Phone Doctor's on-device diagnostic processing.</p>
+  </section>
 
-<h2>8. Changes to this policy</h2>
-<p>If this policy changes, the updated version will be posted at this same
-URL with a revised "Last updated" date.</p>
+  <section>
+    <h2>9. Data retention and deletion</h2>
+    <p>Diagnostic history and app settings are kept in app-private storage on your device until you clear them or uninstall the App. Where available, you can clear diagnostic history from Phone Doctor's Settings. Android system settings can also be used to clear the App's local data.</p>
+    <p>Temporary diagnostic files, such as microphone or storage benchmark files, are intended to be removed after their associated diagnostic operation finishes.</p>
+  </section>
 
-<div class="contact">
-  <strong>Contact</strong><br>
-  Questions about this policy or the App can be sent to:
-  <a href="mailto:khaledhasneeen@gmail.com">khaledhasneeen@gmail.com</a>
-</div>
+  <section>
+    <h2>10. Your choices</h2>
+    <ul>
+      <li>You may deny or revoke Camera, Microphone, Bluetooth, or Notification permissions through Android Settings.</li>
+      <li>You may choose not to run optional network/performance tests.</li>
+      <li>You may choose not to share a report or app-sharing message.</li>
+      <li>Where UMP privacy choices are available, you can reopen them from Phone Doctor Settings.</li>
+      <li>You can clear locally stored history or uninstall the App to remove app-private local data.</li>
+    </ul>
+  </section>
 
-<footer>Phone Doctor · com.phonedoctor.app</footer>
+  <section>
+    <h2>11. Children's privacy</h2>
+    <p>Phone Doctor is a general-audience device utility and is not specifically directed to children. The App does not require users to create a personal account or submit profile information to the developer.</p>
+  </section>
 
+  <section>
+    <h2>12. Security</h2>
+    <p>Phone Doctor minimizes data exposure by keeping diagnostic processing and history local wherever possible and by using Android app-private storage for its own files. No software can guarantee absolute security, but the App is designed to avoid unnecessary collection of personal information.</p>
+  </section>
+
+  <section>
+    <h2>13. Changes to this policy</h2>
+    <p>If Phone Doctor's data practices or integrated services change, this page will be updated and the "Last updated" date above will be revised. The current version will remain available at this same privacy-policy URL.</p>
+  </section>
+
+  <div class="contact">
+    <strong>Contact</strong><br>
+    Questions about this Privacy Policy or Phone Doctor can be sent to:
+    <a href="mailto:khaledhasneeen@gmail.com">khaledhasneeen@gmail.com</a>
+  </div>
+
+  <footer>Phone Doctor · com.phonedoctor.app · Privacy Policy</footer>
+</main>
 </body>
 </html>
