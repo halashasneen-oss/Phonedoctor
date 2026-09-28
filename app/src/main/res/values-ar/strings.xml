@@ -563,4 +563,5 @@
     <string name="result_confidence_high">ثقة عالية</string>
     <string name="result_confidence_medium">ثقة متوسطة</string>
     <string name="result_confidence_low">ثقة منخفضة</string>
+    <string name="privacy_open_full_policy">فتح سياسة الخصوصية الكاملة</string>
 </resources>
