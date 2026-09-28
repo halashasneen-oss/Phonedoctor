@@ -1,5 +1,7 @@
 package com.phonedoctor.app.ui.privacy
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -15,5 +17,17 @@ class PrivacyFragment : Fragment(R.layout.fragment_privacy) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonBack.setOnClickListener { findNavController().navigateUp() }
+        binding.buttonOpenPrivacyPolicy.setOnClickListener {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(PRIVACY_POLICY_URL)
+                )
+            )
+        }
+    }
+    companion object {
+        private const val PRIVACY_POLICY_URL =
+            "https://halashasneen-oss.github.io/Phonedoctor/privacy-policy.html"
     }
 }
