@@ -57,6 +57,14 @@
             android:text="@string/privacy_data_body"
             android:textAppearance="@style/TextAppearance.PhoneDoctor.Body" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonOpenPrivacyPolicy"
+            style="@style/Widget.PhoneDoctor.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:text="@string/privacy_open_full_policy" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
