@@ -563,4 +563,5 @@
     <string name="result_confidence_high">High confidence</string>
     <string name="result_confidence_medium">Medium confidence</string>
     <string name="result_confidence_low">Low confidence</string>
+    <string name="privacy_open_full_policy">Open full privacy policy</string>
 </resources>
